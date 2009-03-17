@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'cutils' target 
+// in the 'cutils' project.
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
