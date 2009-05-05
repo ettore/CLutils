@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "cl_errors.h"
 #include "cl_debug.h"
 #include "cutils_bsd.h"
 
@@ -52,7 +53,7 @@ int cutils_get_ip(const char *inHostName, size_t inBufSize, char *outBuf)
         if (!hp) 
         {
             debug1msg("cutils_get_ip: unknown host %s", inHostName);
-            return kCutilsUnkownHost;
+            return CL_UNKNOWN_HOST;
         }
         to->sin_family = hp->h_addrtype;
         bcopy(hp->h_addr, (caddr_t)&to->sin_addr, hp->h_length);

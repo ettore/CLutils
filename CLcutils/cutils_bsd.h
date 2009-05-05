@@ -6,8 +6,6 @@
 #ifndef cutils_bsd_h_
 #define cutils_bsd_h_
 
-#define kCutilsUnkownHost               -1000
-
 /* -----------------------------------------------------------------------------
  *  Sprints in outBuf the IP address (xxx.xxx.xxx.xxx) given the computer 
  *  name.                                                                     */
