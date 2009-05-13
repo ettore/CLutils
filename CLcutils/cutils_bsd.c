@@ -9,7 +9,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <sys/file.h>
-#include <netinet/ip.h>
+
 #include <netdb.h>
 #include <stdio.h>
 #include <string.h>

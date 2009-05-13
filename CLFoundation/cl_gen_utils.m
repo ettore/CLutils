@@ -1,6 +1,6 @@
 //  Copyright 2008 Cubelogic. All rights reserved.
 
-#import <CoreServices/CoreServices.h>
+#import <Foundation/Foundation.h>
 #import "cl_gen_utils.h"
 
 CLTimestamp
