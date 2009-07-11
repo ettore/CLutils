@@ -11,6 +11,9 @@
     id tmpParsed; // instance of class returned by createElementWithName
     NSString *_wantedTag; // the main element tag we're looking for
     NSString *_errorTag; // if an error occurs on backend, we'll get a error tag
+    NSError *_parserError; // if not nil, we could not parse the content.
+                           // Note the difference with CLXMLError, which is a
+                           // backend app error which produces no XML parse error.
 }
 
 @property(nonatomic, retain) NSString *wantedTag;
@@ -20,7 +23,7 @@
  * Synchronous XML download and parsing. 
  * Returns the parsed element or an instance of the CLXMLParseError hierarchy. 
  * Clients will need to retain the returned object if they care about it. */
-- (id)fetchElementAtURL:(NSString *)url_str;
+- (id)parseElementAtURL:(NSString *)url_str;
 
 /**
  * Parse XML from 'data'. Synchronous.
@@ -43,15 +46,19 @@
  */
 - (id)createErrorElement:(NSDictionary *)attrDict;
 
-/** Returns the parsed element from the last fetchElementAtURL: invokation. 
+/** Returns the parsed element from the last parseElementAtURL: invokation. 
  *  This can be an instance of a user class 
  *  (see createElementWithAttributes: method) or an instance of the 
  *  CLXMLParseError hierarchy. If a new parsing cycle is started
- *  (with fetchElementAtURL:) this object gets released, so clients should
+ *  (with parseElementAtURL:) this object gets released, so clients should
  *  retain this if they care about it.
  *  Note to self: The parsed element will eventually be autoreleased like any 
  *  other cocoa class; this happens when the CLXMLParser is deallocated. */
 - (id)parsedElement;
+
+- (NSError *)parserError;
+
+- (void)parseWithParser:(NSXMLParser *)parser;
 
 // -----------------------------------------------------------------------------
 #pragma mark Delegate methods for NSXMLParser

@@ -29,100 +29,102 @@
         [tmpParsed autorelease];
         tmpParsed = nil;
     }
+    [_errorTag release];
+    [_wantedTag release];
+    [_parserError release];
     [super dealloc];
 }
+
+// =============================================================================
+#pragma mark -
+#pragma mark Main API
+// =============================================================================
 
 // syncronous XML parsing of NSData
 // clients will need to retain the returned object if they care about it.
 - (id)parseData:(NSData *)data
 {
-	NSXMLParser *parser;
-    BOOL parse_successful;
-    
-    // tmpParsed should always be nil at this point, but if for some reason 
-    // it is not nil, release whatever it's holding up to avoid leaks
-    if (tmpParsed)
-    {
-        [tmpParsed release];
-        tmpParsed = nil;
-    }
-    
-	parser = [[NSXMLParser alloc] initWithData:data];
-	[parser setDelegate:self];
-    [parser setShouldProcessNamespaces:NO];
-    [parser setShouldReportNamespacePrefixes:NO];
-    [parser setShouldResolveExternalEntities:NO];
-    
-    parse_successful = [parser parse];
-    debug0msg("parseData successful? %d", parse_successful);
-    if (!parse_successful)
-    {
-        NSError *err = [parser parserError];
-        NSLog(@"%@", err);
-        
-        if (tmpParsed)
-        {
-            // release directly since new parsing cycle will create a new one
-            [tmpParsed release];
-            tmpParsed = nil;
-        }
-	}
-    
-	// cleanup
-	[parser release];
-	
-    return tmpParsed;
-}
+	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
 
+    [self parseWithParser:parser];
+	
+    [parser release];
+    return tmpParsed;
+}    
+    
 // syncronous XML download and parsing
 // clients will need to retain the returned object if they care about it.
-- (id)fetchElementAtURL:(NSString *)url_str
+- (id)parseElementAtURL:(NSString *)url_str
 {
-	NSURL *url;
-	NSXMLParser *parser;
-    BOOL parse_successful;
+	NSURL *url = [[NSURL alloc] initWithString:url_str];
+	NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     
-    url = [[NSURL alloc] initWithString:url_str];
+    [self parseWithParser:parser];
     
-    // tmpParsed should always be nil at this point, but if for some reason 
-    // it is not nil, release whatever it's holding up to avoid leaks
-    if (tmpParsed)
-    {
-        [tmpParsed release];
-        tmpParsed = nil;
-    }
-    
-	parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
-	[parser setDelegate:self];
-    [parser setShouldProcessNamespaces:NO];
-    [parser setShouldReportNamespacePrefixes:NO];
-    [parser setShouldResolveExternalEntities:NO];
-    
-    parse_successful = [parser parse];
-    debug0msg("parse successful? %d", parse_successful);
-    if (!parse_successful)
-    {
-        NSError *err = [parser parserError];
-        NSLog(@"%@", err);
-        
-        if (tmpParsed)
-        {
-            // release directly since new parsing cycle will create a new one
-            [tmpParsed release];
-            tmpParsed = nil;
-        }
-	}
-    
-	// cleanup
 	[url release];
 	[parser release];
-	
     return tmpParsed;
 }
 
 - (id)parsedElement
 {
     return tmpParsed;
+}
+
+- (NSError *)parserError
+{
+    return _parserError;
+}
+
+// =============================================================================
+#pragma mark -
+#pragma mark Utils
+// =============================================================================
+
+- (void)parseWithParser:(NSXMLParser *)parser
+{
+    BOOL parse_successful;
+	
+    // tmpParsed should always be nil at this point, but if for some reason 
+    // it is not nil, release whatever it's holding up to avoid leaks
+    if (tmpParsed)
+    {
+        [tmpParsed release];
+        tmpParsed = nil;
+    }
+    
+    // same thing for the parserError
+    if (_parserError)
+    {
+        [_parserError release];
+        _parserError = nil;
+    }
+    
+    // prepare for parsing
+	[parser setDelegate:self];
+    [parser setShouldProcessNamespaces:NO];
+    [parser setShouldReportNamespacePrefixes:NO];
+    [parser setShouldResolveExternalEntities:NO];
+    
+    // now parse
+    parse_successful = [parser parse];
+    debug0msg("parseData successful? %d", parse_successful);
+    
+    // check parsing results
+    if (!parse_successful)
+    {
+        _parserError = [parser parserError];
+        LOG_NS(@"%@", _parserError);
+        if (_parserError)
+            [_parserError retain];
+        
+        if (tmpParsed)
+        {
+            // release directly since new parsing cycle will create a new one
+            [tmpParsed release];
+            tmpParsed = nil;
+        }
+	}
 }
 
 /** Subclasses should redefine this method and return an instance of the
@@ -197,7 +199,9 @@ didStartElement:(NSString *)elemName
 // -----------------------------------------------------------------------------
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseErr
 {
-    LOG("XML parse error: [%s] %s", [[parseErr domain] UTF8String], 
+    LOG("XML parse error: [%s] description: %s - %s", 
+        [[parseErr domain] UTF8String], 
+        [[parseErr localizedDescription] UTF8String],
         [[[parseErr userInfo] description] UTF8String]);
 }
 

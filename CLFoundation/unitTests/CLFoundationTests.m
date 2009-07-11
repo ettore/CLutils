@@ -25,7 +25,7 @@ void test_CLXMLParserWithStaticURL()
                CL_UNIT_TESTS_BASE_URL];
     parser = [[CLXMLParser alloc] init];
     parser.wantedTag = @"user";
-    parsed_obj = [parser fetchElementAtURL:url_str];
+    parsed_obj = [parser parseElementAtURL:url_str];
     assert(parsed_obj);
 }
 
@@ -39,7 +39,7 @@ void test_CLXMLParserWithDummyPythonURL()
     
     parser = [[CLXMLParser alloc] init];
     parser.wantedTag = @"user";
-    parsed_obj = [parser fetchElementAtURL:url_str];
+    parsed_obj = [parser parseElementAtURL:url_str];
     assert(parsed_obj);
 }
 
