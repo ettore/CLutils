@@ -42,6 +42,7 @@
 
 // syncronous XML parsing of NSData
 // clients will need to retain the returned object if they care about it.
+// should also be able to return a NSArray in case there are multiple objects
 - (id)parseData:(NSData *)data
 {
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
@@ -146,8 +147,7 @@
 {
     CLXMLParseError *err = [[CLXMLParseError alloc] init];
     err.code = [[attrDict valueForKey:@"code"] integerValue];
-    err.msg = [attrDict valueForKey:@"msg"];
-    err.userMsg = [attrDict valueForKey:@"userMsg"];
+    err.info = [attrDict valueForKey:@"info"];
     return err;
 }
     
@@ -174,6 +174,8 @@ didStartElement:(NSString *)elemName
         elemName = qName;
 	
     if ([elemName isEqualToString:_wantedTag]) 
+        //XXX tmpParsed should probably alwyas be a mutable array,
+        //XXX items will just be added as they are found
         tmpParsed = [self createElementWithAttributes:attrDict];
     else if ([elemName isEqualToString:_errorTag]) 
         tmpParsed = [self createErrorElement:attrDict];

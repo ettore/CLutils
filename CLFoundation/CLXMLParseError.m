@@ -11,13 +11,11 @@
 @implementation CLXMLParseError
 
 @synthesize code = _code;
-@synthesize msg = _msg;
-@synthesize userMsg = _userMsg;
+@synthesize info = _info;
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"Error code=%d msg=%@ userMsg=%@", 
-                self.code, self.msg, self.userMsg];
+    return [NSString stringWithFormat:@"Error code=%d info=%@", _code, _info];
 }
 
 @end

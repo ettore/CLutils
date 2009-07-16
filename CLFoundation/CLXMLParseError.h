@@ -12,12 +12,10 @@
 @interface CLXMLParseError : NSObject {
 @private
     NSInteger _code; // error code
-    NSString *_msg; // technical description of error
-    NSString *_userMsg; // user friendly description
+    NSString *_info; // technical info of error
 }
 
 @property(nonatomic) NSInteger code;
-@property(nonatomic, retain) NSString    *msg;
-@property(nonatomic, retain) NSString    *userMsg;
+@property(nonatomic, retain) NSString *info;
 
 @end
