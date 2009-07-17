@@ -8,7 +8,7 @@
 @interface CLXMLParser : NSObject 
 {
 @private
-    id tmpParsed; // instance of class returned by createElementWithName
+    id tmpParsed; // array of instances created by createElementWithName
     NSString *_wantedTag; // the main element tag we're looking for
     NSString *_errorTag; // if an error occurs on backend, we'll get a error tag
     NSError *_parserError; // if not nil, we could not parse the content.
@@ -46,15 +46,15 @@
  */
 - (id)createErrorElement:(NSDictionary *)attrDict;
 
-/** Returns the parsed element from the last parseElementAtURL: invokation. 
- *  This can be an instance of a user class 
+/** Returns the parsed elements from the last parseElementAtURL: invocation. 
+ *  This can be an array of instances of a user class 
  *  (see createElementWithAttributes: method) or an instance of the 
  *  CLXMLParseError hierarchy. If a new parsing cycle is started
  *  (with parseElementAtURL:) this object gets released, so clients should
  *  retain this if they care about it.
  *  Note to self: The parsed element will eventually be autoreleased like any 
  *  other cocoa class; this happens when the CLXMLParser is deallocated. */
-- (id)parsedElement;
+- (id)parsedElements;
 
 - (NSError *)parserError;
 

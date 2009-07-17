@@ -67,7 +67,7 @@
     return tmpParsed;
 }
 
-- (id)parsedElement
+- (id)parsedElements
 {
     return tmpParsed;
 }
@@ -167,6 +167,10 @@ didStartElement:(NSString *)elemName
     debug0msg("elem=%s; namespace=%s; qualifiedName=%s", 
               [elemName UTF8String], [nsURI UTF8String], [qName UTF8String]);
     
+    // if we already had a error, bail out (we could return whatever we get tho)
+    if ([tmpParsed isKindOfClass:[CLXMLParseError class]])
+        return;
+        
     // make sure we work with no namespaces
     assert(qName == nil);
     
@@ -174,11 +178,19 @@ didStartElement:(NSString *)elemName
         elemName = qName;
 	
     if ([elemName isEqualToString:_wantedTag]) 
-        //XXX tmpParsed should probably alwyas be a mutable array,
-        //XXX items will just be added as they are found
-        tmpParsed = [self createElementWithAttributes:attrDict];
-    else if ([elemName isEqualToString:_errorTag]) 
+    {
+        if (tmpParsed == nil)
+            tmpParsed = [[NSMutableArray alloc] initWithCapacity:1];
+        
+        id item = [self createElementWithAttributes:attrDict];
+        [(NSMutableArray*)tmpParsed addObject:item];
+        [item release];
+    }
+    else if ([elemName isEqualToString:_errorTag])
+    {
+        [tmpParsed release]; // release whatever we had
         tmpParsed = [self createErrorElement:attrDict];
+    }
 }
 
 // -----------------------------------------------------------------------------
