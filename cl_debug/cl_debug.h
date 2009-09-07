@@ -236,8 +236,8 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define LOG_NS(STF, ...)   do {                                                \
-    NSLog([@"[%d] %s: " stringByAppendingString: STF],                         \
-          __LINE__, gCLDebugStat.product_name, ## __VA_ARGS__);                \
+    NSLog([@"[%d] " stringByAppendingString: STF],                         \
+          __LINE__, ## __VA_ARGS__);                \
 } while (0)
 #else
 #define LOG_NS(STF, ...)
@@ -282,8 +282,8 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define debug0cocoa(STF, ...)    do {                                          \
-    NSLog([@"#%s#[%d] " stringByAppendingString: STF],                         \
-          gCLDebugStat.product_name, __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"%s[%d] " stringByAppendingString: STF],                         \
+          __FILE__, __LINE__, ## __VA_ARGS__);                \
 } while (0)
 #else
 #define debug0cocoa(STF, ...)
@@ -331,8 +331,8 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define debug1cocoa(STF, ...)    do {                                          \
-    NSLog([@"#%s#[%d] " stringByAppendingString: STF],                         \
-          gCLDebugStat.product_name, __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"%s[%d] " stringByAppendingString: STF],                         \
+          __FILE__, __LINE__, ## __VA_ARGS__);                \
 } while (0)
 #else
 #define debug1cocoa(STF, ...)
@@ -364,8 +364,8 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define debug2cocoa(STF, ...)    do {                                          \
-    NSLog([@"#%s#[%d] " stringByAppendingString: STF],                         \
-          gCLDebugStat.product_name, __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"%s[%d] " stringByAppendingString: STF],                         \
+          __FILE__, __LINE__, ## __VA_ARGS__);                \
 } while (0)
 #else
 #define debug2cocoa(STF, ...)
