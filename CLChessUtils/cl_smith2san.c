@@ -10,6 +10,6 @@
 
 int smith2san(const char *smith, char *san)
 {
-    strncpy(san, smith, strlen(smith));
+    strncpy(san, smith+2, 8);
     return 0;
 }

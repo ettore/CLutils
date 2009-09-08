@@ -33,6 +33,8 @@
 		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* CLChessUtils */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CLChessUtils; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56954D0104F9A7A00AD6FD7 /* libcunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcunit.a; path = /usr/local/lib/libcunit.a; sourceTree = "<absolute>"; };
+		E579D6891055B2400099EE54 /* zzzzzz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zzzzzz.c; path = "../../../devel/projects/iPhoneChess/other-src/ZZZZZZ Source/zzzzzz.c"; sourceTree = SOURCE_ROOT; };
+		E579D68A1055B2400099EE54 /* zzzzzz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zzzzzz.h; path = "../../../devel/projects/iPhoneChess/other-src/ZZZZZZ Source/zzzzzz.h"; sourceTree = SOURCE_ROOT; };
 		E5FA62D1104E531600F43836 /* cl_smith2san.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_smith2san.h; sourceTree = "<group>"; };
 		E5FA62D2104E531600F43836 /* cl_smith2san.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_smith2san.c; sourceTree = "<group>"; };
 		E5FA62D4104E533E00F43836 /* cl_smith2san_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_smith2san_test.h; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				08FB7795FE84155DC02AAC07 /* Source */,
 				E5FA62F8104E574000F43836 /* cl_debug */,
 				E5FA62FB104E574000F43836 /* CLcutils */,
+				E579D6811055B22E0099EE54 /* ZZZZZZ */,
 				E56954D3104F9A8C00AD6FD7 /* Libraries */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 			);
@@ -99,6 +102,15 @@
 				E56954D0104F9A7A00AD6FD7 /* libcunit.a */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		E579D6811055B22E0099EE54 /* ZZZZZZ */ = {
+			isa = PBXGroup;
+			children = (
+				E579D68A1055B2400099EE54 /* zzzzzz.h */,
+				E579D6891055B2400099EE54 /* zzzzzz.c */,
+			);
+			name = ZZZZZZ;
 			sourceTree = "<group>";
 		};
 		E5FA62F8104E574000F43836 /* cl_debug */ = {
