@@ -11,6 +11,11 @@
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		E56C6A7A1082F38300951786 /* CLUIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E56C6A781082F38300951786 /* CLUIImage.h */; };
 		E56C6A7B1082F38300951786 /* CLUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E56C6A791082F38300951786 /* CLUIImage.m */; };
+		E5F0BB4B1086EC170028A941 /* CLUIImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F0BB4A1086EC170028A941 /* CLUIImageTests.m */; };
+		E5F0BB791086F1ED0028A941 /* CLUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E56C6A791082F38300951786 /* CLUIImage.m */; };
+		E5F0BB7F1086F2A70028A941 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0BB7E1086F2A70028A941 /* UIKit.framework */; };
+		E5F0BB851086F2B80028A941 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0BB841086F2B80028A941 /* CoreFoundation.framework */; };
+		E5F0BB871086F2B80028A941 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F0BB861086F2B80028A941 /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,13 @@
 		D2AAC07E0554694100DB518D /* libCLIPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLIPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56C6A781082F38300951786 /* CLUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUIImage.h; sourceTree = "<group>"; };
 		E56C6A791082F38300951786 /* CLUIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUIImage.m; sourceTree = "<group>"; };
+		E5F0BAF11086E7340028A941 /* UniTestBundle.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = UniTestBundle.octest; path = "build/Debug-iphonesimulator/UniTestBundle.octest"; sourceTree = "<group>"; };
+		E5F0BAF21086E7340028A941 /* UniTestBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UniTestBundle-Info.plist"; sourceTree = "<group>"; };
+		E5F0BB491086EC170028A941 /* CLUIImageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUIImageTests.h; path = UnitTests/CLUIImageTests.h; sourceTree = "<group>"; };
+		E5F0BB4A1086EC170028A941 /* CLUIImageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUIImageTests.m; path = UnitTests/CLUIImageTests.m; sourceTree = "<group>"; };
+		E5F0BB7E1086F2A70028A941 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E5F0BB841086F2B80028A941 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E5F0BB861086F2B80028A941 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +42,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5F0BAEE1086E7340028A941 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5F0BB7F1086F2A70028A941 /* UIKit.framework in Frameworks */,
+				E5F0BB851086F2B80028A941 /* CoreFoundation.framework in Frameworks */,
+				E5F0BB871086F2B80028A941 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -37,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libCLIPhone.a */,
+				E5F0BAF11086E7340028A941 /* UniTestBundle.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -45,9 +68,14 @@
 			isa = PBXGroup;
 			children = (
 				08FB77AEFE84172EC02AAC07 /* Classes */,
+				E5F0BB481086EBC50028A941 /* TestSuites */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				E5F0BAF21086E7340028A941 /* UniTestBundle-Info.plist */,
+				E5F0BB7E1086F2A70028A941 /* UIKit.framework */,
+				E5F0BB841086F2B80028A941 /* CoreFoundation.framework */,
+				E5F0BB861086F2B80028A941 /* CoreGraphics.framework */,
 			);
 			name = CLIPhone;
 			sourceTree = "<group>";
@@ -75,6 +103,15 @@
 				AA747D9E0F9514B9006C5449 /* CLIPhone_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		E5F0BB481086EBC50028A941 /* TestSuites */ = {
+			isa = PBXGroup;
+			children = (
+				E5F0BB491086EC170028A941 /* CLUIImageTests.h */,
+				E5F0BB4A1086EC170028A941 /* CLUIImageTests.m */,
+			);
+			name = TestSuites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +146,24 @@
 			productReference = D2AAC07E0554694100DB518D /* libCLIPhone.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		E5F0BAF01086E7340028A941 /* UniTestBundle */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5F0BAF51086E7350028A941 /* Build configuration list for PBXNativeTarget "UniTestBundle" */;
+			buildPhases = (
+				E5F0BAEC1086E7340028A941 /* Resources */,
+				E5F0BAED1086E7340028A941 /* Sources */,
+				E5F0BAEE1086E7340028A941 /* Frameworks */,
+				E5F0BAEF1086E7340028A941 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UniTestBundle;
+			productName = UniTestBundle;
+			productReference = E5F0BAF11086E7340028A941 /* UniTestBundle.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -123,9 +178,36 @@
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* CLIPhone */,
+				E5F0BAF01086E7340028A941 /* UniTestBundle */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5F0BAEC1086E7340028A941 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5F0BAEF1086E7340028A941 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2AAC07B0554694100DB518D /* Sources */ = {
@@ -133,6 +215,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E56C6A7B1082F38300951786 /* CLUIImage.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5F0BAED1086E7340028A941 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5F0BB791086F1ED0028A941 /* CLUIImage.m in Sources */,
+				E5F0BB4B1086EC170028A941 /* CLUIImageTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +289,62 @@
 			};
 			name = Release;
 		};
+		E5F0BAF31086E7340028A941 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "UniTestBundle-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UniTestBundle;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E5F0BAF41086E7340028A941 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "UniTestBundle-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UniTestBundle;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -215,6 +362,15 @@
 			buildConfigurations = (
 				1DEB922308733DC00010E9CD /* Debug */,
 				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5F0BAF51086E7350028A941 /* Build configuration list for PBXNativeTarget "UniTestBundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5F0BAF31086E7340028A941 /* Debug */,
+				E5F0BAF41086E7340028A941 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,6 +6,7 @@
 //  Copyright 2009 Cubelogic. All rights reserved.
 //
 
+#include <assert.h>
 #import "CLUIImage.h"
 
 @implementation UIImage (CLUIImage)
@@ -27,6 +28,12 @@
 
 +(UIImage *)imageWithSize:(CGSize)new_size
 {
+    //XXX
+    //XXX this code is broken. do not use.
+    //XXX
+    
+    assert(0);
+    
     UIImage *tmp = [[UIImage alloc] init];
     CGImageRef resized_img;
     
@@ -36,7 +43,8 @@
                                                           new_size.height));
     [tmp release];
     
-    return [UIImage imageWithCGImage:resized_img];
+    tmp = [UIImage imageWithCGImage:resized_img];
+    return tmp;
 }
 
 @end
