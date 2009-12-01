@@ -134,7 +134,7 @@
 #endif
 
 #if defined(__COREFOUNDATION_COREFOUNDATION__) || defined(CL_DEBUG_INCLUDES_CF)
-    #define USING_COREFOUNDATION
+    #define USING_COREFOUNDATION    1
 #endif
 
 #ifdef CL_DEBUG_DISABLE
@@ -263,6 +263,17 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 /* =============================================================================
  * Debugging macros
  */
+
+#if !defined(CL_DEBUG_DISABLE) && defined(USING_COREFOUNDATION)
+//        [DATA getBytes:buf length:4096];                                     
+#define debugNSData(ST, DATA)        do {                                      \
+    char buf[4096]; memset(buf, 0, 4096);                                      \
+    CFDataGetBytes((CFDataRef)DATA, CFRangeMake(0,4096), (UInt8*)buf);         \
+    debug0msg("%s\n%s\n", ST, buf);                                            \
+} while (0)
+#else
+#define debugNSData(ST, DATA)
+#endif
 
 #ifdef CL_DEBUG_0
 

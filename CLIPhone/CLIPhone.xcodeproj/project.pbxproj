@@ -24,7 +24,7 @@
 		D2AAC07E0554694100DB518D /* libCLIPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLIPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56C6A781082F38300951786 /* CLUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUIImage.h; sourceTree = "<group>"; };
 		E56C6A791082F38300951786 /* CLUIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUIImage.m; sourceTree = "<group>"; };
-		E5F0BAF11086E7340028A941 /* UniTestBundle.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = UniTestBundle.octest; path = "build/Debug-iphonesimulator/UniTestBundle.octest"; sourceTree = "<group>"; };
+		E5F0BAF11086E7340028A941 /* UniTestBundle.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniTestBundle.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F0BAF21086E7340028A941 /* UniTestBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UniTestBundle-Info.plist"; sourceTree = "<group>"; };
 		E5F0BB491086EC170028A941 /* CLUIImageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUIImageTests.h; path = UnitTests/CLUIImageTests.h; sourceTree = "<group>"; };
 		E5F0BB4A1086EC170028A941 /* CLUIImageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUIImageTests.m; path = UnitTests/CLUIImageTests.m; sourceTree = "<group>"; };

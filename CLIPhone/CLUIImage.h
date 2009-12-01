@@ -15,6 +15,7 @@
  */
 +(UIImage *)imageFromImage:(UIImage *)img withSize:(CGSize)new_size;
 
-+(UIImage *)imageWithSize:(CGSize)new_size;
+// broken
+//+(UIImage *)imageWithSize:(CGSize)new_size;
 
 @end
