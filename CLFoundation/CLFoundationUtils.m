@@ -4,6 +4,8 @@
  *  Copyright 2009 Cubelogic. All rights reserved.
  */
 
+#import "CLFoundationUtils.h"
+
 Boolean isEmpty(NSString *s)
 {
     return (s == nil || [s compare:@""] == NSOrderedSame);
