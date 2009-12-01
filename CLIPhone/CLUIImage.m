@@ -26,25 +26,25 @@
     return [UIImage imageWithCGImage:resized_img];
 }
 
-+(UIImage *)imageWithSize:(CGSize)new_size
-{
-    //XXX
-    //XXX this code is broken. do not use.
-    //XXX
-    
-    assert(0);
-    
-    UIImage *tmp = [[UIImage alloc] init];
-    CGImageRef resized_img;
-    
-    resized_img = CGImageCreateWithImageInRect([tmp CGImage], 
-                                               CGRectMake(0, 0, 
-                                                          new_size.width,
-                                                          new_size.height));
-    [tmp release];
-    
-    tmp = [UIImage imageWithCGImage:resized_img];
-    return tmp;
-}
+//+(UIImage *)imageWithSize:(CGSize)new_size
+//{
+//    //XXX
+//    //XXX this code is broken. do not use.
+//    //XXX
+//    
+//    assert(0);
+//    
+//    UIImage *tmp = [[UIImage alloc] init];
+//    CGImageRef resized_img;
+//    
+//    resized_img = CGImageCreateWithImageInRect([tmp CGImage], 
+//                                               CGRectMake(0, 0, 
+//                                                          new_size.width,
+//                                                          new_size.height));
+//    [tmp release];
+//    
+//    tmp = [UIImage imageWithCGImage:resized_img];
+//    return tmp;
+//}
 
 @end

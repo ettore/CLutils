@@ -13,12 +13,13 @@ extern "C" {
 
 typedef enum 
 {
-	kCLCheetah	= 0x1000,
-	kCLPuma		= 0x1010,
-	kCLJaguar	= 0x1020,
-	kCLPanther	= 0x1030,
-	kCLTiger	= 0x1040,
-	kCLLeopard	= 0x1050,
+	kCLCheetah      = 0x1000,
+	kCLPuma         = 0x1010,
+	kCLJaguar       = 0x1020,
+	kCLPanther      = 0x1030,
+	kCLTiger        = 0x1040,
+	kCLLeopard      = 0x1050,
+    kCLSnowLeopard  = 0x1060,
 } CLMacOSSystemVersion;
 	
 OSStatus refr_timer(EventLoopTimerRef *inOutTimer, 

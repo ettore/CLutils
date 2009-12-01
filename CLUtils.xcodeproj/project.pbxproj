@@ -1,0 +1,960 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		E5745C6310C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
+		E5745C6410C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
+		E5745C6510C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
+		E5745C6610C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
+		E5745C6810C4F96900DD9090 /* cl_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6710C4F96900DD9090 /* cl_errors.h */; };
+		E5745C6910C4F96900DD9090 /* cl_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6710C4F96900DD9090 /* cl_errors.h */; };
+		E5CBE40410C4F9CE0057E62A /* cutils_carbon.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE3FF10C4F9CE0057E62A /* cutils_carbon.c */; };
+		E5CBE40510C4F9CE0057E62A /* cutils_carbon.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE40010C4F9CE0057E62A /* cutils_carbon.h */; };
+		E5CBE40610C4F9CE0057E62A /* tests_cutils_carbon.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE40210C4F9CE0057E62A /* tests_cutils_carbon.c */; };
+		E5CBE40710C4F9CE0057E62A /* tests_cutils_carbon.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE40310C4F9CE0057E62A /* tests_cutils_carbon.h */; };
+		E5CBE42F10C4FA820057E62A /* BannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE41C10C4FA820057E62A /* BannerView.h */; };
+		E5CBE43010C4FA820057E62A /* BannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE41D10C4FA820057E62A /* BannerView.m */; };
+		E5CBE43110C4FA820057E62A /* BannerWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE41E10C4FA820057E62A /* BannerWindow.h */; };
+		E5CBE43210C4FA820057E62A /* BannerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE41F10C4FA820057E62A /* BannerWindow.m */; };
+		E5CBE43410C4FA820057E62A /* CLCommonConst.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42110C4FA820057E62A /* CLCommonConst.h */; };
+		E5CBE43510C4FA820057E62A /* CLCommonConst.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42210C4FA820057E62A /* CLCommonConst.m */; };
+		E5CBE43610C4FA820057E62A /* CLController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42310C4FA820057E62A /* CLController.h */; };
+		E5CBE43710C4FA820057E62A /* CLTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42410C4FA820057E62A /* CLTableViewController.h */; };
+		E5CBE43810C4FA820057E62A /* CLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42510C4FA820057E62A /* CLTableViewController.m */; };
+		E5CBE43910C4FA820057E62A /* CLTableViewRecord.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42610C4FA820057E62A /* CLTableViewRecord.h */; };
+		E5CBE43A10C4FA820057E62A /* CLTableViewRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42710C4FA820057E62A /* CLTableViewRecord.m */; };
+		E5CBE43B10C4FA820057E62A /* CLTableViewUserDefaultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42810C4FA820057E62A /* CLTableViewUserDefaultsController.h */; };
+		E5CBE43C10C4FA820057E62A /* CLTableViewUserDefaultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42910C4FA820057E62A /* CLTableViewUserDefaultsController.m */; };
+		E5CBE43D10C4FA820057E62A /* cocoa_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42A10C4FA820057E62A /* cocoa_utils.h */; };
+		E5CBE43E10C4FA820057E62A /* cocoa_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42B10C4FA820057E62A /* cocoa_utils.m */; };
+		E5CBE43F10C4FA820057E62A /* qt_cocoa_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42C10C4FA820057E62A /* qt_cocoa_utils.h */; };
+		E5CBE44010C4FA820057E62A /* qt_cocoa_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42D10C4FA820057E62A /* qt_cocoa_utils.mm */; };
+		E5CBE45310C4FAF70057E62A /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
+		E5CBE45410C4FAF70057E62A /* cl_genutils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE44E10C4FAF70057E62A /* cl_genutils.h */; };
+		E5CBE45510C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */; };
+		E5CBE45610C4FAF70057E62A /* CLSTLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE45010C4FAF70057E62A /* CLSTLFunctions.h */; };
+		E5CBE45710C4FAF70057E62A /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
+		E5CBE45810C4FAF70057E62A /* cutils_bsd.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE45210C4FAF70057E62A /* cutils_bsd.h */; };
+		E5CBE45910C4FAF70057E62A /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
+		E5CBE45A10C4FAF70057E62A /* cl_genutils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE44E10C4FAF70057E62A /* cl_genutils.h */; };
+		E5CBE45B10C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */; };
+		E5CBE45C10C4FAF70057E62A /* CLSTLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE45010C4FAF70057E62A /* CLSTLFunctions.h */; };
+		E5CBE45D10C4FAF70057E62A /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
+		E5CBE45E10C4FAF70057E62A /* cutils_bsd.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE45210C4FAF70057E62A /* cutils_bsd.h */; };
+		E5CBE45F10C4FAF70057E62A /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
+		E5CBE46010C4FAF70057E62A /* cl_genutils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE44E10C4FAF70057E62A /* cl_genutils.h */; };
+		E5CBE46110C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */; };
+		E5CBE46210C4FAF70057E62A /* CLSTLFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE45010C4FAF70057E62A /* CLSTLFunctions.h */; };
+		E5CBE46310C4FAF70057E62A /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
+		E5CBE46410C4FAF70057E62A /* cutils_bsd.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE45210C4FAF70057E62A /* cutils_bsd.h */; };
+		E5CBE47C10C4FB070057E62A /* cl_gen_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46710C4FB070057E62A /* cl_gen_utils.h */; };
+		E5CBE47D10C4FB070057E62A /* cl_gen_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46810C4FB070057E62A /* cl_gen_utils.m */; };
+		E5CBE47E10C4FB070057E62A /* CLAsyncDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46910C4FB070057E62A /* CLAsyncDownloader.h */; };
+		E5CBE47F10C4FB070057E62A /* CLAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46A10C4FB070057E62A /* CLAsyncDownloader.m */; };
+		E5CBE48010C4FB070057E62A /* CLFileManagerCateg.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46B10C4FB070057E62A /* CLFileManagerCateg.h */; };
+		E5CBE48110C4FB070057E62A /* CLFileManagerCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46C10C4FB070057E62A /* CLFileManagerCateg.m */; };
+		E5CBE48210C4FB070057E62A /* CLFoundationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46D10C4FB070057E62A /* CLFoundationUtils.h */; };
+		E5CBE48310C4FB070057E62A /* CLFoundationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46E10C4FB070057E62A /* CLFoundationUtils.m */; };
+		E5CBE48410C4FB070057E62A /* CLMutableArrayCateg.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46F10C4FB070057E62A /* CLMutableArrayCateg.h */; };
+		E5CBE48510C4FB070057E62A /* CLMutableArrayCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47010C4FB070057E62A /* CLMutableArrayCateg.m */; };
+		E5CBE48610C4FB070057E62A /* CLTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47110C4FB070057E62A /* CLTimer.h */; };
+		E5CBE48710C4FB070057E62A /* CLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47210C4FB070057E62A /* CLTimer.m */; };
+		E5CBE48810C4FB070057E62A /* CLURLCateg.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47310C4FB070057E62A /* CLURLCateg.h */; };
+		E5CBE48910C4FB070057E62A /* CLURLCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47410C4FB070057E62A /* CLURLCateg.m */; };
+		E5CBE48A10C4FB070057E62A /* CLXMLParseError.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47510C4FB070057E62A /* CLXMLParseError.h */; };
+		E5CBE48B10C4FB070057E62A /* CLXMLParseError.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47610C4FB070057E62A /* CLXMLParseError.m */; };
+		E5CBE48C10C4FB070057E62A /* CLXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47710C4FB070057E62A /* CLXMLParser.h */; };
+		E5CBE48D10C4FB070057E62A /* CLXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47810C4FB070057E62A /* CLXMLParser.m */; };
+		E5CBE49010C4FB070057E62A /* cl_gen_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46710C4FB070057E62A /* cl_gen_utils.h */; };
+		E5CBE49110C4FB070057E62A /* cl_gen_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46810C4FB070057E62A /* cl_gen_utils.m */; };
+		E5CBE49210C4FB070057E62A /* CLAsyncDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46910C4FB070057E62A /* CLAsyncDownloader.h */; };
+		E5CBE49310C4FB070057E62A /* CLAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46A10C4FB070057E62A /* CLAsyncDownloader.m */; };
+		E5CBE49410C4FB070057E62A /* CLFileManagerCateg.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46B10C4FB070057E62A /* CLFileManagerCateg.h */; };
+		E5CBE49510C4FB070057E62A /* CLFileManagerCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46C10C4FB070057E62A /* CLFileManagerCateg.m */; };
+		E5CBE49610C4FB070057E62A /* CLFoundationUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46D10C4FB070057E62A /* CLFoundationUtils.h */; };
+		E5CBE49710C4FB070057E62A /* CLFoundationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46E10C4FB070057E62A /* CLFoundationUtils.m */; };
+		E5CBE49810C4FB070057E62A /* CLMutableArrayCateg.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE46F10C4FB070057E62A /* CLMutableArrayCateg.h */; };
+		E5CBE49910C4FB070057E62A /* CLMutableArrayCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47010C4FB070057E62A /* CLMutableArrayCateg.m */; };
+		E5CBE49A10C4FB070057E62A /* CLTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47110C4FB070057E62A /* CLTimer.h */; };
+		E5CBE49B10C4FB070057E62A /* CLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47210C4FB070057E62A /* CLTimer.m */; };
+		E5CBE49C10C4FB070057E62A /* CLURLCateg.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47310C4FB070057E62A /* CLURLCateg.h */; };
+		E5CBE49D10C4FB070057E62A /* CLURLCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47410C4FB070057E62A /* CLURLCateg.m */; };
+		E5CBE49E10C4FB070057E62A /* CLXMLParseError.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47510C4FB070057E62A /* CLXMLParseError.h */; };
+		E5CBE49F10C4FB070057E62A /* CLXMLParseError.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47610C4FB070057E62A /* CLXMLParseError.m */; };
+		E5CBE4A010C4FB070057E62A /* CLXMLParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE47710C4FB070057E62A /* CLXMLParser.h */; };
+		E5CBE4A110C4FB070057E62A /* CLXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47810C4FB070057E62A /* CLXMLParser.m */; };
+		E5CBE4AE10C4FB360057E62A /* CLUIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4AC10C4FB360057E62A /* CLUIImage.h */; };
+		E5CBE4AF10C4FB360057E62A /* CLUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4AD10C4FB360057E62A /* CLUIImage.m */; };
+		E5CBE4D610C500070057E62A /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
+		E5CBE4E010C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
+		E5CBE4E110C500240057E62A /* cl_smith2san.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4DF10C500240057E62A /* cl_smith2san.h */; };
+		E5CBE4E210C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
+		E5CBE4E310C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
+		E5CBE4E410C500240057E62A /* cl_smith2san.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4DF10C500240057E62A /* cl_smith2san.h */; };
+		E5CBE4E510C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
+		E5CBE4E610C500240057E62A /* cl_smith2san.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4DF10C500240057E62A /* cl_smith2san.h */; };
+		E5CBE4EA10C5005B0057E62A /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
+		E5CBE4EB10C5005B0057E62A /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
+		E5CBE4F810C5011D0057E62A /* cl_gen_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46810C4FB070057E62A /* cl_gen_utils.m */; };
+		E5CBE4F910C5011D0057E62A /* CLAsyncDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46A10C4FB070057E62A /* CLAsyncDownloader.m */; };
+		E5CBE4FA10C5011D0057E62A /* CLFileManagerCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46C10C4FB070057E62A /* CLFileManagerCateg.m */; };
+		E5CBE4FB10C5011D0057E62A /* CLFoundationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46E10C4FB070057E62A /* CLFoundationUtils.m */; };
+		E5CBE4FC10C5011D0057E62A /* CLMutableArrayCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47010C4FB070057E62A /* CLMutableArrayCateg.m */; };
+		E5CBE4FD10C5011D0057E62A /* CLTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47210C4FB070057E62A /* CLTimer.m */; };
+		E5CBE4FE10C5011D0057E62A /* CLURLCateg.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47410C4FB070057E62A /* CLURLCateg.m */; };
+		E5CBE4FF10C5011D0057E62A /* CLXMLParseError.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47610C4FB070057E62A /* CLXMLParseError.m */; };
+		E5CBE50010C5011D0057E62A /* CLXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE47810C4FB070057E62A /* CLXMLParser.m */; };
+		E5CBE50110C501420057E62A /* CLUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4AD10C4FB360057E62A /* CLUIImage.m */; };
+		E5CBE50210C501490057E62A /* CLUIImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4B210C4FB410057E62A /* CLUIImageTests.m */; };
+		E5CBE50710C501CF0057E62A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CBE50610C501CF0057E62A /* UIKit.framework */; };
+		E5CBE50E10C5023E0057E62A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		E5CBE55F10C502690057E62A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CBE55E10C502690057E62A /* CoreGraphics.framework */; };
+		E5F41C7E10C5035B00763164 /* CLMutableArrayCategTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F41C7D10C5035B00763164 /* CLMutableArrayCategTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AA747D9E0F9514B9006C5449 /* CLUtils_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUtils_Prefix.pch; sourceTree = "<group>"; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libCLUtilsPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5745C6110C4F96300DD9090 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
+		E5745C6210C4F96300DD9090 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
+		E5745C6710C4F96900DD9090 /* cl_errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_errors.h; sourceTree = "<group>"; };
+		E5CBE3FB10C4F9C10057E62A /* libCLUtilsCarbon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCarbon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5CBE3FF10C4F9CE0057E62A /* cutils_carbon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cutils_carbon.c; sourceTree = "<group>"; };
+		E5CBE40010C4F9CE0057E62A /* cutils_carbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cutils_carbon.h; sourceTree = "<group>"; };
+		E5CBE40210C4F9CE0057E62A /* tests_cutils_carbon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tests_cutils_carbon.c; sourceTree = "<group>"; };
+		E5CBE40310C4F9CE0057E62A /* tests_cutils_carbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tests_cutils_carbon.h; sourceTree = "<group>"; };
+		E5CBE41C10C4FA820057E62A /* BannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerView.h; sourceTree = "<group>"; };
+		E5CBE41D10C4FA820057E62A /* BannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerView.m; sourceTree = "<group>"; };
+		E5CBE41E10C4FA820057E62A /* BannerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerWindow.h; sourceTree = "<group>"; };
+		E5CBE41F10C4FA820057E62A /* BannerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerWindow.m; sourceTree = "<group>"; };
+		E5CBE42010C4FA820057E62A /* CLCocoa_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCocoa_Prefix.pch; sourceTree = "<group>"; };
+		E5CBE42110C4FA820057E62A /* CLCommonConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLCommonConst.h; sourceTree = "<group>"; };
+		E5CBE42210C4FA820057E62A /* CLCommonConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLCommonConst.m; sourceTree = "<group>"; };
+		E5CBE42310C4FA820057E62A /* CLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLController.h; sourceTree = "<group>"; };
+		E5CBE42410C4FA820057E62A /* CLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewController.h; sourceTree = "<group>"; };
+		E5CBE42510C4FA820057E62A /* CLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewController.m; sourceTree = "<group>"; };
+		E5CBE42610C4FA820057E62A /* CLTableViewRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewRecord.h; sourceTree = "<group>"; };
+		E5CBE42710C4FA820057E62A /* CLTableViewRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewRecord.m; sourceTree = "<group>"; };
+		E5CBE42810C4FA820057E62A /* CLTableViewUserDefaultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewUserDefaultsController.h; sourceTree = "<group>"; };
+		E5CBE42910C4FA820057E62A /* CLTableViewUserDefaultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewUserDefaultsController.m; sourceTree = "<group>"; };
+		E5CBE42A10C4FA820057E62A /* cocoa_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocoa_utils.h; sourceTree = "<group>"; };
+		E5CBE42B10C4FA820057E62A /* cocoa_utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cocoa_utils.m; sourceTree = "<group>"; };
+		E5CBE42C10C4FA820057E62A /* qt_cocoa_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qt_cocoa_utils.h; sourceTree = "<group>"; };
+		E5CBE42D10C4FA820057E62A /* qt_cocoa_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = qt_cocoa_utils.mm; sourceTree = "<group>"; };
+		E5CBE44D10C4FAF70057E62A /* cl_genutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_genutils.c; path = CLcutils/cl_genutils.c; sourceTree = "<group>"; };
+		E5CBE44E10C4FAF70057E62A /* cl_genutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_genutils.h; path = CLcutils/cl_genutils.h; sourceTree = "<group>"; };
+		E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CLSTLFunctions.cpp; path = CLcutils/CLSTLFunctions.cpp; sourceTree = "<group>"; };
+		E5CBE45010C4FAF70057E62A /* CLSTLFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLSTLFunctions.h; path = CLcutils/CLSTLFunctions.h; sourceTree = "<group>"; };
+		E5CBE45110C4FAF70057E62A /* cutils_bsd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cutils_bsd.c; path = CLcutils/cutils_bsd.c; sourceTree = "<group>"; };
+		E5CBE45210C4FAF70057E62A /* cutils_bsd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cutils_bsd.h; path = CLcutils/cutils_bsd.h; sourceTree = "<group>"; };
+		E5CBE46710C4FB070057E62A /* cl_gen_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_gen_utils.h; sourceTree = "<group>"; };
+		E5CBE46810C4FB070057E62A /* cl_gen_utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cl_gen_utils.m; sourceTree = "<group>"; };
+		E5CBE46910C4FB070057E62A /* CLAsyncDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLAsyncDownloader.h; sourceTree = "<group>"; };
+		E5CBE46A10C4FB070057E62A /* CLAsyncDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLAsyncDownloader.m; sourceTree = "<group>"; };
+		E5CBE46B10C4FB070057E62A /* CLFileManagerCateg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFileManagerCateg.h; sourceTree = "<group>"; };
+		E5CBE46C10C4FB070057E62A /* CLFileManagerCateg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFileManagerCateg.m; sourceTree = "<group>"; };
+		E5CBE46D10C4FB070057E62A /* CLFoundationUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFoundationUtils.h; sourceTree = "<group>"; };
+		E5CBE46E10C4FB070057E62A /* CLFoundationUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFoundationUtils.m; sourceTree = "<group>"; };
+		E5CBE46F10C4FB070057E62A /* CLMutableArrayCateg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMutableArrayCateg.h; sourceTree = "<group>"; };
+		E5CBE47010C4FB070057E62A /* CLMutableArrayCateg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMutableArrayCateg.m; sourceTree = "<group>"; };
+		E5CBE47110C4FB070057E62A /* CLTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTimer.h; sourceTree = "<group>"; };
+		E5CBE47210C4FB070057E62A /* CLTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTimer.m; sourceTree = "<group>"; };
+		E5CBE47310C4FB070057E62A /* CLURLCateg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLURLCateg.h; sourceTree = "<group>"; };
+		E5CBE47410C4FB070057E62A /* CLURLCateg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLURLCateg.m; sourceTree = "<group>"; };
+		E5CBE47510C4FB070057E62A /* CLXMLParseError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLXMLParseError.h; sourceTree = "<group>"; };
+		E5CBE47610C4FB070057E62A /* CLXMLParseError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLXMLParseError.m; sourceTree = "<group>"; };
+		E5CBE47710C4FB070057E62A /* CLXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLXMLParser.h; sourceTree = "<group>"; };
+		E5CBE47810C4FB070057E62A /* CLXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLXMLParser.m; sourceTree = "<group>"; };
+		E5CBE4AC10C4FB360057E62A /* CLUIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLUIImage.h; path = CLIPhone/CLUIImage.h; sourceTree = "<group>"; };
+		E5CBE4AD10C4FB360057E62A /* CLUIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLUIImage.m; path = CLIPhone/CLUIImage.m; sourceTree = "<group>"; };
+		E5CBE4B110C4FB410057E62A /* CLUIImageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUIImageTests.h; sourceTree = "<group>"; };
+		E5CBE4B210C4FB410057E62A /* CLUIImageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUIImageTests.m; sourceTree = "<group>"; };
+		E5CBE4D110C4FFCE0057E62A /* CLUtilsPhoneLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLUtilsPhoneLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5CBE4D210C4FFCE0057E62A /* CLUtilsPhoneLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CLUtilsPhoneLogicTests-Info.plist"; sourceTree = "<group>"; };
+		E5CBE4DE10C500240057E62A /* cl_smith2san.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_smith2san.c; path = CLChessUtils/cl_smith2san.c; sourceTree = "<group>"; };
+		E5CBE4DF10C500240057E62A /* cl_smith2san.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san.h; path = CLChessUtils/cl_smith2san.h; sourceTree = "<group>"; };
+		E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_smith2san_cunittest.c; path = CLChessUtils/tests/cl_smith2san_cunittest.c; sourceTree = "<group>"; };
+		E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san_cunittest.h; path = CLChessUtils/tests/cl_smith2san_cunittest.h; sourceTree = "<group>"; };
+		E5CBE50610C501CF0057E62A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E5CBE55E10C502690057E62A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E5F41C7910C5033500763164 /* CLXMLParserPoorManTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLXMLParserPoorManTests.h; sourceTree = "<group>"; };
+		E5F41C7A10C5033500763164 /* CLXMLParserPoorManTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLXMLParserPoorManTests.m; sourceTree = "<group>"; };
+		E5F41C7C10C5035B00763164 /* CLMutableArrayCategTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMutableArrayCategTests.h; sourceTree = "<group>"; };
+		E5F41C7D10C5035B00763164 /* CLMutableArrayCategTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLMutableArrayCategTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5745C0C10C4F88400DD9090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CBE3F910C4F9C10057E62A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CBE4CE10C4FFCE0057E62A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5CBE50E10C5023E0057E62A /* Foundation.framework in Frameworks */,
+				E5CBE50710C501CF0057E62A /* UIKit.framework in Frameworks */,
+				E5CBE55F10C502690057E62A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libCLUtilsPhone.a */,
+				E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */,
+				E5CBE3FB10C4F9C10057E62A /* libCLUtilsCarbon.a */,
+				E5CBE4D110C4FFCE0057E62A /* CLUtilsPhoneLogicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* CLUtils */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* CLUtils_Prefix.pch */,
+				E5745C6710C4F96900DD9090 /* cl_errors.h */,
+				E5745C6010C4F96300DD9090 /* cl_debug */,
+				E5CBE44110C4FAD60057E62A /* CLcutils */,
+				E5CBE40910C4F9E10057E62A /* CLChessUtils */,
+				E5CBE3FE10C4F9CE0057E62A /* CLCarbon */,
+				E5CBE46510C4FB070057E62A /* CLFoundation */,
+				E5CBE41A10C4FA820057E62A /* CLCocoa */,
+				E5CBE4A410C4FB200057E62A /* CLIPhone */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				E5CBE4D210C4FFCE0057E62A /* CLUtilsPhoneLogicTests-Info.plist */,
+			);
+			name = CLUtils;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE55E10C502690057E62A /* CoreGraphics.framework */,
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				E5CBE50610C501CF0057E62A /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E5745C6010C4F96300DD9090 /* cl_debug */ = {
+			isa = PBXGroup;
+			children = (
+				E5745C6110C4F96300DD9090 /* cl_debug.c */,
+				E5745C6210C4F96300DD9090 /* cl_debug.h */,
+			);
+			path = cl_debug;
+			sourceTree = "<group>";
+		};
+		E5CBE3FE10C4F9CE0057E62A /* CLCarbon */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE3FF10C4F9CE0057E62A /* cutils_carbon.c */,
+				E5CBE40010C4F9CE0057E62A /* cutils_carbon.h */,
+				E5CBE40110C4F9CE0057E62A /* tests */,
+			);
+			path = CLCarbon;
+			sourceTree = "<group>";
+		};
+		E5CBE40110C4F9CE0057E62A /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE40210C4F9CE0057E62A /* tests_cutils_carbon.c */,
+				E5CBE40310C4F9CE0057E62A /* tests_cutils_carbon.h */,
+			);
+			path = tests;
+			sourceTree = "<group>";
+		};
+		E5CBE40910C4F9E10057E62A /* CLChessUtils */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE4DE10C500240057E62A /* cl_smith2san.c */,
+				E5CBE4DF10C500240057E62A /* cl_smith2san.h */,
+				E5CBE4E910C500360057E62A /* tests */,
+			);
+			name = CLChessUtils;
+			sourceTree = "<group>";
+		};
+		E5CBE41A10C4FA820057E62A /* CLCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE41C10C4FA820057E62A /* BannerView.h */,
+				E5CBE41D10C4FA820057E62A /* BannerView.m */,
+				E5CBE41E10C4FA820057E62A /* BannerWindow.h */,
+				E5CBE41F10C4FA820057E62A /* BannerWindow.m */,
+				E5CBE42010C4FA820057E62A /* CLCocoa_Prefix.pch */,
+				E5CBE42110C4FA820057E62A /* CLCommonConst.h */,
+				E5CBE42210C4FA820057E62A /* CLCommonConst.m */,
+				E5CBE42310C4FA820057E62A /* CLController.h */,
+				E5CBE42410C4FA820057E62A /* CLTableViewController.h */,
+				E5CBE42510C4FA820057E62A /* CLTableViewController.m */,
+				E5CBE42610C4FA820057E62A /* CLTableViewRecord.h */,
+				E5CBE42710C4FA820057E62A /* CLTableViewRecord.m */,
+				E5CBE42810C4FA820057E62A /* CLTableViewUserDefaultsController.h */,
+				E5CBE42910C4FA820057E62A /* CLTableViewUserDefaultsController.m */,
+				E5CBE42A10C4FA820057E62A /* cocoa_utils.h */,
+				E5CBE42B10C4FA820057E62A /* cocoa_utils.m */,
+				E5CBE42C10C4FA820057E62A /* qt_cocoa_utils.h */,
+				E5CBE42D10C4FA820057E62A /* qt_cocoa_utils.mm */,
+			);
+			path = CLCocoa;
+			sourceTree = "<group>";
+		};
+		E5CBE44110C4FAD60057E62A /* CLcutils */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE44D10C4FAF70057E62A /* cl_genutils.c */,
+				E5CBE44E10C4FAF70057E62A /* cl_genutils.h */,
+				E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */,
+				E5CBE45010C4FAF70057E62A /* CLSTLFunctions.h */,
+				E5CBE45110C4FAF70057E62A /* cutils_bsd.c */,
+				E5CBE45210C4FAF70057E62A /* cutils_bsd.h */,
+			);
+			name = CLcutils;
+			sourceTree = "<group>";
+		};
+		E5CBE46510C4FB070057E62A /* CLFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE46710C4FB070057E62A /* cl_gen_utils.h */,
+				E5CBE46810C4FB070057E62A /* cl_gen_utils.m */,
+				E5CBE46910C4FB070057E62A /* CLAsyncDownloader.h */,
+				E5CBE46A10C4FB070057E62A /* CLAsyncDownloader.m */,
+				E5CBE46B10C4FB070057E62A /* CLFileManagerCateg.h */,
+				E5CBE46C10C4FB070057E62A /* CLFileManagerCateg.m */,
+				E5CBE46D10C4FB070057E62A /* CLFoundationUtils.h */,
+				E5CBE46E10C4FB070057E62A /* CLFoundationUtils.m */,
+				E5CBE46F10C4FB070057E62A /* CLMutableArrayCateg.h */,
+				E5CBE47010C4FB070057E62A /* CLMutableArrayCateg.m */,
+				E5CBE47110C4FB070057E62A /* CLTimer.h */,
+				E5CBE47210C4FB070057E62A /* CLTimer.m */,
+				E5CBE47310C4FB070057E62A /* CLURLCateg.h */,
+				E5CBE47410C4FB070057E62A /* CLURLCateg.m */,
+				E5CBE47510C4FB070057E62A /* CLXMLParseError.h */,
+				E5CBE47610C4FB070057E62A /* CLXMLParseError.m */,
+				E5CBE47710C4FB070057E62A /* CLXMLParser.h */,
+				E5CBE47810C4FB070057E62A /* CLXMLParser.m */,
+				E5CBE47910C4FB070057E62A /* unitTests */,
+			);
+			path = CLFoundation;
+			sourceTree = "<group>";
+		};
+		E5CBE47910C4FB070057E62A /* unitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5F41C7910C5033500763164 /* CLXMLParserPoorManTests.h */,
+				E5F41C7A10C5033500763164 /* CLXMLParserPoorManTests.m */,
+				E5F41C7C10C5035B00763164 /* CLMutableArrayCategTests.h */,
+				E5F41C7D10C5035B00763164 /* CLMutableArrayCategTests.m */,
+			);
+			path = unitTests;
+			sourceTree = "<group>";
+		};
+		E5CBE4A410C4FB200057E62A /* CLIPhone */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE4AC10C4FB360057E62A /* CLUIImage.h */,
+				E5CBE4AD10C4FB360057E62A /* CLUIImage.m */,
+				E5CBE4B010C4FB410057E62A /* UnitTests */,
+			);
+			name = CLIPhone;
+			sourceTree = "<group>";
+		};
+		E5CBE4B010C4FB410057E62A /* UnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE4B110C4FB410057E62A /* CLUIImageTests.h */,
+				E5CBE4B210C4FB410057E62A /* CLUIImageTests.m */,
+			);
+			name = UnitTests;
+			path = CLIPhone/UnitTests;
+			sourceTree = "<group>";
+		};
+		E5CBE4E910C500360057E62A /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */,
+				E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */,
+			);
+			name = tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5745C6410C4F96300DD9090 /* cl_debug.h in Headers */,
+				E5745C6810C4F96900DD9090 /* cl_errors.h in Headers */,
+				E5CBE46010C4FAF70057E62A /* cl_genutils.h in Headers */,
+				E5CBE46210C4FAF70057E62A /* CLSTLFunctions.h in Headers */,
+				E5CBE46410C4FAF70057E62A /* cutils_bsd.h in Headers */,
+				E5CBE49010C4FB070057E62A /* cl_gen_utils.h in Headers */,
+				E5CBE49210C4FB070057E62A /* CLAsyncDownloader.h in Headers */,
+				E5CBE49410C4FB070057E62A /* CLFileManagerCateg.h in Headers */,
+				E5CBE49610C4FB070057E62A /* CLFoundationUtils.h in Headers */,
+				E5CBE49810C4FB070057E62A /* CLMutableArrayCateg.h in Headers */,
+				E5CBE49A10C4FB070057E62A /* CLTimer.h in Headers */,
+				E5CBE49C10C4FB070057E62A /* CLURLCateg.h in Headers */,
+				E5CBE49E10C4FB070057E62A /* CLXMLParseError.h in Headers */,
+				E5CBE4A010C4FB070057E62A /* CLXMLParser.h in Headers */,
+				E5CBE4AE10C4FB360057E62A /* CLUIImage.h in Headers */,
+				E5CBE4E110C500240057E62A /* cl_smith2san.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5745C0A10C4F88400DD9090 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5745C6610C4F96300DD9090 /* cl_debug.h in Headers */,
+				E5745C6910C4F96900DD9090 /* cl_errors.h in Headers */,
+				E5CBE42F10C4FA820057E62A /* BannerView.h in Headers */,
+				E5CBE43110C4FA820057E62A /* BannerWindow.h in Headers */,
+				E5CBE43410C4FA820057E62A /* CLCommonConst.h in Headers */,
+				E5CBE43610C4FA820057E62A /* CLController.h in Headers */,
+				E5CBE43710C4FA820057E62A /* CLTableViewController.h in Headers */,
+				E5CBE43910C4FA820057E62A /* CLTableViewRecord.h in Headers */,
+				E5CBE43B10C4FA820057E62A /* CLTableViewUserDefaultsController.h in Headers */,
+				E5CBE43D10C4FA820057E62A /* cocoa_utils.h in Headers */,
+				E5CBE43F10C4FA820057E62A /* qt_cocoa_utils.h in Headers */,
+				E5CBE45410C4FAF70057E62A /* cl_genutils.h in Headers */,
+				E5CBE45610C4FAF70057E62A /* CLSTLFunctions.h in Headers */,
+				E5CBE45810C4FAF70057E62A /* cutils_bsd.h in Headers */,
+				E5CBE47C10C4FB070057E62A /* cl_gen_utils.h in Headers */,
+				E5CBE47E10C4FB070057E62A /* CLAsyncDownloader.h in Headers */,
+				E5CBE48010C4FB070057E62A /* CLFileManagerCateg.h in Headers */,
+				E5CBE48210C4FB070057E62A /* CLFoundationUtils.h in Headers */,
+				E5CBE48410C4FB070057E62A /* CLMutableArrayCateg.h in Headers */,
+				E5CBE48610C4FB070057E62A /* CLTimer.h in Headers */,
+				E5CBE48810C4FB070057E62A /* CLURLCateg.h in Headers */,
+				E5CBE48A10C4FB070057E62A /* CLXMLParseError.h in Headers */,
+				E5CBE48C10C4FB070057E62A /* CLXMLParser.h in Headers */,
+				E5CBE4E410C500240057E62A /* cl_smith2san.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CBE3F710C4F9C10057E62A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5CBE40510C4F9CE0057E62A /* cutils_carbon.h in Headers */,
+				E5CBE40710C4F9CE0057E62A /* tests_cutils_carbon.h in Headers */,
+				E5CBE45A10C4FAF70057E62A /* cl_genutils.h in Headers */,
+				E5CBE45C10C4FAF70057E62A /* CLSTLFunctions.h in Headers */,
+				E5CBE45E10C4FAF70057E62A /* cutils_bsd.h in Headers */,
+				E5CBE4E610C500240057E62A /* cl_smith2san.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* CLUtilsPhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "CLUtilsPhone" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLUtilsPhone;
+			productName = CLUtils;
+			productReference = D2AAC07E0554694100DB518D /* libCLUtilsPhone.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E5745C0D10C4F88400DD9090 /* CLUtilsCocoa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5745C1110C4F8A300DD9090 /* Build configuration list for PBXNativeTarget "CLUtilsCocoa" */;
+			buildPhases = (
+				E5745C0A10C4F88400DD9090 /* Headers */,
+				E5745C0B10C4F88400DD9090 /* Sources */,
+				E5745C0C10C4F88400DD9090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLUtilsCocoa;
+			productName = CLUtilsCocoa;
+			productReference = E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E5CBE3FA10C4F9C10057E62A /* CLUtilsCarbon */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5CBE40810C4F9CE0057E62A /* Build configuration list for PBXNativeTarget "CLUtilsCarbon" */;
+			buildPhases = (
+				E5CBE3F710C4F9C10057E62A /* Headers */,
+				E5CBE3F810C4F9C10057E62A /* Sources */,
+				E5CBE3F910C4F9C10057E62A /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLUtilsCarbon;
+			productName = CLUtilsCarbon;
+			productReference = E5CBE3FB10C4F9C10057E62A /* libCLUtilsCarbon.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E5CBE4D010C4FFCE0057E62A /* CLUtilsPhoneLogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5CBE4D510C4FFCF0057E62A /* Build configuration list for PBXNativeTarget "CLUtilsPhoneLogicTests" */;
+			buildPhases = (
+				E5CBE4CC10C4FFCE0057E62A /* Resources */,
+				E5CBE4CD10C4FFCE0057E62A /* Sources */,
+				E5CBE4CE10C4FFCE0057E62A /* Frameworks */,
+				E5CBE4CF10C4FFCE0057E62A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLUtilsPhoneLogicTests;
+			productName = CLUtilsPhoneLogicTests;
+			productReference = E5CBE4D110C4FFCE0057E62A /* CLUtilsPhoneLogicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "CLUtils" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* CLUtils */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* CLUtilsPhone */,
+				E5CBE4D010C4FFCE0057E62A /* CLUtilsPhoneLogicTests */,
+				E5745C0D10C4F88400DD9090 /* CLUtilsCocoa */,
+				E5CBE3FA10C4F9C10057E62A /* CLUtilsCarbon */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E5CBE4CC10C4FFCE0057E62A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E5CBE4CF10C4FFCE0057E62A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5745C6310C4F96300DD9090 /* cl_debug.c in Sources */,
+				E5CBE45F10C4FAF70057E62A /* cl_genutils.c in Sources */,
+				E5CBE46110C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */,
+				E5CBE46310C4FAF70057E62A /* cutils_bsd.c in Sources */,
+				E5CBE49110C4FB070057E62A /* cl_gen_utils.m in Sources */,
+				E5CBE49310C4FB070057E62A /* CLAsyncDownloader.m in Sources */,
+				E5CBE49510C4FB070057E62A /* CLFileManagerCateg.m in Sources */,
+				E5CBE49710C4FB070057E62A /* CLFoundationUtils.m in Sources */,
+				E5CBE49910C4FB070057E62A /* CLMutableArrayCateg.m in Sources */,
+				E5CBE49B10C4FB070057E62A /* CLTimer.m in Sources */,
+				E5CBE49D10C4FB070057E62A /* CLURLCateg.m in Sources */,
+				E5CBE49F10C4FB070057E62A /* CLXMLParseError.m in Sources */,
+				E5CBE4A110C4FB070057E62A /* CLXMLParser.m in Sources */,
+				E5CBE4AF10C4FB360057E62A /* CLUIImage.m in Sources */,
+				E5CBE4E010C500240057E62A /* cl_smith2san.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5745C0B10C4F88400DD9090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5745C6510C4F96300DD9090 /* cl_debug.c in Sources */,
+				E5CBE43010C4FA820057E62A /* BannerView.m in Sources */,
+				E5CBE43210C4FA820057E62A /* BannerWindow.m in Sources */,
+				E5CBE43510C4FA820057E62A /* CLCommonConst.m in Sources */,
+				E5CBE43810C4FA820057E62A /* CLTableViewController.m in Sources */,
+				E5CBE43A10C4FA820057E62A /* CLTableViewRecord.m in Sources */,
+				E5CBE43C10C4FA820057E62A /* CLTableViewUserDefaultsController.m in Sources */,
+				E5CBE43E10C4FA820057E62A /* cocoa_utils.m in Sources */,
+				E5CBE44010C4FA820057E62A /* qt_cocoa_utils.mm in Sources */,
+				E5CBE45310C4FAF70057E62A /* cl_genutils.c in Sources */,
+				E5CBE45510C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */,
+				E5CBE45710C4FAF70057E62A /* cutils_bsd.c in Sources */,
+				E5CBE47D10C4FB070057E62A /* cl_gen_utils.m in Sources */,
+				E5CBE47F10C4FB070057E62A /* CLAsyncDownloader.m in Sources */,
+				E5CBE48110C4FB070057E62A /* CLFileManagerCateg.m in Sources */,
+				E5CBE48310C4FB070057E62A /* CLFoundationUtils.m in Sources */,
+				E5CBE48510C4FB070057E62A /* CLMutableArrayCateg.m in Sources */,
+				E5CBE48710C4FB070057E62A /* CLTimer.m in Sources */,
+				E5CBE48910C4FB070057E62A /* CLURLCateg.m in Sources */,
+				E5CBE48B10C4FB070057E62A /* CLXMLParseError.m in Sources */,
+				E5CBE48D10C4FB070057E62A /* CLXMLParser.m in Sources */,
+				E5CBE4E310C500240057E62A /* cl_smith2san.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CBE3F810C4F9C10057E62A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5CBE40410C4F9CE0057E62A /* cutils_carbon.c in Sources */,
+				E5CBE40610C4F9CE0057E62A /* tests_cutils_carbon.c in Sources */,
+				E5CBE45910C4FAF70057E62A /* cl_genutils.c in Sources */,
+				E5CBE45B10C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */,
+				E5CBE45D10C4FAF70057E62A /* cutils_bsd.c in Sources */,
+				E5CBE4E510C500240057E62A /* cl_smith2san.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5CBE4CD10C4FFCE0057E62A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5CBE50210C501490057E62A /* CLUIImageTests.m in Sources */,
+				E5CBE4F810C5011D0057E62A /* cl_gen_utils.m in Sources */,
+				E5CBE4F910C5011D0057E62A /* CLAsyncDownloader.m in Sources */,
+				E5CBE4FA10C5011D0057E62A /* CLFileManagerCateg.m in Sources */,
+				E5CBE4FB10C5011D0057E62A /* CLFoundationUtils.m in Sources */,
+				E5CBE4FC10C5011D0057E62A /* CLMutableArrayCateg.m in Sources */,
+				E5CBE4FD10C5011D0057E62A /* CLTimer.m in Sources */,
+				E5CBE4FE10C5011D0057E62A /* CLURLCateg.m in Sources */,
+				E5CBE4FF10C5011D0057E62A /* CLXMLParseError.m in Sources */,
+				E5CBE50010C5011D0057E62A /* CLXMLParser.m in Sources */,
+				E5CBE4E210C500240057E62A /* cl_smith2san.c in Sources */,
+				E5CBE4EA10C5005B0057E62A /* cl_genutils.c in Sources */,
+				E5CBE4EB10C5005B0057E62A /* cutils_bsd.c in Sources */,
+				E5CBE4D610C500070057E62A /* cl_debug.c in Sources */,
+				E5CBE50110C501420057E62A /* CLUIImage.m in Sources */,
+				E5F41C7E10C5035B00763164 /* CLMutableArrayCategTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/CLUtils.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CLUtils_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				PRODUCT_NAME = CLUtilsPhone;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/CLUtils.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CLUtils_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				PRODUCT_NAME = CLUtilsPhone;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Release;
+		};
+		E5745C0F10C4F88500DD9090 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLUtilsCocoa;
+			};
+			name = Debug;
+		};
+		E5745C1010C4F88500DD9090 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLUtilsCocoa;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E5CBE3FC10C4F9C20057E62A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLUtilsCarbon;
+			};
+			name = Debug;
+		};
+		E5CBE3FD10C4F9C20057E62A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLUtilsCarbon;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E5CBE4D310C4FFCF0057E62A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CLUtils_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "USE_APPLICATION_UNIT_TEST=0";
+				INFOPLIST_FILE = "CLUtilsPhoneLogicTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLUtilsPhoneLogicTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E5CBE4D410C4FFCF0057E62A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CLUtils_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "USE_APPLICATION_UNIT_TEST=0";
+				INFOPLIST_FILE = "CLUtilsPhoneLogicTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLUtilsPhoneLogicTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "CLUtilsPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "CLUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5745C1110C4F8A300DD9090 /* Build configuration list for PBXNativeTarget "CLUtilsCocoa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5745C0F10C4F88500DD9090 /* Debug */,
+				E5745C1010C4F88500DD9090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5CBE40810C4F9CE0057E62A /* Build configuration list for PBXNativeTarget "CLUtilsCarbon" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5CBE3FC10C4F9C20057E62A /* Debug */,
+				E5CBE3FD10C4F9C20057E62A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5CBE4D510C4FFCF0057E62A /* Build configuration list for PBXNativeTarget "CLUtilsPhoneLogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5CBE4D310C4FFCF0057E62A /* Debug */,
+				E5CBE4D410C4FFCF0057E62A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

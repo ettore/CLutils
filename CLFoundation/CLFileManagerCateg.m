@@ -60,7 +60,7 @@ extension. To remove the directory path, see extractFromAbsPath:removeExt:.
                                  options:NSBackwardsSearch];
     if (range.location != NSNotFound)
         fname = [fname substringToIndex:range.location];                
-    debug0msg("removeExtFrom: returned fname = %@", fname);
+    debug0cocoa(@"removeExtFrom: returned fname = %@", fname);
     return fname;
 }
 
