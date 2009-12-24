@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		E56527C110E375290085608A /* cl_changeq_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E56527BF10E375290085608A /* cl_changeq_cunittest.c */; };
 		E5745C6310C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
 		E5745C6410C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
 		E5745C6510C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
 		E5745C6610C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
 		E5745C6810C4F96900DD9090 /* cl_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6710C4F96900DD9090 /* cl_errors.h */; };
 		E5745C6910C4F96900DD9090 /* cl_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6710C4F96900DD9090 /* cl_errors.h */; };
+		E5A4E84210DEDB5E00B6676C /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
 		E5CBE40410C4F9CE0057E62A /* cutils_carbon.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE3FF10C4F9CE0057E62A /* cutils_carbon.c */; };
 		E5CBE40510C4F9CE0057E62A /* cutils_carbon.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE40010C4F9CE0057E62A /* cutils_carbon.h */; };
 		E5CBE40610C4F9CE0057E62A /* tests_cutils_carbon.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE40210C4F9CE0057E62A /* tests_cutils_carbon.c */; };
@@ -115,6 +117,21 @@
 		E5CBE50710C501CF0057E62A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CBE50610C501CF0057E62A /* UIKit.framework */; };
 		E5CBE50E10C5023E0057E62A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		E5CBE55F10C502690057E62A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CBE55E10C502690057E62A /* CoreGraphics.framework */; };
+		E5F064B910DE2F86004FA0CE /* cl_changeq.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F064B710DE2F86004FA0CE /* cl_changeq.h */; };
+		E5F064BA10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
+		E5F064BB10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
+		E5F064BC10DE2F86004FA0CE /* cl_changeq.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F064B710DE2F86004FA0CE /* cl_changeq.h */; };
+		E5F064BD10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
+		E5F064BE10DE2F86004FA0CE /* cl_changeq.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F064B710DE2F86004FA0CE /* cl_changeq.h */; };
+		E5F064BF10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
+		E5F064DC10DE4A84004FA0CE /* cunit_tests_main.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064D510DE4A28004FA0CE /* cunit_tests_main.c */; };
+		E5F064DD10DE4A92004FA0CE /* cl_smith2san_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */; };
+		E5F064DF10DE4A9B004FA0CE /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
+		E5F064E010DE4AB6004FA0CE /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
+		E5F064E110DE4AB9004FA0CE /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
+		E5F064E210DE4ACF004FA0CE /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
+		E5F064E310DE4AD0004FA0CE /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */; };
+		E5F064E910DE4BEC004FA0CE /* libcunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F064E810DE4BEC004FA0CE /* libcunit.a */; };
 		E5F41C7E10C5035B00763164 /* CLMutableArrayCategTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5F41C7D10C5035B00763164 /* CLMutableArrayCategTests.m */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +139,8 @@
 		AA747D9E0F9514B9006C5449 /* CLUtils_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUtils_Prefix.pch; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libCLUtilsPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E56527BF10E375290085608A /* cl_changeq_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_changeq_cunittest.c; path = CLcutils/tests/cl_changeq_cunittest.c; sourceTree = "<group>"; };
+		E56527C010E375290085608A /* cl_changeq_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq_cunittest.h; path = CLcutils/tests/cl_changeq_cunittest.h; sourceTree = "<group>"; };
 		E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5745C6110C4F96300DD9090 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
 		E5745C6210C4F96300DD9090 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
@@ -185,6 +204,10 @@
 		E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san_cunittest.h; path = CLChessUtils/tests/cl_smith2san_cunittest.h; sourceTree = "<group>"; };
 		E5CBE50610C501CF0057E62A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5CBE55E10C502690057E62A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E5F064B710DE2F86004FA0CE /* cl_changeq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq.h; path = CLcutils/cl_changeq.h; sourceTree = "<group>"; };
+		E5F064B810DE2F86004FA0CE /* cl_changeq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_changeq.c; path = CLcutils/cl_changeq.c; sourceTree = "<group>"; };
+		E5F064D510DE4A28004FA0CE /* cunit_tests_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cunit_tests_main.c; sourceTree = "<group>"; };
+		E5F064E810DE4BEC004FA0CE /* libcunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcunit.a; path = /usr/local/lib/libcunit.a; sourceTree = "<absolute>"; };
 		E5F41C7910C5033500763164 /* CLXMLParserPoorManTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLXMLParserPoorManTests.h; sourceTree = "<group>"; };
 		E5F41C7A10C5033500763164 /* CLXMLParserPoorManTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLXMLParserPoorManTests.m; sourceTree = "<group>"; };
 		E5F41C7C10C5035B00763164 /* CLMutableArrayCategTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLMutableArrayCategTests.h; sourceTree = "<group>"; };
@@ -224,6 +247,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5F064D710DE4A66004FA0CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5F064E910DE4BEC004FA0CE /* libcunit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -250,21 +281,23 @@
 				E5CBE46510C4FB070057E62A /* CLFoundation */,
 				E5CBE41A10C4FA820057E62A /* CLCocoa */,
 				E5CBE4A410C4FB200057E62A /* CLIPhone */,
-				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				E5F064D310DE325B004FA0CE /* CUnit tests */,
+				0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				E5CBE4D210C4FFCE0057E62A /* CLUtilsPhoneLogicTests-Info.plist */,
 			);
 			name = CLUtils;
 			sourceTree = "<group>";
 		};
-		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+		0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E5F064E810DE4BEC004FA0CE /* libcunit.a */,
 				E5CBE55E10C502690057E62A /* CoreGraphics.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				E5CBE50610C501CF0057E62A /* UIKit.framework */,
 			);
-			name = Frameworks;
+			name = "Frameworks and Libraries";
 			sourceTree = "<group>";
 		};
 		E5745C6010C4F96300DD9090 /* cl_debug */ = {
@@ -274,6 +307,24 @@
 				E5745C6210C4F96300DD9090 /* cl_debug.h */,
 			);
 			path = cl_debug;
+			sourceTree = "<group>";
+		};
+		E5A4E7FB10DE51CC00B6676C /* CLcutils */ = {
+			isa = PBXGroup;
+			children = (
+				E56527BF10E375290085608A /* cl_changeq_cunittest.c */,
+				E56527C010E375290085608A /* cl_changeq_cunittest.h */,
+			);
+			name = CLcutils;
+			sourceTree = "<group>";
+		};
+		E5A4E7FC10DE51D700B6676C /* CLChessUtils */ = {
+			isa = PBXGroup;
+			children = (
+				E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */,
+				E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */,
+			);
+			name = CLChessUtils;
 			sourceTree = "<group>";
 		};
 		E5CBE3FE10C4F9CE0057E62A /* CLCarbon */ = {
@@ -300,7 +351,6 @@
 			children = (
 				E5CBE4DE10C500240057E62A /* cl_smith2san.c */,
 				E5CBE4DF10C500240057E62A /* cl_smith2san.h */,
-				E5CBE4E910C500360057E62A /* tests */,
 			);
 			name = CLChessUtils;
 			sourceTree = "<group>";
@@ -333,12 +383,14 @@
 		E5CBE44110C4FAD60057E62A /* CLcutils */ = {
 			isa = PBXGroup;
 			children = (
-				E5CBE44D10C4FAF70057E62A /* cl_genutils.c */,
 				E5CBE44E10C4FAF70057E62A /* cl_genutils.h */,
-				E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */,
+				E5CBE44D10C4FAF70057E62A /* cl_genutils.c */,
 				E5CBE45010C4FAF70057E62A /* CLSTLFunctions.h */,
-				E5CBE45110C4FAF70057E62A /* cutils_bsd.c */,
+				E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */,
 				E5CBE45210C4FAF70057E62A /* cutils_bsd.h */,
+				E5CBE45110C4FAF70057E62A /* cutils_bsd.c */,
+				E5F064B710DE2F86004FA0CE /* cl_changeq.h */,
+				E5F064B810DE2F86004FA0CE /* cl_changeq.c */,
 			);
 			name = CLcutils;
 			sourceTree = "<group>";
@@ -400,13 +452,14 @@
 			path = CLIPhone/UnitTests;
 			sourceTree = "<group>";
 		};
-		E5CBE4E910C500360057E62A /* tests */ = {
+		E5F064D310DE325B004FA0CE /* CUnit tests */ = {
 			isa = PBXGroup;
 			children = (
-				E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */,
-				E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */,
+				E5F064D510DE4A28004FA0CE /* cunit_tests_main.c */,
+				E5A4E7FC10DE51D700B6676C /* CLChessUtils */,
+				E5A4E7FB10DE51CC00B6676C /* CLcutils */,
 			);
-			name = tests;
+			name = "CUnit tests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -432,6 +485,7 @@
 				E5CBE4A010C4FB070057E62A /* CLXMLParser.h in Headers */,
 				E5CBE4AE10C4FB360057E62A /* CLUIImage.h in Headers */,
 				E5CBE4E110C500240057E62A /* cl_smith2san.h in Headers */,
+				E5F064BE10DE2F86004FA0CE /* cl_changeq.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +517,7 @@
 				E5CBE48A10C4FB070057E62A /* CLXMLParseError.h in Headers */,
 				E5CBE48C10C4FB070057E62A /* CLXMLParser.h in Headers */,
 				E5CBE4E410C500240057E62A /* cl_smith2san.h in Headers */,
+				E5F064BC10DE2F86004FA0CE /* cl_changeq.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +531,7 @@
 				E5CBE45C10C4FAF70057E62A /* CLSTLFunctions.h in Headers */,
 				E5CBE45E10C4FAF70057E62A /* cutils_bsd.h in Headers */,
 				E5CBE4E610C500240057E62A /* cl_smith2san.h in Headers */,
+				E5F064B910DE2F86004FA0CE /* cl_changeq.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,6 +607,21 @@
 			productReference = E5CBE4D110C4FFCE0057E62A /* CLUtilsPhoneLogicTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		E5F064D810DE4A66004FA0CE /* cunit_tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5F064E610DE4AEE004FA0CE /* Build configuration list for PBXNativeTarget "cunit_tests" */;
+			buildPhases = (
+				E5F064D610DE4A66004FA0CE /* Sources */,
+				E5F064D710DE4A66004FA0CE /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cunit_tests;
+			productName = cunit_tests;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -568,6 +639,7 @@
 				E5CBE4D010C4FFCE0057E62A /* CLUtilsPhoneLogicTests */,
 				E5745C0D10C4F88400DD9090 /* CLUtilsCocoa */,
 				E5CBE3FA10C4F9C10057E62A /* CLUtilsCarbon */,
+				E5F064D810DE4A66004FA0CE /* cunit_tests */,
 			);
 		};
 /* End PBXProject section */
@@ -618,6 +690,7 @@
 				E5CBE4A110C4FB070057E62A /* CLXMLParser.m in Sources */,
 				E5CBE4AF10C4FB360057E62A /* CLUIImage.m in Sources */,
 				E5CBE4E010C500240057E62A /* cl_smith2san.c in Sources */,
+				E5F064BF10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,6 +720,7 @@
 				E5CBE48B10C4FB070057E62A /* CLXMLParseError.m in Sources */,
 				E5CBE48D10C4FB070057E62A /* CLXMLParser.m in Sources */,
 				E5CBE4E310C500240057E62A /* cl_smith2san.c in Sources */,
+				E5F064BD10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +734,7 @@
 				E5CBE45B10C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */,
 				E5CBE45D10C4FAF70057E62A /* cutils_bsd.c in Sources */,
 				E5CBE4E510C500240057E62A /* cl_smith2san.c in Sources */,
+				E5F064BA10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -683,6 +758,23 @@
 				E5CBE4D610C500070057E62A /* cl_debug.c in Sources */,
 				E5CBE50110C501420057E62A /* CLUIImage.m in Sources */,
 				E5F41C7E10C5035B00763164 /* CLMutableArrayCategTests.m in Sources */,
+				E5F064BB10DE2F86004FA0CE /* cl_changeq.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5F064D610DE4A66004FA0CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5F064DC10DE4A84004FA0CE /* cunit_tests_main.c in Sources */,
+				E5F064DD10DE4A92004FA0CE /* cl_smith2san_cunittest.c in Sources */,
+				E5F064DF10DE4A9B004FA0CE /* cl_smith2san.c in Sources */,
+				E5F064E010DE4AB6004FA0CE /* cl_debug.c in Sources */,
+				E5F064E110DE4AB9004FA0CE /* cl_genutils.c in Sources */,
+				E5F064E210DE4ACF004FA0CE /* cutils_bsd.c in Sources */,
+				E5F064E310DE4AD0004FA0CE /* CLSTLFunctions.cpp in Sources */,
+				E5A4E84210DEDB5E00B6676C /* cl_changeq.c in Sources */,
+				E56527C110E375290085608A /* cl_changeq_cunittest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,8 +821,15 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-fnested-functions";
+				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
@@ -742,8 +841,15 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				OTHER_CFLAGS = "-fnested-functions";
+				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1.2;
@@ -906,6 +1012,53 @@
 			};
 			name = Release;
 		};
+		E5F064D910DE4A67004FA0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/**",
+					"CLcutils/**",
+					cl_debug,
+				);
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = cunit_tests;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "CLChessUtils/**";
+			};
+			name = Debug;
+		};
+		E5F064DA10DE4A67004FA0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				HEADER_SEARCH_PATHS = (
+					"/usr/local/include/**",
+					cl_debug,
+				);
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
+				PREBINDING = NO;
+				PRODUCT_NAME = cunit_tests;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "CLcutils/** CLChessUtils/**";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -950,6 +1103,15 @@
 			buildConfigurations = (
 				E5CBE4D310C4FFCF0057E62A /* Debug */,
 				E5CBE4D410C4FFCF0057E62A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5F064E610DE4AEE004FA0CE /* Build configuration list for PBXNativeTarget "cunit_tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5F064D910DE4A67004FA0CE /* Debug */,
+				E5F064DA10DE4A67004FA0CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

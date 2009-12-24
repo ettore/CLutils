@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		E56954D1104F9A7A00AD6FD7 /* libcunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E56954D0104F9A7A00AD6FD7 /* libcunit.a */; };
+		E574398410DE50A60009A9E5 /* cl_smith2san_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E574398210DE50A60009A9E5 /* cl_smith2san_cunittest.c */; };
 		E5FA62D3104E531600F43836 /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62D2104E531600F43836 /* cl_smith2san.c */; };
-		E5FA62D6104E533E00F43836 /* cl_smith2san_test.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62D5104E533E00F43836 /* cl_smith2san_test.c */; };
 		E5FA6302104E574000F43836 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62F9104E574000F43836 /* cl_debug.c */; };
 		E5FA6303104E574000F43836 /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62FC104E574000F43836 /* cl_genutils.c */; };
 		E5FA6304104E574000F43836 /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62FE104E574000F43836 /* CLSTLFunctions.cpp */; };
@@ -33,12 +33,12 @@
 		08FB7796FE84155DC02AAC07 /* main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		8DD76FB20486AB0100D96B5E /* CLChessUtils */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CLChessUtils; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56954D0104F9A7A00AD6FD7 /* libcunit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcunit.a; path = /usr/local/lib/libcunit.a; sourceTree = "<absolute>"; };
+		E574398210DE50A60009A9E5 /* cl_smith2san_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_smith2san_cunittest.c; path = tests/cl_smith2san_cunittest.c; sourceTree = "<group>"; };
+		E574398310DE50A60009A9E5 /* cl_smith2san_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san_cunittest.h; path = tests/cl_smith2san_cunittest.h; sourceTree = "<group>"; };
 		E579D6891055B2400099EE54 /* zzzzzz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zzzzzz.c; path = "../../../devel/projects/iPhoneChess/other-src/ZZZZZZ Source/zzzzzz.c"; sourceTree = SOURCE_ROOT; };
 		E579D68A1055B2400099EE54 /* zzzzzz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zzzzzz.h; path = "../../../devel/projects/iPhoneChess/other-src/ZZZZZZ Source/zzzzzz.h"; sourceTree = SOURCE_ROOT; };
 		E5FA62D1104E531600F43836 /* cl_smith2san.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_smith2san.h; sourceTree = "<group>"; };
 		E5FA62D2104E531600F43836 /* cl_smith2san.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_smith2san.c; sourceTree = "<group>"; };
-		E5FA62D4104E533E00F43836 /* cl_smith2san_test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_smith2san_test.h; sourceTree = "<group>"; };
-		E5FA62D5104E533E00F43836 /* cl_smith2san_test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_smith2san_test.c; sourceTree = "<group>"; };
 		E5FA62F9104E574000F43836 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
 		E5FA62FA104E574000F43836 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
 		E5FA62FC104E574000F43836 /* cl_genutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_genutils.c; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 				08FB7796FE84155DC02AAC07 /* main.c */,
 				E5FA62D1104E531600F43836 /* cl_smith2san.h */,
 				E5FA62D2104E531600F43836 /* cl_smith2san.c */,
-				E5FA62D4104E533E00F43836 /* cl_smith2san_test.h */,
-				E5FA62D5104E533E00F43836 /* cl_smith2san_test.c */,
+				E574398210DE50A60009A9E5 /* cl_smith2san_cunittest.c */,
+				E574398310DE50A60009A9E5 /* cl_smith2san_cunittest.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -182,11 +182,11 @@
 			files = (
 				8DD76FAC0486AB0100D96B5E /* main.c in Sources */,
 				E5FA62D3104E531600F43836 /* cl_smith2san.c in Sources */,
-				E5FA62D6104E533E00F43836 /* cl_smith2san_test.c in Sources */,
 				E5FA6302104E574000F43836 /* cl_debug.c in Sources */,
 				E5FA6303104E574000F43836 /* cl_genutils.c in Sources */,
 				E5FA6304104E574000F43836 /* CLSTLFunctions.cpp in Sources */,
 				E5FA6305104E574000F43836 /* cutils_bsd.c in Sources */,
+				E574398410DE50A60009A9E5 /* cl_smith2san_cunittest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
