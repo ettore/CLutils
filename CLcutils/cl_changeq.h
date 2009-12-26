@@ -12,12 +12,12 @@
 typedef signed char		BOOL; 
 #endif
 
-/* exported types */
+/* types */
 
-typedef struct cl_change_val cl_change_val;
-typedef struct cl_change   cl_change;
-typedef struct cl_changeq cl_changeq;
-typedef struct cl_changeq_node cl_changeq_node; 
+typedef struct cl_change_val    cl_change_val;
+typedef struct cl_change        cl_change;
+typedef struct cl_changeq       cl_changeq;
+typedef struct cl_changeq_node  cl_changeq_node; 
 
 /* type declarations */
 
@@ -27,6 +27,9 @@ typedef enum  {
     CL_DOUBLE,
     CL_PTR,
 } cl_change_type;
+
+#pragma mark -
+#pragma mark CL_CHANGE_VAL class
 
 struct cl_change_val 
 {
@@ -44,6 +47,14 @@ struct cl_change
     const char *prop;
     const cl_change_val value;
 };
+
+cl_change cl_change_newc(const char *pr, char c);
+cl_change cl_change_newl(const char *pr, long long n);
+cl_change cl_change_newd(const char *pr, double p);
+cl_change cl_change_newp(const char *pr, const void *p);
+
+#pragma mark -
+#pragma mark CL_CHANGE_NODE class
 
 struct cl_changeq_node 
 {
@@ -80,9 +91,5 @@ void        cl_changeq_destroy(cl_changeq *q);
 // helpers
 void cl_change_dump(const cl_change *ch);
 void cl_changeq_dump(const cl_changeq *q);
-cl_change cl_changemake_c(const char *pr, char c);
-cl_change cl_changemake_l(const char *pr, long long n);
-cl_change cl_changemake_d(const char *pr, double p);
-cl_change cl_changemake_p(const char *pr, const void *p);
 
 #endif

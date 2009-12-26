@@ -15,9 +15,9 @@
 static void test_queue_wipe()
 {
     cl_changeq *q = cl_changeq_new();
-    const cl_change c1 = cl_changemake_d("char", 'a');
-    const cl_change c2 = cl_changemake_d("int", 987654);
-    const cl_change c3 = cl_changemake_d("double", 123456.0987);
+    const cl_change c1 = cl_change_newd("char", 'a');
+    const cl_change c2 = cl_change_newd("int", 987654);
+    const cl_change c3 = cl_change_newd("double", 123456.0987);
     
     q->pushback(q, &c1);
     q->pushback(q, &c2);
@@ -40,7 +40,7 @@ static void test_queue_ins_del_struct()
     } stuff;
     strncpy(stuff.str, "buongiorno sto cazzo", 128);
     stuff.num = 666;
-    const cl_change c1 = cl_changemake_p("sticazzi", &stuff);
+    const cl_change c1 = cl_change_newp("sticazzi", &stuff);
     
     // adding stuff pointer elem and removing it
     q->pushback(q, &c1);
@@ -56,9 +56,9 @@ static void test_queue_ins_del_struct()
 static void test_queue_ins_del()
 {
     cl_changeq *q = cl_changeq_new();
-    const cl_change c1 = cl_changemake_d("char", 'a');
-    const cl_change c2 = cl_changemake_d("int", 987654);
-    const cl_change c3 = cl_changemake_d("double", 123456.0987);
+    const cl_change c1 = cl_change_newd("char", 'a');
+    const cl_change c2 = cl_change_newd("int", 987654);
+    const cl_change c3 = cl_change_newd("double", 123456.0987);
     
     // adding 1 elem and removing it
     q->pushback(q, &c1);
@@ -116,7 +116,7 @@ static void test_queue_ins_del()
 static void test_queue_ins_c()
 {
     cl_changeq *q = cl_changeq_new();
-    cl_change c1 = cl_changemake_c("char", 'a');
+    cl_change c1 = cl_change_newc("char", 'a');
     q->pushback(q, &c1);
     debug0msg("%s:%d:%c", q->t->change.prop, q->t->change.value.type, 
               q->t->change.value.u.c);
@@ -137,7 +137,7 @@ static void test_queue_ins_c()
 static void test_queue_ins_l()
 {
     cl_changeq *q = cl_changeq_new();
-    cl_change c1 = cl_changemake_l("width", 0x123456);
+    cl_change c1 = cl_change_newl("width", 0x123456);
     q->pushback(q, &c1);
     debug0msg("%s:%d:%#x", q->t->change.prop, q->t->change.value.type, 
               (unsigned)q->t->change.value.u.l);
@@ -157,7 +157,7 @@ static void test_queue_ins_l()
 static void test_queue_ins_d()
 {
     cl_changeq *q = cl_changeq_new();
-    cl_change c1 = cl_changemake_d("double", 123456.0987);
+    cl_change c1 = cl_change_newd("double", 123456.0987);
     q->pushback(q, &c1);
     debug0msg("%s:%d:%f", q->t->change.prop, q->t->change.value.type, 
               q->t->change.value.u.d);
@@ -183,7 +183,7 @@ static void test_queue_ins_p()
     strncpy(val.str, "la logica dell'impossibile", 255);
     val.num = 666;
     cl_changeq *q = cl_changeq_new();
-    cl_change ch = cl_changemake_p("stuff", &val);
+    cl_change ch = cl_change_newp("stuff", &val);
     q->pushback(q, &ch);
     debug0msg("%s:%d:%p", q->t->change.prop, q->t->change.value.type, 
               q->t->change.value.u.p);

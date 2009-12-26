@@ -141,6 +141,8 @@
 		D2AAC07E0554694100DB518D /* libCLUtilsPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E56527BF10E375290085608A /* cl_changeq_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_changeq_cunittest.c; path = CLcutils/tests/cl_changeq_cunittest.c; sourceTree = "<group>"; };
 		E56527C010E375290085608A /* cl_changeq_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq_cunittest.h; path = CLcutils/tests/cl_changeq_cunittest.h; sourceTree = "<group>"; };
+		E565282D10E6041C0085608A /* cl_changeq_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq_internal.h; path = CLcutils/cl_changeq_internal.h; sourceTree = "<group>"; };
+		E565282F10E6059B0085608A /* cl_changeq_public.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq_public.h; path = CLcutils/cl_changeq_public.h; sourceTree = "<group>"; };
 		E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5745C6110C4F96300DD9090 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
 		E5745C6210C4F96300DD9090 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
@@ -390,6 +392,8 @@
 				E5CBE45210C4FAF70057E62A /* cutils_bsd.h */,
 				E5CBE45110C4FAF70057E62A /* cutils_bsd.c */,
 				E5F064B710DE2F86004FA0CE /* cl_changeq.h */,
+				E565282F10E6059B0085608A /* cl_changeq_public.h */,
+				E565282D10E6041C0085608A /* cl_changeq_internal.h */,
 				E5F064B810DE2F86004FA0CE /* cl_changeq.c */,
 			);
 			name = CLcutils;
