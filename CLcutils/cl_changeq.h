@@ -51,6 +51,9 @@ struct cl_changeq_node
     cl_changeq_node *next;
 };
 
+#pragma mark -
+#pragma mark CL_CHANGEQ class
+
 struct cl_changeq 
 {
     cl_changeq_node *h;
@@ -64,6 +67,9 @@ struct cl_changeq
 };
 
 cl_changeq *cl_changeq_new();
+
+#pragma mark -
+#pragma mark CL_CHANGEQ helpers
 
 // helpers
 void cl_changeq_dump(cl_changeq *q);

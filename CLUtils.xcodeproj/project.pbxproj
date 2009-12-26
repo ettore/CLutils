@@ -312,8 +312,8 @@
 		E5A4E7FB10DE51CC00B6676C /* CLcutils */ = {
 			isa = PBXGroup;
 			children = (
-				E56527BF10E375290085608A /* cl_changeq_cunittest.c */,
 				E56527C010E375290085608A /* cl_changeq_cunittest.h */,
+				E56527BF10E375290085608A /* cl_changeq_cunittest.c */,
 			);
 			name = CLcutils;
 			sourceTree = "<group>";
