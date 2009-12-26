@@ -1,6 +1,5 @@
-/*
- *  cl_genutils.h
- *  CubelogicCommon
+/*  $Id$
+ *  CLUtils
  *  Created by ep on 22/1/05.
  *  Copyright 2005 Cubelogic. All rights reserved.
  */

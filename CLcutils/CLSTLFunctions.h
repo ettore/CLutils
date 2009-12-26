@@ -1,5 +1,5 @@
 /*
- *  CLSTLFunctions.h
+ *  $Id$
  *  Additional functions for STL
  *  Created by ep on 24/1/05.
  *  Copyright 2005 Cubelogic. All rights reserved.
