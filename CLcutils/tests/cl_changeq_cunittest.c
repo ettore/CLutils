@@ -19,9 +19,9 @@ static void test_queue_wipe()
     const cl_change c2 = cl_changemake_d("int", 987654);
     const cl_change c3 = cl_changemake_d("double", 123456.0987);
     
-    q->push(q, &c1);
-    q->push(q, &c2);
-    q->push(q, &c3);
+    q->pushback(q, &c1);
+    q->pushback(q, &c2);
+    q->pushback(q, &c3);
     CU_ASSERT_FALSE(q->isempty(q));
     
     q->wipe(q);
@@ -43,10 +43,10 @@ static void test_queue_ins_del_struct()
     const cl_change c1 = cl_changemake_p("sticazzi", &stuff);
     
     // adding stuff pointer elem and removing it
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     fprintf(stderr, "\n#### Q :"); cl_changeq_dump(q);
     fprintf(stderr, "\n#### c1:"); cl_change_dump(&c1);
-    const cl_change c1_1 = q->get(q);
+    const cl_change c1_1 = q->pop(q);
     fprintf(stderr, "\n#### c1_1:"); cl_change_dump(&c1_1);
     CU_ASSERT_TRUE(memcmp(&c1, &c1_1, sizeof(cl_change)) == 0);
     CU_ASSERT_PTR_NOT_EQUAL(&c1, &c1_1);
@@ -61,26 +61,26 @@ static void test_queue_ins_del()
     const cl_change c3 = cl_changemake_d("double", 123456.0987);
     
     // adding 1 elem and removing it
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     CU_ASSERT_FALSE(q->isempty(q));
     fprintf(stderr, "\n#### Q:"); cl_changeq_dump(q);
     fprintf(stderr, "\n#### c1  :"); cl_change_dump(&c1);
-    const cl_change c1_1 = q->get(q);
+    const cl_change c1_1 = q->pop(q);
     fprintf(stderr, "\n#### c1_1:"); cl_change_dump(&c1_1);
     CU_ASSERT_TRUE(memcmp(&c1, &c1_1, sizeof(cl_change)) == 0);
     CU_ASSERT_PTR_NOT_EQUAL(&c1, &c1_1);
     CU_ASSERT_TRUE(q->isempty(q));
     
     // adding 2 elem and removing them
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     CU_ASSERT_FALSE(q->isempty(q));
-    q->push(q, &c2);
+    q->pushback(q, &c2);
     CU_ASSERT_FALSE(q->isempty(q));
     fprintf(stderr, "\n#### Q:"); cl_changeq_dump(q);
-    const cl_change c1_2 = q->get(q);
+    const cl_change c1_2 = q->pop(q);
     fprintf(stderr, "\n#### c1_2:"); cl_change_dump(&c1_2);
     CU_ASSERT_FALSE(q->isempty(q));
-    const cl_change c2_2 = q->get(q);
+    const cl_change c2_2 = q->pop(q);
     fprintf(stderr, "\n#### c2_2:"); cl_change_dump(&c2_2);
     CU_ASSERT_TRUE(memcmp(&c1, &c1_2, sizeof(cl_change)) == 0);
     CU_ASSERT_TRUE(memcmp(&c2, &c2_2, sizeof(cl_change)) == 0);
@@ -89,20 +89,20 @@ static void test_queue_ins_del()
     CU_ASSERT_TRUE(q->isempty(q));
     
     // adding 3 elem and removing them
-    q->push(q, &c3);
+    q->pushback(q, &c3);
     CU_ASSERT_FALSE(q->isempty(q));
-    q->push(q, &c2);
+    q->pushback(q, &c2);
     CU_ASSERT_FALSE(q->isempty(q));
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     CU_ASSERT_FALSE(q->isempty(q));
     fprintf(stderr, "\n#### Q:"); cl_changeq_dump(q);
-    const cl_change c3_3 = q->get(q);
+    const cl_change c3_3 = q->pop(q);
     CU_ASSERT_FALSE(q->isempty(q));
     fprintf(stderr, "\n#### c3_3:"); cl_change_dump(&c3_3);
-    const cl_change c2_3 = q->get(q);
+    const cl_change c2_3 = q->pop(q);
     CU_ASSERT_FALSE(q->isempty(q));
     fprintf(stderr, "\n#### c2_3:"); cl_change_dump(&c2_3);
-    const cl_change c1_3 = q->get(q);
+    const cl_change c1_3 = q->pop(q);
     fprintf(stderr, "\n#### c1_3:"); cl_change_dump(&c1_3);
     CU_ASSERT_TRUE(memcmp(&c1, &c1_3, sizeof(cl_change)) == 0);
     CU_ASSERT_TRUE(memcmp(&c2, &c2_3, sizeof(cl_change)) == 0);
@@ -117,7 +117,7 @@ static void test_queue_ins_c()
 {
     cl_changeq *q = cl_changeq_new();
     cl_change c1 = cl_changemake_c("char", 'a');
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     debug0msg("%s:%d:%c", q->t->change.prop, q->t->change.value.type, 
               q->t->change.value.u.c);
     CU_ASSERT_PTR_NOT_NULL(q->t);
@@ -138,7 +138,7 @@ static void test_queue_ins_l()
 {
     cl_changeq *q = cl_changeq_new();
     cl_change c1 = cl_changemake_l("width", 0x123456);
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     debug0msg("%s:%d:%#x", q->t->change.prop, q->t->change.value.type, 
               (unsigned)q->t->change.value.u.l);
     CU_ASSERT_PTR_NOT_NULL(q->t);
@@ -158,7 +158,7 @@ static void test_queue_ins_d()
 {
     cl_changeq *q = cl_changeq_new();
     cl_change c1 = cl_changemake_d("double", 123456.0987);
-    q->push(q, &c1);
+    q->pushback(q, &c1);
     debug0msg("%s:%d:%f", q->t->change.prop, q->t->change.value.type, 
               q->t->change.value.u.d);
     CU_ASSERT_PTR_NOT_NULL(q->t);
@@ -184,7 +184,7 @@ static void test_queue_ins_p()
     val.num = 666;
     cl_changeq *q = cl_changeq_new();
     cl_change ch = cl_changemake_p("stuff", &val);
-    q->push(q, &ch);
+    q->pushback(q, &ch);
     debug0msg("%s:%d:%p", q->t->change.prop, q->t->change.value.type, 
               q->t->change.value.u.p);
     debug0msg("%s %d", ((struct stuff *)q->t->change.value.u.p)->str, 
@@ -227,8 +227,8 @@ static void test_queue_ctor()
     CU_ASSERT_PTR_NULL(q->t);
 
     CU_ASSERT_PTR_NOT_NULL(q->destroy);
-    CU_ASSERT_PTR_NOT_NULL(q->get);
-    CU_ASSERT_PTR_NOT_NULL(q->push);
+    CU_ASSERT_PTR_NOT_NULL(q->pop);
+    CU_ASSERT_PTR_NOT_NULL(q->pushback);
     CU_ASSERT_PTR_NOT_NULL(q->wipe);
 }
 

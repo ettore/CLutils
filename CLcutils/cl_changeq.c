@@ -9,20 +9,20 @@
 #include <cl_debug.h>
 #include "cl_changeq.h"
 
-#pragma mark -
-#pragma mark Declarations
-
-static BOOL cl_changeq_isempty(const cl_changeq *q);
-static void cl_changeq_push(cl_changeq *q, const cl_change *c);
-static cl_change cl_changeq_get(cl_changeq *q);
-static void cl_changeq_wipe(cl_changeq *q);
-static void cl_changeq_destroy(cl_changeq *q);
+//#pragma mark -
+//#pragma mark Declarations
+//
+//static BOOL cl_changeq_isempty(const cl_changeq *q);
+//static void cl_changeq_pushback(cl_changeq *q, const cl_change *c);
+//static cl_change cl_changeq_pop(cl_changeq *q);
+//static void cl_changeq_wipe(cl_changeq *q);
+//static void cl_changeq_destroy(cl_changeq *q);
 
 ////////////////////////////////////////////////////////////////////////////////
 // UTILS
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
-#pragma mark Utils ?
+#pragma mark Helpers
 
 cl_change cl_changemake_c(const char *pr, char c)
 {
@@ -64,48 +64,6 @@ cl_change cl_changemake_p(const char *pr, const void *p)
     return ch;
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// PUBLIC API
-////////////////////////////////////////////////////////////////////////////////
-#pragma mark -
-#pragma mark Public API
-
-cl_changeq *cl_changeq_new()
-{
-    cl_changeq *q = (cl_changeq *)malloc(sizeof(cl_changeq));
-    q->h = q->t = NULL;
-    
-    /*
-     try allocating the pointer on the heap and use that inside the nested 
-     function and return that
-     */
-    
-    
-    /*  
-        The nested function can access all the variables of the containing 
-     function that are visible at the point of its definition (lexical scoping).
-        If you try to call the nested function through its address after the 
-     containing function has exited, all hell will break loose. If you try to 
-     call it after a containing scope level has exited, and if it refers to some 
-     of the variables that are no longer in scope, you may be lucky, but it's 
-     not wise to take the risk. If, however, the nested function does not refer 
-     to anything that has gone out of scope, you should be safe.
-     */
-//    void destroy()
-//    {
-//        cl_changeq_destroy(q);
-//    }
-//    q->destroy = destroy;
-    
-    q->isempty = cl_changeq_isempty;
-    q->push = cl_changeq_push;
-    q->get = cl_changeq_get;
-    q->wipe = cl_changeq_wipe;
-    q->destroy = cl_changeq_destroy;
-    
-    return q;
-}
-
 void cl_change_dump(const cl_change *ch)
 {
     fprintf(stderr, "{%s:", ch->prop);
@@ -130,7 +88,7 @@ void cl_change_dump(const cl_change *ch)
 }
 
 //static const char *cl_changeq_ts(cl_changeq *q)
-void cl_changeq_dump(cl_changeq *q)
+void cl_changeq_dump(const cl_changeq *q)
 {
     LOG("cl_changeq DUMP: [");
     if (q == NULL)
@@ -150,10 +108,10 @@ fine:
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// PRIVATE
+// PUBLIC API
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
-#pragma mark Private
+#pragma mark Public API
 
 /*
         H                    T
@@ -162,7 +120,7 @@ fine:
             
  */
 
-static void cl_changeq_push(cl_changeq *q, const cl_change *c)
+void cl_changeq_pushback(cl_changeq *q, const cl_change *c)
 {
     cl_changeq_node *np = (cl_changeq_node*)malloc(sizeof(cl_changeq_node));
     
@@ -179,7 +137,7 @@ static void cl_changeq_push(cl_changeq *q, const cl_change *c)
 }
 
 // client has to check for queue not null
-static cl_change cl_changeq_get(cl_changeq *q)
+cl_change cl_changeq_pop(cl_changeq *q)
 {
     cl_change c;
     
@@ -192,12 +150,12 @@ static cl_change cl_changeq_get(cl_changeq *q)
     return c;
 }
 
-static BOOL cl_changeq_isempty(const cl_changeq *q)
+BOOL cl_changeq_isempty(const cl_changeq *q)
 {
     return (q->h == NULL);
 }
 
-static void cl_changeq_wipe(cl_changeq *q)
+void cl_changeq_wipe(cl_changeq *q)
 {
     if (q == NULL)
         return;
@@ -213,8 +171,38 @@ static void cl_changeq_wipe(cl_changeq *q)
     q->h = q->t = NULL;
 }
 
-static void cl_changeq_destroy(cl_changeq *q)
+void cl_changeq_destroy(cl_changeq *q)
 {
     cl_changeq_wipe(q);
     free(q);
+}
+
+cl_changeq *cl_changeq_new()
+{
+    cl_changeq *q = (cl_changeq *)malloc(sizeof(cl_changeq));
+    q->h = q->t = NULL;
+    
+    /*  
+     The nested function can access all the variables of the containing 
+     function that are visible at the point of its definition (lexical scoping).
+     If you try to call the nested function through its address after the 
+     containing function has exited, all hell will break loose. If you try to 
+     call it after a containing scope level has exited, and if it refers to some 
+     of the variables that are no longer in scope, you may be lucky, but it's 
+     not wise to take the risk. If, however, the nested function does not refer 
+     to anything that has gone out of scope, you should be safe.
+     */
+    //    void destroy()
+    //    {
+    //        cl_changeq_destroy(q); //FAIL q is out of scope
+    //    }
+    //    q->destroy = destroy;
+    
+    q->isempty = cl_changeq_isempty;
+    q->pushback = cl_changeq_pushback;
+    q->pop = cl_changeq_pop;
+    q->wipe = cl_changeq_wipe;
+    q->destroy = cl_changeq_destroy;
+    
+    return q;
 }

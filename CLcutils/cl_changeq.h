@@ -59,21 +59,27 @@ struct cl_changeq
     cl_changeq_node *h;
     cl_changeq_node *t;
     
-    BOOL (*isempty)(const cl_changeq *q);
-    void (*push)(cl_changeq *q, const cl_change *change);
-    cl_change (*get)(cl_changeq *q);
-    void (*wipe)(cl_changeq *q);
-    void (*destroy)(cl_changeq *q);
+    // we need this only in case we decide to implement polymorphism
+    BOOL (*isempty)(const cl_changeq *this);
+    void (*pushback)(cl_changeq *this, const cl_change *change);
+    cl_change (*pop)(cl_changeq *this);
+    void (*wipe)(cl_changeq *this);
+    void (*destroy)(cl_changeq *this);
 };
 
 cl_changeq *cl_changeq_new();
+BOOL        cl_changeq_isempty(const cl_changeq *q);
+void        cl_changeq_pushback(cl_changeq *q, const cl_change *c);
+cl_change   cl_changeq_pop(cl_changeq *q);
+void        cl_changeq_wipe(cl_changeq *q);
+void        cl_changeq_destroy(cl_changeq *q);
 
 #pragma mark -
 #pragma mark CL_CHANGEQ helpers
 
 // helpers
-void cl_changeq_dump(cl_changeq *q);
 void cl_change_dump(const cl_change *ch);
+void cl_changeq_dump(const cl_changeq *q);
 cl_change cl_changemake_c(const char *pr, char c);
 cl_change cl_changemake_l(const char *pr, long long n);
 cl_change cl_changemake_d(const char *pr, double p);
