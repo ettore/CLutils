@@ -218,6 +218,39 @@ static void test_queue_ins_p()
     q->destroy(q);
 }
 
+
+static void test_queue_ins_p_double()
+{
+    double val = 666.66;
+    cl_changeq *q = cl_changeq_new();
+    cl_change ch = cl_change_newp("stuff", &val);
+    q->pushback(q, &ch);
+    debug0msg("%s:%d:%p", q->t->change.prop, q->t->change.value.type, 
+              q->t->change.value.u.p);
+    debug0msg("%f", *((double *)q->t->change.value.u.p));
+    CU_ASSERT_PTR_NOT_NULL(q->t);
+    CU_ASSERT_PTR_EQUAL(q->h, q->t);
+    CU_ASSERT_PTR_NOT_NULL(q->t->change.prop);
+    CU_ASSERT_STRING_EQUAL("stuff", q->t->change.prop);
+    CU_ASSERT_STRING_EQUAL(ch.prop, q->t->change.prop);
+    CU_ASSERT_EQUAL(CL_PTR, q->t->change.value.type);
+    CU_ASSERT_EQUAL(ch.value.type, q->t->change.value.type);
+    CU_ASSERT_EQUAL(ch.value.u.p, q->t->change.value.u.p);
+    
+    CU_ASSERT_EQUAL(666.66, *((double *)q->t->change.value.u.p));
+    
+    // verify we are not cloning the stuff, just storing the pointer
+    CU_ASSERT_EQUAL(&val, q->t->change.value.u.p);
+    CU_ASSERT_EQUAL(val, *((double *)q->t->change.value.u.p));
+    // p1 points to (the cell storing) the u.p pointer
+    double *p1 = (double *)&q->t->change.value.u.p;
+    CU_ASSERT_NOT_EQUAL(*(&val + 1), *(p1 + 1));
+    //    fprintf(stderr, "### ");
+    //    for (int i=0; i < 20; i++) fprintf(stderr, "%c", *(p1 + i));
+    
+    q->destroy(q);
+}
+
 static void test_queue_ctor()
 {
     cl_changeq *q = cl_changeq_new();
@@ -256,6 +289,7 @@ int cl_funcommit_addtests()
         || (NULL == CU_add_test(s1, "ins int", test_queue_ins_l))
         || (NULL == CU_add_test(s1, "ins double", test_queue_ins_d))
         || (NULL == CU_add_test(s1, "ins ptr to struct", test_queue_ins_p))
+        || (NULL == CU_add_test(s1, "ins ptr to double", test_queue_ins_p_double))
         || (NULL == CU_add_test(s1, "ins del", test_queue_ins_del))
         || (NULL == CU_add_test(s1, "ins del struct", test_queue_ins_del_struct))
         || (NULL == CU_add_test(s1, "ins wipe", test_queue_wipe))
