@@ -2,49 +2,41 @@
  *  CLUtils
  *  Created by Ettore Pasquini on 12/20/09.
  *  Copyright 2009 Cubelogic. All rights reserved.
+ *
+ *  Dependencies: cl_changeq.h
  */
 
 #ifndef CL_CHANGEQ_INTERNAL_H_
 #define CL_CHANGEQ_INTERNAL_H_
 
-typedef struct cl_change_val    cl_change_val;
-typedef struct cl_changeq_node  cl_changeq_node; 
-
-typedef enum  {
-    CL_CHAR,
-    CL_INT,
-    CL_DOUBLE,
-    CL_PTR,
-} cl_change_type;
-
 #pragma mark -
-#pragma mark CL_CHANGE_VAL class
 
-struct cl_change_val 
-{
-    const cl_change_type type;
-    const union {
-        char c;
-        long long l;
-        double d;
-        void *p;
-    } u;
-};
+//struct cl_change_val 
+//{
+//    const cl_change_type type;
+//    const union {
+//        char c;
+//        long long l;
+//        double d;
+//        void *p;
+//    } u;
+//};
+//typedef struct cl_change_val    cl_change_val;
+//cl_change cl_change_makec(const char *pr, char c);
+//cl_change cl_change_makel(const char *pr, long long n);
+//cl_change cl_change_maked(const char *pr, double p);
+
+typedef void*   cl_change_val;
 
 struct cl_change 
 {
     const char *prop;
-    const cl_change_val value;
+    const void *value;
 };
 
-cl_change cl_change_newc(const char *pr, char c);
-cl_change cl_change_newl(const char *pr, long long n);
-cl_change cl_change_newd(const char *pr, double p);
-cl_change cl_change_newp(const char *pr, const void *p);
-
 #pragma mark -
-#pragma mark CL_CHANGE_NODE class
 
+typedef struct cl_changeq_node  cl_changeq_node; 
 struct cl_changeq_node 
 {
     cl_change change;
@@ -52,7 +44,6 @@ struct cl_changeq_node
 };
 
 #pragma mark -
-#pragma mark CL_CHANGEQ class
 
 struct cl_changeq 
 {

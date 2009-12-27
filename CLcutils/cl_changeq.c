@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <cl_debug.h>
 #include "cl_changeq.h"
+#include "cl_changeq_internal.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // HELPERS
@@ -17,25 +18,7 @@
 
 void cl_change_dump(const cl_change *ch)
 {
-    fprintf(stderr, "{%s:", ch->prop);
-    switch (ch->value.type)
-    {
-        case CL_CHAR:
-            fprintf(stderr, "%c}", ch->value.u.c);
-            break;
-        case CL_INT:
-            fprintf(stderr, "%lld}", ch->value.u.l);
-            break;
-        case CL_DOUBLE:
-            fprintf(stderr, "%f}", ch->value.u.d);
-            break;
-        case CL_PTR:
-            fprintf(stderr, "%p}", ch->value.u.p);
-            break;
-        default:
-            fprintf(stderr, "UNKNOWNTYPE}");
-            break;
-    }
+    fprintf(stderr, "{%s:%p}", ch->prop, ch->value);
 }
 
 //static const char *cl_changeq_ts(cl_changeq *q)
@@ -64,45 +47,50 @@ fine:
 #pragma mark -
 #pragma mark CL_CHANGE 
 
-cl_change cl_change_newc(const char *pr, char c)
+cl_change cl_change_make(const char *pr, const void *val)
 {
-    cl_change_val val = {CL_CHAR, c};
-    const cl_change ch = {pr, val};
-    return (const cl_change)ch;
-}
-
-cl_change cl_change_newl(const char *pr, long long n)
-{
-    cl_change_val val;
-    cl_change_type *tp = (cl_change_type*)&val.type;
-    long long *lp = (long long *)&val.u.l;
-    *tp = CL_INT;
-    *lp = n;
     const cl_change ch = {pr, val};
     return ch;
 }
 
-cl_change cl_change_newd(const char *pr, double d)
+const char *cl_change_getkey(const cl_change *ch)
 {
-    cl_change_val val;
-    cl_change_type *tp = (cl_change_type*)&val.type;
-    double *dp = (double *)&val.u.d;
-    *tp = CL_DOUBLE;
-    *dp = d;
-    const cl_change ch = {pr, val};
-    return ch;
+    return ch->prop;
 }
 
-cl_change cl_change_newp(const char *pr, const void *p)
+const void *cl_change_getval(const cl_change *ch)
 {
-    cl_change_val val;
-    cl_change_type *tp = (cl_change_type*)&val.type;
-    void **p1 = (void **)&val.u.p;
-    *tp = CL_PTR;
-    *p1 = (void *)p;
-    const cl_change ch = {pr, val};
-    return ch;
+    return ch->value;
 }
+
+//cl_change cl_change_makec(const char *pr, char c)
+//{
+//    cl_change_val val = {CL_CHAR, c};
+//    const cl_change ch = {pr, val};
+//    return (const cl_change)ch;
+//}
+//
+//cl_change cl_change_makel(const char *pr, long long n)
+//{
+//    cl_change_val val;
+//    cl_change_type *tp = (cl_change_type*)&val.type;
+//    long long *lp = (long long *)&val.u.l;
+//    *tp = CL_INT;
+//    *lp = n;
+//    const cl_change ch = {pr, val};
+//    return ch;
+//}
+//
+//cl_change cl_change_maked(const char *pr, double d)
+//{
+//    cl_change_val val;
+//    cl_change_type *tp = (cl_change_type*)&val.type;
+//    double *dp = (double *)&val.u.d;
+//    *tp = CL_DOUBLE;
+//    *dp = d;
+//    const cl_change ch = {pr, val};
+//    return ch;
+//}
 
 ////////////////////////////////////////////////////////////////////////////////
 // CL_CHANGEQ PUBLIC API

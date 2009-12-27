@@ -12,15 +12,16 @@
 typedef signed char		BOOL; 
 #endif
 
-typedef struct cl_change        cl_change;
-typedef struct cl_changeq       cl_changeq;
+// opaque datatypes, see cl_changeq_internals.h for implementation
+typedef struct cl_change    cl_change;
+typedef struct cl_changeq   cl_changeq;
 
 #pragma mark -
 #pragma mark CL_CHANGE class
 
-cl_change cl_change_new(const char *pr, const void *p);
-const char *cl_change_getkey(cl_change *ch);
-const void *cl_change_getval(cl_change *ch);
+cl_change cl_change_make(const char *pr, const void *p);
+const char *cl_change_getkey(const cl_change *ch);
+const void *cl_change_getval(const cl_change *ch);
 
 #pragma mark -
 #pragma mark CL_CHANGEQ class
@@ -37,8 +38,5 @@ void        cl_changeq_destroy(cl_changeq *q);
 
 void cl_change_dump(const cl_change *ch);
 void cl_changeq_dump(const cl_changeq *q);
-
-// temporary
-#include "cl_changeq_internal.h"
 
 #endif

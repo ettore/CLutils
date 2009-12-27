@@ -7,4 +7,4 @@
  *
  */
 
-extern int cl_funcommit_addtests();
+extern int cl_changeq_addtests();

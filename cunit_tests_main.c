@@ -24,7 +24,7 @@ int main(int argc, const char * argv[])
     err = addSmith2SanTests();
     if (err)
         return err;
-    err = cl_funcommit_addtests();
+    err = cl_changeq_addtests();
     if (err)
         return err;
     
