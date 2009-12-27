@@ -19,7 +19,7 @@ typedef struct cl_changeq   cl_changeq;
 #pragma mark -
 #pragma mark CL_CHANGE class
 
-cl_change cl_change_make(const char *pr, const void *p);
+cl_change   cl_change_make(const char *pr, const void *p);
 const char *cl_change_getkey(const cl_change *ch);
 const void *cl_change_getval(const cl_change *ch);
 

@@ -76,6 +76,8 @@ static void test_queue_ins_del_struct()
     CU_ASSERT_TRUE(memcmp(&c1, &c1_1, sizeof(cl_change)) == 0);
     CU_ASSERT_PTR_NOT_EQUAL(&c1, &c1_1);
     CU_ASSERT_TRUE(cl_changeq_isempty(q));
+    
+    cl_changeq_destroy(q);
 }    
 
 static void test_queue_ins_del()
@@ -138,6 +140,8 @@ static void test_queue_ins_del()
     CU_ASSERT_PTR_NOT_EQUAL(&c2, &c2_3);
     CU_ASSERT_PTR_NOT_EQUAL(&c1, &c1_3);
     CU_ASSERT_TRUE(q->isempty(q));
+    
+    cl_changeq_destroy(q);
 }
 
 
@@ -179,7 +183,7 @@ static void test_queue_ins_p()
 //    fprintf(stderr, "### ");
 //    for (int i=0; i < 20; i++) fprintf(stderr, "%c", *(p1 + i));
     
-    q->destroy(q);
+    cl_changeq_destroy(q);
 }
 
 
@@ -204,7 +208,7 @@ static void test_queue_ins_p_double()
     CU_ASSERT_EQUAL(&val, q->t->change.value);
     CU_ASSERT_EQUAL(val, *((double *)q->t->change.value));
     
-    q->destroy(q);
+    cl_changeq_destroy(q);
 }
 
 static void test_queue_ctor()
@@ -226,6 +230,8 @@ static void test_queue_ctor()
     CU_ASSERT_EQUAL(q->pop, cl_changeq_pop);
     CU_ASSERT_EQUAL(q->wipe, cl_changeq_wipe);
     CU_ASSERT_EQUAL(q->destroy, cl_changeq_destroy);
+    
+    cl_changeq_destroy(q);
 }
 
 static void test_queue_destroy()
@@ -233,7 +239,7 @@ static void test_queue_destroy()
     cl_changeq *q = cl_changeq_new();
     debug0msg("size of q=%lu", sizeof(*q));
     CU_ASSERT_PTR_NOT_NULL(q);
-    q->destroy(q);
+    cl_changeq_destroy(q);
 }
 
 int cl_changeq_addtests()
