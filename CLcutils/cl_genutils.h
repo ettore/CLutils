@@ -43,7 +43,7 @@ char *strarrcat(char *dst, const char *strarr[], int arrlen);
 
 /* 
  * Initializes the random generator with 8 bytes. (See "man random".) */
-void cl_init_random();
+void cl_init_random(void);
 
 #ifdef __cplusplus
 }

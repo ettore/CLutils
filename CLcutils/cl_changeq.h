@@ -26,7 +26,7 @@ const void *cl_change_getval(const cl_change *ch);
 #pragma mark -
 #pragma mark CL_CHANGEQ class
 
-cl_changeq *cl_changeq_new();
+cl_changeq *cl_changeq_new(void);
 BOOL        cl_changeq_isempty(const cl_changeq *q);
 void        cl_changeq_pushback(cl_changeq *q, const cl_change *c);
 cl_change   cl_changeq_pop(cl_changeq *q);

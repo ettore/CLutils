@@ -97,7 +97,7 @@ char *strarrcat(char *dst, const char *strarr[], int arrlen)
 }
 
 /* -------------------------------------------------------------------------- */
-void cl_init_random()
+void cl_init_random(void)
 {
     char state[8] = {1, 231, 19, 107, 245, 219, 86, 70};
     initstate(129534, state, 8);

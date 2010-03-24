@@ -6,6 +6,9 @@
 
 #import <Foundation/Foundation.h>
 
+typedef void (* CLFoundationCallback)(id info);
+typedef void (* CLCollectLoginCallback)(NSString *uname, NSString *passwd);
+
 #define CLLocalizedString(key) \
     [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
 

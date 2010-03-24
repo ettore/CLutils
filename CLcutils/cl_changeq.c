@@ -162,7 +162,7 @@ void cl_changeq_destroy(cl_changeq *q)
     free(q);
 }
 
-cl_changeq *cl_changeq_new()
+cl_changeq *cl_changeq_new(void)
 {
     cl_changeq *q = (cl_changeq *)malloc(sizeof(cl_changeq));
     q->h = q->t = NULL;
