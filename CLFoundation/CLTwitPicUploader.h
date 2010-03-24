@@ -4,9 +4,6 @@
 
 #import <Foundation/Foundation.h>
 
-// REFACTOR CLASS INTO IPHONE SUBCLASS
-#import <UIKit/UIKit.h>
-
 typedef void(*CLTwitPicUploaderCallback)(NSString *response);
 
 @protocol CLTwitPicDelegate
@@ -35,8 +32,6 @@ typedef void(*CLTwitPicUploaderCallback)(NSString *response);
 //      successCallback:(CLTwitPicUploaderCallback)fun
 //      failureCallback:(CLTwitPicUploaderCallback)fail;
 
--(int)postSnapshot:(UIView*)view message:(NSString*)msg;
--(int)postImage:(UIImage*)img message:(NSString*)msg;
 -(int)postImageData:(NSData*)imagedata message:(NSString*)msg;
 
 @end
