@@ -9,7 +9,13 @@
 typedef void (* CLFoundationCallback)(id info);
 typedef void (* CLCollectLoginCallback)(NSString *uname, NSString *passwd);
 
-#define CLLocalizedString(key) \
+#define CLLocalized(key) \
     [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
 
 Boolean isEmpty(NSString *s);
+
+// used for defaults archiving
+NSData* arc(id foo);
+
+// de-archive object with 'key' from defaults
+id unarc(NSString* key);
