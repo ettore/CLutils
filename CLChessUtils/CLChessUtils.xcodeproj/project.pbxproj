@@ -10,7 +10,10 @@
 		8DD76FAC0486AB0100D96B5E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.c */; settings = {ATTRIBUTES = (); }; };
 		E56954D1104F9A7A00AD6FD7 /* libcunit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E56954D0104F9A7A00AD6FD7 /* libcunit.a */; };
 		E574398410DE50A60009A9E5 /* cl_smith2san_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E574398210DE50A60009A9E5 /* cl_smith2san_cunittest.c */; };
-		E5FA62D3104E531600F43836 /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62D2104E531600F43836 /* cl_smith2san.c */; };
+		E57B09601176DEDB00E03991 /* cl_smith_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = E57B095E1176DEDB00E03991 /* cl_smith_utils.c */; };
+		E57B09711176E1E300E03991 /* cl_chess_defs.c in Sources */ = {isa = PBXBuildFile; fileRef = E57B09701176E1E300E03991 /* cl_chess_defs.c */; };
+		E57B09AB1176EAC300E03991 /* cl_gensmith_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E57B09A91176EAC300E03991 /* cl_gensmith_cunittest.c */; };
+		E57B0A4B1176FD9F00E03991 /* cl_chess_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = E57B0A4A1176FD9F00E03991 /* cl_chess_utils.c */; };
 		E5FA6302104E574000F43836 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62F9104E574000F43836 /* cl_debug.c */; };
 		E5FA6303104E574000F43836 /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62FC104E574000F43836 /* cl_genutils.c */; };
 		E5FA6304104E574000F43836 /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5FA62FE104E574000F43836 /* CLSTLFunctions.cpp */; };
@@ -37,8 +40,14 @@
 		E574398310DE50A60009A9E5 /* cl_smith2san_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san_cunittest.h; path = tests/cl_smith2san_cunittest.h; sourceTree = "<group>"; };
 		E579D6891055B2400099EE54 /* zzzzzz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = zzzzzz.c; path = "../../../devel/projects/iPhoneChess/other-src/ZZZZZZ Source/zzzzzz.c"; sourceTree = SOURCE_ROOT; };
 		E579D68A1055B2400099EE54 /* zzzzzz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = zzzzzz.h; path = "../../../devel/projects/iPhoneChess/other-src/ZZZZZZ Source/zzzzzz.h"; sourceTree = SOURCE_ROOT; };
-		E5FA62D1104E531600F43836 /* cl_smith2san.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_smith2san.h; sourceTree = "<group>"; };
-		E5FA62D2104E531600F43836 /* cl_smith2san.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_smith2san.c; sourceTree = "<group>"; };
+		E57B095E1176DEDB00E03991 /* cl_smith_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_smith_utils.c; sourceTree = "<group>"; };
+		E57B095F1176DEDB00E03991 /* cl_smith_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_smith_utils.h; sourceTree = "<group>"; };
+		E57B096F1176E1E300E03991 /* cl_chess_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_chess_defs.h; sourceTree = "<group>"; };
+		E57B09701176E1E300E03991 /* cl_chess_defs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_chess_defs.c; sourceTree = "<group>"; };
+		E57B09A91176EAC300E03991 /* cl_gensmith_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_gensmith_cunittest.c; path = tests/cl_gensmith_cunittest.c; sourceTree = "<group>"; };
+		E57B09AA1176EAC300E03991 /* cl_gensmith_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_gensmith_cunittest.h; path = tests/cl_gensmith_cunittest.h; sourceTree = "<group>"; };
+		E57B0A491176FD9F00E03991 /* cl_chess_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_chess_utils.h; sourceTree = "<group>"; };
+		E57B0A4A1176FD9F00E03991 /* cl_chess_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_chess_utils.c; sourceTree = "<group>"; };
 		E5FA62F9104E574000F43836 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
 		E5FA62FA104E574000F43836 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
 		E5FA62FC104E574000F43836 /* cl_genutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_genutils.c; sourceTree = "<group>"; };
@@ -67,6 +76,7 @@
 			children = (
 				E5FA6307104E575300F43836 /* cl_errors.h */,
 				08FB7795FE84155DC02AAC07 /* Source */,
+				E57B099E1176EAAE00E03991 /* tests */,
 				E5FA62F8104E574000F43836 /* cl_debug */,
 				E5FA62FB104E574000F43836 /* CLcutils */,
 				E579D6811055B22E0099EE54 /* ZZZZZZ */,
@@ -79,11 +89,12 @@
 		08FB7795FE84155DC02AAC07 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				08FB7796FE84155DC02AAC07 /* main.c */,
-				E5FA62D1104E531600F43836 /* cl_smith2san.h */,
-				E5FA62D2104E531600F43836 /* cl_smith2san.c */,
-				E574398210DE50A60009A9E5 /* cl_smith2san_cunittest.c */,
-				E574398310DE50A60009A9E5 /* cl_smith2san_cunittest.h */,
+				E57B096F1176E1E300E03991 /* cl_chess_defs.h */,
+				E57B09701176E1E300E03991 /* cl_chess_defs.c */,
+				E57B095F1176DEDB00E03991 /* cl_smith_utils.h */,
+				E57B095E1176DEDB00E03991 /* cl_smith_utils.c */,
+				E57B0A491176FD9F00E03991 /* cl_chess_utils.h */,
+				E57B0A4A1176FD9F00E03991 /* cl_chess_utils.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -111,6 +122,18 @@
 				E579D6891055B2400099EE54 /* zzzzzz.c */,
 			);
 			name = ZZZZZZ;
+			sourceTree = "<group>";
+		};
+		E57B099E1176EAAE00E03991 /* tests */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7796FE84155DC02AAC07 /* main.c */,
+				E574398310DE50A60009A9E5 /* cl_smith2san_cunittest.h */,
+				E57B09AA1176EAC300E03991 /* cl_gensmith_cunittest.h */,
+				E574398210DE50A60009A9E5 /* cl_smith2san_cunittest.c */,
+				E57B09A91176EAC300E03991 /* cl_gensmith_cunittest.c */,
+			);
+			name = tests;
 			sourceTree = "<group>";
 		};
 		E5FA62F8104E574000F43836 /* cl_debug */ = {
@@ -181,12 +204,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76FAC0486AB0100D96B5E /* main.c in Sources */,
-				E5FA62D3104E531600F43836 /* cl_smith2san.c in Sources */,
 				E5FA6302104E574000F43836 /* cl_debug.c in Sources */,
 				E5FA6303104E574000F43836 /* cl_genutils.c in Sources */,
 				E5FA6304104E574000F43836 /* CLSTLFunctions.cpp in Sources */,
 				E5FA6305104E574000F43836 /* cutils_bsd.c in Sources */,
 				E574398410DE50A60009A9E5 /* cl_smith2san_cunittest.c in Sources */,
+				E57B09601176DEDB00E03991 /* cl_smith_utils.c in Sources */,
+				E57B09711176E1E300E03991 /* cl_chess_defs.c in Sources */,
+				E57B09AB1176EAC300E03991 /* cl_gensmith_cunittest.c in Sources */,
+				E57B0A4B1176FD9F00E03991 /* cl_chess_utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

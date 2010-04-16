@@ -3,6 +3,7 @@
 #include <CUnit/CUnit.h>
 #include <CUnit/Basic.h>
 #include "cl_smith2san_cunittest.h"
+#include "cl_gensmith_cunittest.h"
 
 int main(int argc, const char * argv[]) 
 {
@@ -15,6 +16,10 @@ int main(int argc, const char * argv[])
     
     // add suites and tests to the global registry
     err = addSmith2SanTests();
+    if (err)
+        return err;
+
+    err = addGensmithTests();
     if (err)
         return err;
     

@@ -1,5 +1,5 @@
 /*
- *  cl_smith2san_test.c
+ *  cl_smith_utils_test.c
  *  CLChessUtils
  *  Created by Ettore Pasquini on 9/2/09.
  *  Copyright 2009 Cubelogic. All rights reserved.
@@ -11,7 +11,7 @@
 #include <CUnit/CUnit.h> // CUNIT: http://w3.scs.ryerson.ca/~schi/cps707/
 
 #include "cl_smith2san_cunittest.h"
-#include "cl_smith2san.h"
+#include "cl_smith_utils.h"
 
 // for examples: http://en.wikipedia.org/wiki/Chess_notation
 

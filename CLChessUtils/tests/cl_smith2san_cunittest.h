@@ -1,5 +1,5 @@
 /*
- *  cl_smith2san_test.h
+ *  cl_smith_utils_test.h
  *  CLChessUtils
  *
  *  Created by Ettore Pasquini on 9/2/09.
