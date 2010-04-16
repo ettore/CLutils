@@ -12,6 +12,12 @@
 #include "cl_genutils.h"
 
 /* -------------------------------------------------------------------------- */
+double min(double x, double y) 
+{
+    return (x < y) ? x : y;
+}
+
+/* -------------------------------------------------------------------------- */
 void *xmalloc(size_t size)
 {
     register void *value = (void *)malloc (size);

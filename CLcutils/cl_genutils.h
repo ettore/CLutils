@@ -13,6 +13,8 @@ extern "C" {
     
 #include <sys/types.h>
 
+double min(double x, double y);
+    
 /* 
  * If no more space is available, malloc returns a null pointer. One should 
  * check the value of every call to malloc. This subroutine calls malloc and 
