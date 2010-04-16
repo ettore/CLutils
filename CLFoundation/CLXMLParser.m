@@ -109,7 +109,6 @@
     
     // now parse
     parse_successful = [parser parse];
-    debug0msg("parseData successful? %d", parse_successful);
     
     // check parsing results
     if (!parse_successful)
@@ -164,8 +163,8 @@ didStartElement:(NSString *)elemName
   qualifiedName:(NSString *)qName 
      attributes:(NSDictionary *)attrDict
 {
-    debug0msg("elem=%s; namespace=%s; qualifiedName=%s", 
-              [elemName UTF8String], [nsURI UTF8String], [qName UTF8String]);
+    //debug0msg("elem=%s; namespace=%s; qualifiedName=%s", 
+    //          [elemName UTF8String], [nsURI UTF8String], [qName UTF8String]);
     
     // if we already had a error, bail out (we could return whatever we get tho)
     if ([tmpParsed isKindOfClass:[CLXMLParseError class]])
@@ -207,7 +206,7 @@ didStartElement:(NSString *)elemName
 {
     // make sure we work with no namespaces
     assert(qName == nil);
-    debug0msg("end elem: %s", [elemName UTF8String]);
+    //debug0msg("end elem: %s", [elemName UTF8String]);
 }
 
 // -----------------------------------------------------------------------------

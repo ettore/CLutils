@@ -140,7 +140,7 @@
 	
     // (to do) inform the user
     NSLog(@"Connection failed! Error - %@ %@",
-          [err localizedDescription],
+          [err description],
           [[err userInfo] objectForKey:NSErrorFailingURLStringKey]);
 }
 
