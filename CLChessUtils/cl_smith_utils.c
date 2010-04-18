@@ -96,16 +96,18 @@ void gen_smith(char *smith, int from, int to,
                     smith[bi++] = 'E';
                 }
             }
-            else if ((from == 4 && to == 6 && frompiece == CV_WKING)
+            else if ((from == 4 && to == 6 && frompiece == CV_WKING) //short castling
                      || (from == 60 && to == 62 && frompiece == CV_BKING))
             {
                 smith[bi++] = 'c';
             }
-            else if ((from == 4 && to == 2 && frompiece == CV_WKING)
+            else if ((from == 4 && to == 2 && frompiece == CV_WKING) //long castling
                      || (from == 60 && to == 58 && frompiece == CV_BKING))
             {
                 smith[bi++] = 'C';
             }
+            break;
+        default:
             break;
     }
     

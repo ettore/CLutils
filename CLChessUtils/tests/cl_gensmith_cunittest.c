@@ -42,39 +42,66 @@ static void test_captures()
     CHESSVIEW_PIECES board[64];
     char *fen;
 
+    // game: Mister X - Ettore
     // white to move
     fen = "r3k2r/p1pn2p1/bp5n/1N1qppPp/1bPp2Q1/BP2P2B/P2PNP1P/R3K2R w KQkq f6 0 1";
     fen2board(board, fen);
+    gen_smith(smith, 33, 50, ' ', board);//knight capt pawn
+    CU_ASSERT(strncmp(smith, "b5c7p", 8) == 0);
+    
     gen_smith(smith, 38, 47, ' ', board);//pawn captures knight
     CU_ASSERT(strncmp(smith, "g5h6n", 8) == 0);
 
     gen_smith(smith, 16, 25, ' ', board);//bishop capt bishop
     CU_ASSERT(strncmp(smith, "a3b4b", 8) == 0);
 
-    gen_smith(smith, 33, 50, ' ', board);//knight capt pawn
-    CU_ASSERT(strncmp(smith, "b5c7p", 8) == 0);
-    
+    gen_smith(smith, 26, 35, ' ', board);//pawn capt queen
+    CU_ASSERT(strncmp(smith, "c4d5q", 8) == 0);
+
     gen_smith(smith, 38, 45, ' ', board); // en passant capture
     CU_ASSERT(strncmp(smith, "g5f6E", 8) == 0);
 
+    // game: Mister X - Ettore
     // black to move
     fen = "r3k2r/p1pn1pp1/bp5n/1N1qp1Pp/1bPp2Q1/BP2P2B/P2PNP1P/R3K2R b KQkq c3 0 1";
     fen2board(board, fen);
 
-    gen_smith(smith, 40, 33, ' ', board);//black bishop capt knight
+    gen_smith(smith, 27, 20, ' ', board);//black pawn capt pawn
+    CU_ASSERT(strncmp(smith, "d4e3p", 8) == 0);
+    
+    gen_smith(smith, 40, 33, ' ', board); //black bishop capt knight
     CU_ASSERT(strncmp(smith, "a6b5n", 8) == 0);
 
-    gen_smith(smith, 25, 16, ' ', board);//black bishop capt bishop
+    gen_smith(smith, 25, 16, ' ', board); //black bishop capt bishop
     CU_ASSERT(strncmp(smith, "b4a3b", 8) == 0);
 
-    gen_smith(smith, 35, 7, ' ', board);//black queen capt rook
+    gen_smith(smith, 35, 7, ' ', board);  //black queen capt rook
     CU_ASSERT(strncmp(smith, "d5h1r", 8) == 0);
     
-    gen_smith(smith, 39, 30, ' ', board); // black pawn capt queen
+    gen_smith(smith, 39, 30, ' ', board); //black pawn capt queen
     CU_ASSERT(strncmp(smith, "h5g4q", 8) == 0);
     
     gen_smith(smith, 27, 18, ' ', board); // en passant capture
     CU_ASSERT(strncmp(smith, "d4c3E", 8) == 0);
+}
+
+static void test_double_enpassant()
+{
+    char smith[8];
+    CHESSVIEW_PIECES board[64];
+    char *fen;
+    
+    // game: Mister X - Luigi
+    // we have a black pawn on c5, 2 white pawns on b5 and d5. So c6 is an
+    // en passant target square that can be reached by both the 2 white pawns
+    fen = "rnbqk2r/pp1p1ppp/5n2/1PpPp3/8/b7/P1P1PPPP/RNBQKBNR w KQkq c6 0 1";
+    fen2board(board, fen);
+    
+    gen_smith(smith, 33, 42, ' ', board);//white pawn capt black pawn en passant
+    CU_ASSERT(strncmp(smith, "b5c6E", 8) == 0);
+
+    gen_smith(smith, 35, 42, ' ', board);//white pawn capt black pawn en passant
+    CU_ASSERT(strncmp(smith, "d5c6E", 8) == 0);
 }
 
 static void test_castling()
@@ -83,7 +110,7 @@ static void test_castling()
     CHESSVIEW_PIECES board[64];
     char *fen;
     
-    // white to move
+    // game: Mister X - Ettore, white to move
     fen = "r3k2r/p1pn2p1/bp5n/1N1qppPp/1bPp2Q1/BP2P2B/P2PNP1P/R3K2R w KQkq f6 0 1";
     fen2board(board, fen);
     
@@ -93,7 +120,7 @@ static void test_castling()
     gen_smith(smith, 4, 2, ' ', board);//white long castling
     CU_ASSERT(strncmp(smith, "e1c1C", 8) == 0);
 
-    // black to move
+    // game: Mister X - Ettore, black to move
     fen = "r3k2r/p1pn1pp1/bp5n/1N1qp1Pp/1bPp2Q1/BP2P2B/P2PNP1P/R3K2R b KQkq c3 0 1";
     fen2board(board, fen);
 
@@ -102,10 +129,9 @@ static void test_castling()
     
     gen_smith(smith, 60, 58, ' ', board);//black long castling
     CU_ASSERT(strncmp(smith, "e8c8C", 8) == 0);
-    
 }
 
-// add individual smith2san tests here
+// add individual tests here
 int addGensmithTests()
 {
     // create suite and add it to registry
@@ -119,6 +145,7 @@ int addGensmithTests()
     if ((NULL == CU_add_test(s1, "simple moves no capt", test_move_no_capt))
         || (NULL == CU_add_test(s1, "captures", test_captures))
         || (NULL == CU_add_test(s1, "castling", test_castling))
+        || (NULL == CU_add_test(s1, "double en passant", test_double_enpassant))
         )
     {
         CU_cleanup_registry();
