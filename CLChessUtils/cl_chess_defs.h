@@ -89,6 +89,9 @@ typedef enum {
 	MOVESPECIAL_BLACK_PROMOTEKNIGHT
 } MOVESPECIAL;
 
+// tags are a monotone enumeration (0..63) of the squares from white's 
+// perspective. Basically suppose to have white at bottom and start counting 
+// from bottom left to right and up.
 #define H1Tag 7
 #define G1Tag 6
 #define F1Tag 5

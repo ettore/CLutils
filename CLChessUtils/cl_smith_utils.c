@@ -80,7 +80,7 @@ void gen_smith(char *smith, int from, int to,
             break;
         case CV_EMPTY:
             // en passant
-            if (frompiece == CV_WPAWN && from >= 32 && from <= 39)//wpawn on row 5
+            if (frompiece == CV_WPAWN && from >= A4Tag && from <= 39)//wpawn on row 5
             {
                 if ((to == from + 7 && board[to-8] == CV_BPAWN)
                     || (to == from + 9 && board[to-8] == CV_BPAWN))
@@ -96,12 +96,12 @@ void gen_smith(char *smith, int from, int to,
                     smith[bi++] = 'E';
                 }
             }
-            else if ((from == 4 && to == 6 && frompiece == CV_WKING) //short castling
-                     || (from == 60 && to == 62 && frompiece == CV_BKING))
+            else if ((from == 4 && to == G1Tag && frompiece == CV_WKING) //short castling
+                     || (from == 60 && to == G8Tag && frompiece == CV_BKING))
             {
                 smith[bi++] = 'c';
             }
-            else if ((from == 4 && to == 2 && frompiece == CV_WKING) //long castling
+            else if ((from == 4 && to == C1Tag && frompiece == CV_WKING) //long castling
                      || (from == 60 && to == 58 && frompiece == CV_BKING))
             {
                 smith[bi++] = 'C';
@@ -117,7 +117,6 @@ void gen_smith(char *smith, int from, int to,
     
     smith[bi] = 0;
 }
-
 
 /**
  * NB: We need to pass in some kind of data structure with the current board 
