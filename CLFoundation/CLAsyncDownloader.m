@@ -12,7 +12,7 @@
 - (id)initWithDelegate:(NSObject<CLDownloaderDelegate> *)delegate
                  owner:(id)owner
 {
-	if (self = [super init])
+	if ((self = [super init]))
 	{
 		_downloadedData = nil;
 		_expectedDownloadLength = 0;

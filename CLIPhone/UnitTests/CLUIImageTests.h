@@ -12,7 +12,6 @@
 // unit test code is designed to be linked into an independent test executable.
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <UIKit/UIKit.h>
 
 //#import "application_headers" as required
 

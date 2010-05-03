@@ -5,6 +5,8 @@
 
 #import "CLFoundationUtilsTests.h"
 #import "CLFoundationUtils.h"
+#import "cl_gen_utils.h"
+#import "cl_debug.h"
 
 @implementation CLFoundationUtilsTests
 
@@ -21,45 +23,118 @@
 #else                           
 // all code under test is part of the Logic Tests
 
+- (void)testFormattedTimeLeftTypicalCases
+{
+    NSLog(@"---- testFormattedTimeLeftTypicalCases ----");
+    
+    const int onemin  = 60;
+    const int onehour = 3600;
+    const int oneday  = 86400;
+    NSString *s;
+
+    s = formattedTimeLeft(30*oneday - 22*onehour - 30*onemin);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"29 days, 1 h, 30 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+    
+    s = formattedTimeLeft(30*oneday - 22*onehour - 30*onemin - 1);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"29 days, 1 h, 29 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+    
+    s = formattedTimeLeft(29*oneday + 10*onehour + 30*onemin);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"29 days, 10 h, 30 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+    
+    s = formattedTimeLeft(29*oneday + 10*onehour + 30*onemin + 2);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"29 days, 10 h, 30 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    // this one is debatable: one could argue that it should return a rounded
+    // to closest int result (29 days, 10 h, 30 m) instead of brute truncation
+    s = formattedTimeLeft(29*oneday + 10*onehour + 30*onemin - 2);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"29 days, 10 h, 29 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+}
+
 - (void)testFormattedTimeLeft
 {
     NSLog(@"---- testFormattedTimeLeft ----");
     
-    PChessGame *g = [MainTests createGame:1];
     const int onesec  = 1;
     const int onemin  = 60;
     const int onehour = 3600;
     const int oneday  = 86400;
-    const NSTimeInterval today = timestampSinceEpoch();
-    NSString *fmt;
+    NSString *s;
     
-    fmt = formattedTimeLeft(
-    STAssertEquals([fmt compare:@"1 day" options:NSCaseInsensitiveSearch], 
+    s = formattedTimeLeft(oneday);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"1 day" options:NSCaseInsensitiveSearch], 
                    NSOrderedSame, @"wrongly formatted time left");
     
-    g.whiteTimeLeft = oneday * 2;
-    fmt = [g formattedWhiteTimeLeft];
-    STAssertEquals([fmt compare:@"2 days" options:NSCaseInsensitiveSearch], 
+    s = formattedTimeLeft(oneday * 2);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"2 days" options:NSCaseInsensitiveSearch], 
                    NSOrderedSame, @"wrongly formatted time left");
     
     // ignore seconds if we have days worth of time
-    g.whiteTimeLeft = oneday * 2 - onesec;
-    fmt = [g formattedWhiteTimeLeft];
-    STAssertEquals([fmt compare:@"2 days" options:NSCaseInsensitiveSearch], 
+    s = formattedTimeLeft(oneday - onesec);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"23 h, 59 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    s = formattedTimeLeft(oneday * 2 - onesec);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"1 day, 23 h, 59 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    s = formattedTimeLeft(oneday - onemin * 5);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"23 h, 55 m" options:NSCaseInsensitiveSearch], 
                    NSOrderedSame, @"wrongly formatted time left");
     
-    // ignore minutes if we have days worth of time
-    g.whiteTimeLeft = oneday * 2 - onemin;
-    fmt = [g formattedWhiteTimeLeft];
-    STAssertEquals([fmt compare:@"2 days" options:NSCaseInsensitiveSearch], 
+    s = formattedTimeLeft(oneday * 50 - onemin * 5);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"49 days, 23 h, 55 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    s = formattedTimeLeft(oneday - onehour);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"23 hours" options:NSCaseInsensitiveSearch], 
                    NSOrderedSame, @"wrongly formatted time left");
     
-    g.whiteTimeLeft = oneday * 2 - onehour;
-    fmt = [g formattedWhiteTimeLeft];
-    STAssertEquals([fmt compare:@"1 day, 23 h" options:NSCaseInsensitiveSearch], 
+    s = formattedTimeLeft(oneday * 2 - onehour);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"1 day, 23 h" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    s = formattedTimeLeft(oneday - 23*onehour - 5*onemin);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"55 minutes" options:NSCaseInsensitiveSearch], 
                    NSOrderedSame, @"wrongly formatted time left");
     
+    s = formattedTimeLeft(2*oneday - 23*onehour - 5*onemin);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"1 day, 55 m" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    s = formattedTimeLeft(onehour - 5*onemin - 5);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"54 m, 55 s" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
     
+    s = formattedTimeLeft(5*onemin);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"5 minutes" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
+
+    s = formattedTimeLeft(40);
+    debug0cocoa(@"formatted=%@", s);
+    STAssertEquals([s compare:@"40 seconds" options:NSCaseInsensitiveSearch], 
+                   NSOrderedSame, @"wrongly formatted time left");
 }
 
 

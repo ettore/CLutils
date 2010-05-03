@@ -23,6 +23,17 @@ NSData* arc(id foo);
 // de-archive object with 'key' from defaults
 id unarc(NSString* key);
 
+/**
+ * Returns a string with the input time formatted in number of 
+ * days, hours, minutes. Seconds are ignored. The return string contains 
+ * abbreviations for hours, minutes.
+ *
+ * E.g.
+ *      2 days, 23h, 58m
+ * 
+ * Possible to do:
+ *      2 days, 23 hours, 58 minutes
+ */
 NSString *formattedTimeLeft(NSInteger seconds);
 
 #endif
