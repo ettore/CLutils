@@ -4,6 +4,9 @@
  *  Copyright 2009 Cubelogic. All rights reserved.
  */
 
+#ifndef CL_FOUNDATION_UTILS_H_
+#define CL_FOUNDATION_UTILS_H_
+
 #import <Foundation/Foundation.h>
 
 typedef void (* CLFoundationCallback)(id info);
@@ -19,3 +22,7 @@ NSData* arc(id foo);
 
 // de-archive object with 'key' from defaults
 id unarc(NSString* key);
+
+NSString *formattedTimeLeft(NSInteger seconds);
+
+#endif

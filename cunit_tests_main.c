@@ -10,6 +10,7 @@
 #include <CUnit/Basic.h>
 #include "cl_smith2san_cunittest.h"
 #include "cl_changeq_cunittest.h"
+#include "cl_gensmith_cunittest.h"
 
 int main(int argc, const char * argv[]) 
 {
@@ -24,6 +25,11 @@ int main(int argc, const char * argv[])
     err = addSmith2SanTests();
     if (err)
         return err;
+    
+    err = addGensmithTests();
+    if (err)
+        return err;
+    
     err = cl_changeq_addtests();
     if (err)
         return err;

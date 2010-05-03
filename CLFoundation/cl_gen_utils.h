@@ -2,4 +2,5 @@
 
 typedef double CLTimestamp;
 
+// returns seconds since Epoch
 CLTimestamp timestampSinceEpoch();

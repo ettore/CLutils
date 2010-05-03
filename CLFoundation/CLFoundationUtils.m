@@ -11,6 +11,10 @@ Boolean isEmpty(NSString *s)
     return (s == nil || [s compare:@""] == NSOrderedSame);
 }
 
+NSString *formattedTimeLeft(NSInteger seconds)
+{
+}
+
 // used for archiving defaults as NSData
 NSData* arc(id foo) 
 {

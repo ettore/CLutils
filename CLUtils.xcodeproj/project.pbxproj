@@ -94,13 +94,6 @@
 		E5CBE4AE10C4FB360057E62A /* CLUIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4AC10C4FB360057E62A /* CLUIImage.h */; };
 		E5CBE4AF10C4FB360057E62A /* CLUIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4AD10C4FB360057E62A /* CLUIImage.m */; };
 		E5CBE4D610C500070057E62A /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
-		E5CBE4E010C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
-		E5CBE4E110C500240057E62A /* cl_smith2san.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4DF10C500240057E62A /* cl_smith2san.h */; };
-		E5CBE4E210C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
-		E5CBE4E310C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
-		E5CBE4E410C500240057E62A /* cl_smith2san.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4DF10C500240057E62A /* cl_smith2san.h */; };
-		E5CBE4E510C500240057E62A /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
-		E5CBE4E610C500240057E62A /* cl_smith2san.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE4DF10C500240057E62A /* cl_smith2san.h */; };
 		E5CBE4EA10C5005B0057E62A /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
 		E5CBE4EB10C5005B0057E62A /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
 		E5CBE4F810C5011D0057E62A /* cl_gen_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46810C4FB070057E62A /* cl_gen_utils.m */; };
@@ -117,6 +110,14 @@
 		E5CBE50710C501CF0057E62A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CBE50610C501CF0057E62A /* UIKit.framework */; };
 		E5CBE50E10C5023E0057E62A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		E5CBE55F10C502690057E62A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CBE55E10C502690057E62A /* CoreGraphics.framework */; };
+		E5DC2F3A118E8B3600F3EA2A /* CLFoundationUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2F39118E8B3600F3EA2A /* CLFoundationUtilsTests.m */; };
+		E5DC2FF5118E8E6C00F3EA2A /* cl_chess_defs.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FEF118E8E6C00F3EA2A /* cl_chess_defs.c */; };
+		E5DC2FF6118E8E6C00F3EA2A /* cl_chess_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FF1118E8E6C00F3EA2A /* cl_chess_utils.c */; };
+		E5DC2FF7118E8E6C00F3EA2A /* cl_smith_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FF3118E8E6C00F3EA2A /* cl_smith_utils.c */; };
+		E5DC2FF8118E8E6C00F3EA2A /* cl_chess_defs.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FEF118E8E6C00F3EA2A /* cl_chess_defs.c */; };
+		E5DC2FF9118E8E6C00F3EA2A /* cl_chess_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FF1118E8E6C00F3EA2A /* cl_chess_utils.c */; };
+		E5DC2FFA118E8E6C00F3EA2A /* cl_smith_utils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FF3118E8E6C00F3EA2A /* cl_smith_utils.c */; };
+		E5DC2FFD118E8E7E00F3EA2A /* cl_gensmith_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2FFB118E8E7E00F3EA2A /* cl_gensmith_cunittest.c */; };
 		E5F064B910DE2F86004FA0CE /* cl_changeq.h in Headers */ = {isa = PBXBuildFile; fileRef = E5F064B710DE2F86004FA0CE /* cl_changeq.h */; };
 		E5F064BA10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
 		E5F064BB10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
@@ -126,7 +127,6 @@
 		E5F064BF10DE2F86004FA0CE /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
 		E5F064DC10DE4A84004FA0CE /* cunit_tests_main.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064D510DE4A28004FA0CE /* cunit_tests_main.c */; };
 		E5F064DD10DE4A92004FA0CE /* cl_smith2san_cunittest.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */; };
-		E5F064DF10DE4A9B004FA0CE /* cl_smith2san.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE4DE10C500240057E62A /* cl_smith2san.c */; };
 		E5F064E010DE4AB6004FA0CE /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
 		E5F064E110DE4AB9004FA0CE /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
 		E5F064E210DE4ACF004FA0CE /* cutils_bsd.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE45110C4FAF70057E62A /* cutils_bsd.c */; };
@@ -199,12 +199,20 @@
 		E5CBE4B210C4FB410057E62A /* CLUIImageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLUIImageTests.m; sourceTree = "<group>"; };
 		E5CBE4D110C4FFCE0057E62A /* CLUtilsPhoneLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLUtilsPhoneLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CBE4D210C4FFCE0057E62A /* CLUtilsPhoneLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CLUtilsPhoneLogicTests-Info.plist"; sourceTree = "<group>"; };
-		E5CBE4DE10C500240057E62A /* cl_smith2san.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_smith2san.c; path = CLChessUtils/cl_smith2san.c; sourceTree = "<group>"; };
-		E5CBE4DF10C500240057E62A /* cl_smith2san.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san.h; path = CLChessUtils/cl_smith2san.h; sourceTree = "<group>"; };
 		E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_smith2san_cunittest.c; path = CLChessUtils/tests/cl_smith2san_cunittest.c; sourceTree = "<group>"; };
 		E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith2san_cunittest.h; path = CLChessUtils/tests/cl_smith2san_cunittest.h; sourceTree = "<group>"; };
 		E5CBE50610C501CF0057E62A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E5CBE55E10C502690057E62A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E5DC2F38118E8B3600F3EA2A /* CLFoundationUtilsTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLFoundationUtilsTests.h; sourceTree = "<group>"; };
+		E5DC2F39118E8B3600F3EA2A /* CLFoundationUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLFoundationUtilsTests.m; sourceTree = "<group>"; };
+		E5DC2FEF118E8E6C00F3EA2A /* cl_chess_defs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_chess_defs.c; path = CLChessUtils/cl_chess_defs.c; sourceTree = "<group>"; };
+		E5DC2FF0118E8E6C00F3EA2A /* cl_chess_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_chess_defs.h; path = CLChessUtils/cl_chess_defs.h; sourceTree = "<group>"; };
+		E5DC2FF1118E8E6C00F3EA2A /* cl_chess_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_chess_utils.c; path = CLChessUtils/cl_chess_utils.c; sourceTree = "<group>"; };
+		E5DC2FF2118E8E6C00F3EA2A /* cl_chess_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_chess_utils.h; path = CLChessUtils/cl_chess_utils.h; sourceTree = "<group>"; };
+		E5DC2FF3118E8E6C00F3EA2A /* cl_smith_utils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_smith_utils.c; path = CLChessUtils/cl_smith_utils.c; sourceTree = "<group>"; };
+		E5DC2FF4118E8E6C00F3EA2A /* cl_smith_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_smith_utils.h; path = CLChessUtils/cl_smith_utils.h; sourceTree = "<group>"; };
+		E5DC2FFB118E8E7E00F3EA2A /* cl_gensmith_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_gensmith_cunittest.c; path = CLChessUtils/tests/cl_gensmith_cunittest.c; sourceTree = "<group>"; };
+		E5DC2FFC118E8E7E00F3EA2A /* cl_gensmith_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_gensmith_cunittest.h; path = CLChessUtils/tests/cl_gensmith_cunittest.h; sourceTree = "<group>"; };
 		E5F064B710DE2F86004FA0CE /* cl_changeq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq.h; path = CLcutils/cl_changeq.h; sourceTree = "<group>"; };
 		E5F064B810DE2F86004FA0CE /* cl_changeq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_changeq.c; path = CLcutils/cl_changeq.c; sourceTree = "<group>"; };
 		E5F064D510DE4A28004FA0CE /* cunit_tests_main.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cunit_tests_main.c; sourceTree = "<group>"; };
@@ -277,7 +285,7 @@
 				E5745C6710C4F96900DD9090 /* cl_errors.h */,
 				E5745C6010C4F96300DD9090 /* cl_debug */,
 				E5CBE44110C4FAD60057E62A /* CLcutils */,
-				E5CBE40910C4F9E10057E62A /* CLChessUtils */,
+				E5DC2FED118E8E5000F3EA2A /* CLChessUtils */,
 				E5CBE3FE10C4F9CE0057E62A /* CLCarbon */,
 				E5CBE46510C4FB070057E62A /* CLFoundation */,
 				E5CBE41A10C4FA820057E62A /* CLCocoa */,
@@ -324,6 +332,8 @@
 			children = (
 				E5CBE4F710C501050057E62A /* cl_smith2san_cunittest.h */,
 				E5CBE4F610C501050057E62A /* cl_smith2san_cunittest.c */,
+				E5DC2FFC118E8E7E00F3EA2A /* cl_gensmith_cunittest.h */,
+				E5DC2FFB118E8E7E00F3EA2A /* cl_gensmith_cunittest.c */,
 			);
 			name = CLChessUtils;
 			sourceTree = "<group>";
@@ -345,15 +355,6 @@
 				E5CBE40310C4F9CE0057E62A /* tests_cutils_carbon.h */,
 			);
 			path = tests;
-			sourceTree = "<group>";
-		};
-		E5CBE40910C4F9E10057E62A /* CLChessUtils */ = {
-			isa = PBXGroup;
-			children = (
-				E5CBE4DE10C500240057E62A /* cl_smith2san.c */,
-				E5CBE4DF10C500240057E62A /* cl_smith2san.h */,
-			);
-			name = CLChessUtils;
 			sourceTree = "<group>";
 		};
 		E5CBE41A10C4FA820057E62A /* CLCocoa */ = {
@@ -430,6 +431,8 @@
 				E5F41C7A10C5033500763164 /* CLXMLParserPoorManTests.m */,
 				E5F41C7C10C5035B00763164 /* CLMutableArrayCategTests.h */,
 				E5F41C7D10C5035B00763164 /* CLMutableArrayCategTests.m */,
+				E5DC2F38118E8B3600F3EA2A /* CLFoundationUtilsTests.h */,
+				E5DC2F39118E8B3600F3EA2A /* CLFoundationUtilsTests.m */,
 			);
 			path = unitTests;
 			sourceTree = "<group>";
@@ -452,6 +455,19 @@
 			);
 			name = UnitTests;
 			path = CLIPhone/UnitTests;
+			sourceTree = "<group>";
+		};
+		E5DC2FED118E8E5000F3EA2A /* CLChessUtils */ = {
+			isa = PBXGroup;
+			children = (
+				E5DC2FEF118E8E6C00F3EA2A /* cl_chess_defs.c */,
+				E5DC2FF0118E8E6C00F3EA2A /* cl_chess_defs.h */,
+				E5DC2FF1118E8E6C00F3EA2A /* cl_chess_utils.c */,
+				E5DC2FF2118E8E6C00F3EA2A /* cl_chess_utils.h */,
+				E5DC2FF3118E8E6C00F3EA2A /* cl_smith_utils.c */,
+				E5DC2FF4118E8E6C00F3EA2A /* cl_smith_utils.h */,
+			);
+			name = CLChessUtils;
 			sourceTree = "<group>";
 		};
 		E5F064D310DE325B004FA0CE /* CUnit tests */ = {
@@ -486,7 +502,6 @@
 				E5CBE49E10C4FB070057E62A /* CLXMLParseError.h in Headers */,
 				E5CBE4A010C4FB070057E62A /* CLXMLParser.h in Headers */,
 				E5CBE4AE10C4FB360057E62A /* CLUIImage.h in Headers */,
-				E5CBE4E110C500240057E62A /* cl_smith2san.h in Headers */,
 				E5F064BE10DE2F86004FA0CE /* cl_changeq.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,7 +533,6 @@
 				E5CBE48810C4FB070057E62A /* CLURLCateg.h in Headers */,
 				E5CBE48A10C4FB070057E62A /* CLXMLParseError.h in Headers */,
 				E5CBE48C10C4FB070057E62A /* CLXMLParser.h in Headers */,
-				E5CBE4E410C500240057E62A /* cl_smith2san.h in Headers */,
 				E5F064BC10DE2F86004FA0CE /* cl_changeq.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -532,7 +546,6 @@
 				E5CBE45A10C4FAF70057E62A /* cl_genutils.h in Headers */,
 				E5CBE45C10C4FAF70057E62A /* CLSTLFunctions.h in Headers */,
 				E5CBE45E10C4FAF70057E62A /* cutils_bsd.h in Headers */,
-				E5CBE4E610C500240057E62A /* cl_smith2san.h in Headers */,
 				E5F064B910DE2F86004FA0CE /* cl_changeq.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -691,7 +704,6 @@
 				E5CBE49F10C4FB070057E62A /* CLXMLParseError.m in Sources */,
 				E5CBE4A110C4FB070057E62A /* CLXMLParser.m in Sources */,
 				E5CBE4AF10C4FB360057E62A /* CLUIImage.m in Sources */,
-				E5CBE4E010C500240057E62A /* cl_smith2san.c in Sources */,
 				E5F064BF10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,7 +733,6 @@
 				E5CBE48910C4FB070057E62A /* CLURLCateg.m in Sources */,
 				E5CBE48B10C4FB070057E62A /* CLXMLParseError.m in Sources */,
 				E5CBE48D10C4FB070057E62A /* CLXMLParser.m in Sources */,
-				E5CBE4E310C500240057E62A /* cl_smith2san.c in Sources */,
 				E5F064BD10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -735,7 +746,6 @@
 				E5CBE45910C4FAF70057E62A /* cl_genutils.c in Sources */,
 				E5CBE45B10C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */,
 				E5CBE45D10C4FAF70057E62A /* cutils_bsd.c in Sources */,
-				E5CBE4E510C500240057E62A /* cl_smith2san.c in Sources */,
 				E5F064BA10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -754,13 +764,16 @@
 				E5CBE4FE10C5011D0057E62A /* CLURLCateg.m in Sources */,
 				E5CBE4FF10C5011D0057E62A /* CLXMLParseError.m in Sources */,
 				E5CBE50010C5011D0057E62A /* CLXMLParser.m in Sources */,
-				E5CBE4E210C500240057E62A /* cl_smith2san.c in Sources */,
 				E5CBE4EA10C5005B0057E62A /* cl_genutils.c in Sources */,
 				E5CBE4EB10C5005B0057E62A /* cutils_bsd.c in Sources */,
 				E5CBE4D610C500070057E62A /* cl_debug.c in Sources */,
 				E5CBE50110C501420057E62A /* CLUIImage.m in Sources */,
 				E5F41C7E10C5035B00763164 /* CLMutableArrayCategTests.m in Sources */,
 				E5F064BB10DE2F86004FA0CE /* cl_changeq.c in Sources */,
+				E5DC2F3A118E8B3600F3EA2A /* CLFoundationUtilsTests.m in Sources */,
+				E5DC2FF5118E8E6C00F3EA2A /* cl_chess_defs.c in Sources */,
+				E5DC2FF6118E8E6C00F3EA2A /* cl_chess_utils.c in Sources */,
+				E5DC2FF7118E8E6C00F3EA2A /* cl_smith_utils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,13 +783,16 @@
 			files = (
 				E5F064DC10DE4A84004FA0CE /* cunit_tests_main.c in Sources */,
 				E5F064DD10DE4A92004FA0CE /* cl_smith2san_cunittest.c in Sources */,
-				E5F064DF10DE4A9B004FA0CE /* cl_smith2san.c in Sources */,
 				E5F064E010DE4AB6004FA0CE /* cl_debug.c in Sources */,
 				E5F064E110DE4AB9004FA0CE /* cl_genutils.c in Sources */,
 				E5F064E210DE4ACF004FA0CE /* cutils_bsd.c in Sources */,
 				E5F064E310DE4AD0004FA0CE /* CLSTLFunctions.cpp in Sources */,
 				E5A4E84210DEDB5E00B6676C /* cl_changeq.c in Sources */,
 				E56527C110E375290085608A /* cl_changeq_cunittest.c in Sources */,
+				E5DC2FF8118E8E6C00F3EA2A /* cl_chess_defs.c in Sources */,
+				E5DC2FF9118E8E6C00F3EA2A /* cl_chess_utils.c in Sources */,
+				E5DC2FFA118E8E6C00F3EA2A /* cl_smith_utils.c in Sources */,
+				E5DC2FFD118E8E7E00F3EA2A /* cl_gensmith_cunittest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
