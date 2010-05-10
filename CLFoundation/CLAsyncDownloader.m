@@ -142,6 +142,8 @@
     NSLog(@"Connection failed! Error - %@ %@",
           [err description],
           [[err userInfo] objectForKey:NSErrorFailingURLStringKey]);
+    
+    [_delegate downloadDidFail:err];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)cnx

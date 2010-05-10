@@ -8,6 +8,7 @@
 @protocol CLDownloaderDelegate
 
 - (void)downloadDidComplete:(CLAsyncDownloader *)d;
+- (void)downloadDidFail:(NSError *)err;
 
 @end
 
