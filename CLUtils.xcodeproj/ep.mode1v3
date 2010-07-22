@@ -404,7 +404,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>E52BB005118EA66000C0D9C2</string>
+										<string>E52BB006118EA68F00C0D9C2</string>
 										<key>history</key>
 										<array>
 											<string>E5CBE44510C4FAE70057E62A</string>
@@ -648,7 +648,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>294561376.91633898</real>
+	<real>294561423.92170399</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -668,9 +668,9 @@
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>E52BAF99118E98F800C0D9C2</string>
 		<string>E52BAF9A118E98F800C0D9C2</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>E5745BB810C4F7F600DD9090</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/ep/svn/clutils/CLUtils.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
