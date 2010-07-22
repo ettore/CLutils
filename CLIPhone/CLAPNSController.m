@@ -13,6 +13,7 @@
 @implementation CLAPNSController
 
 @synthesize isPushRegistered;
+@synthesize hasSyncedDeviceToken;
 @synthesize deviceToken;
 @synthesize options;
 
@@ -21,6 +22,7 @@
     if ((self = [super init]))
     {
         isPushRegistered = NO;
+        hasSyncedDeviceToken = NO;
     }
     
     return self;
@@ -36,7 +38,8 @@
 
 -(void)receivedDeviceToken:(NSData *)data
 {
-    debug0cocoa(@"registered for push notifications, token=\n%@", data);
+    debug0cocoa(@"registered for push notifications, deviceToken=\n%@", 
+                [data description]);
 
     [data retain];
     if (deviceToken)
@@ -47,7 +50,31 @@
     
     deviceToken = data;
     isPushRegistered = YES;
-    [self sendDeviceTokenToBackend];
+}
+
+-(NSString*)deviceTokenString
+{
+    if (deviceToken == nil)
+        return nil;
+    
+    NSString *tokstr;
+    
+//    const unsigned *tokdata = (const unsigned *)deviceToken;
+//	tokstr = [NSString stringWithFormat:
+//            @"%08x%08x%08x%08x%08x%08x%08x%08x", 
+//            ntohl(tokdata[0]), ntohl(tokdata[1]), ntohl(tokdata[2]), 
+//            ntohl(tokdata[3]), ntohl(tokdata[4]), ntohl(tokdata[5]),
+//            ntohl(tokdata[6]), ntohl(tokdata[7])];
+
+    tokstr = [[[[deviceToken description] 
+                stringByReplacingOccurrencesOfString:@"<" withString:@""] 
+               stringByReplacingOccurrencesOfString:@">" withString:@""] 
+              stringByReplacingOccurrencesOfString:@" " withString:@""];
+	
+    debug0cocoa(@"deviceTokenString: DEVTOK_NSDATA=%@  NEWTOK=%@", 
+                deviceToken, tokstr);
+    
+    return tokstr;
 }
 
 -(void)registrationFailed:(NSError *)err
@@ -63,12 +90,19 @@
     isPushRegistered = NO;
 }
 
-/*
-The application should connect with its provider and pass it this token, encoded in binary format. By requesting the device token and passing it to the provider every time your application launches, you help to ensure that the provider has the *CURRENT TOKEN* for the device. If a user restores a backup to a device other than the one that the backup was created for (for example, the user migrates data to a new device), he or she must launch the application at least once for it to receive notifications again. If the user restores backup data to a new device or reinstalls the operating system, the device token changes. Moreover, never cache a device token and give that to your provider; always get the token from the system whenever you need it.
- */
--(void)sendDeviceTokenToBackend
+-(NSInteger)badgeCount
 {
-    // send token with user id?
+    if (options == nil)
+        return 0;
+    
+    NSDictionary *aps = [options objectForKey:@"aps"];
+    if (aps == nil)
+        return 0;
+    
+    if ([aps objectForKey:@"badge"])
+        return [[aps objectForKey:@"badge"] integerValue];
+    
+    return 0;
 }
 
 /*

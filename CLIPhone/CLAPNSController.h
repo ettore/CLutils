@@ -21,11 +21,13 @@
 
 @interface CLAPNSController : NSObject {
     BOOL isPushRegistered; //is it registered for push notifications or not
+    BOOL hasSyncedDeviceToken; //has the device token been synced upon startup
     NSData *deviceToken;   //comes from APNS once you register
     NSDictionary *options; //from application:didFinishLaunchingWithOptions:
 }
 
 @property(nonatomic) BOOL isPushRegistered;
+@property(nonatomic) BOOL hasSyncedDeviceToken;
 @property(nonatomic,retain,readonly) NSData *deviceToken;
 @property(nonatomic,retain) NSDictionary *options;
 
@@ -39,6 +41,10 @@
 // registration with APNS failed :(
 -(void)registrationFailed:(NSError *)err;
 
--(void)sendDeviceTokenToBackend;
+// returns badge count with current options dictionary
+-(NSInteger)badgeCount;
+
+// convert NSData to string
+-(NSString*)deviceTokenString;
 
 @end
