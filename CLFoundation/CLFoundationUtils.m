@@ -6,6 +6,7 @@
 
 #import "CLFoundationUtils.h"
 #import <Foundation/Foundation.h>
+#import "cl_debug.h"
 
 Boolean isEmpty(NSString *s)
 {
@@ -48,7 +49,6 @@ NSString *formattedTimeLeft(NSInteger seconds)
     else if (d == 0 && h == 0 && m == 0)
         s = [NSString stringWithFormat:@"%d seconds", secs];
     
-    
     return s;
 }
 
@@ -68,3 +68,9 @@ id unarc(NSString* key)
     return [NSKeyedUnarchiver unarchiveObjectWithData:temp];
 }
 
+void debugViewFrame(char *label, id a_view)
+{
+    CGRect f = [a_view frame];
+    debug0msg("%s, O (%.2f,%.2f) W=%.2f H=%.2f", label,
+              f.origin.x, f.origin.y, f.size.width, f.size.height);
+}

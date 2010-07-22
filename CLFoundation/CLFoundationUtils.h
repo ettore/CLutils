@@ -36,4 +36,6 @@ id unarc(NSString* key);
  */
 NSString *formattedTimeLeft(NSInteger seconds);
 
+void debugViewFrame(char *label, id a_view);
+
 #endif
