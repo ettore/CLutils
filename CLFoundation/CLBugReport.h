@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface CLBugReport : NSObject {
     NSString *competency;
     NSString *functionality;
@@ -38,3 +37,12 @@
 - (NSString *)body;
 
 @end
+
+@protocol BugReportDelegate
+
+- (CLBugReport*)bugReport;
+- (void)setBugReport:(CLBugReport*)bugreport;
+- (NSString*)competency;
+
+@end
+
