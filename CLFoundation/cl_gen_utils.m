@@ -10,3 +10,17 @@ timestampSinceEpoch()
     // NSTimeIntervalSince1970 = seconds from Epoch and 1/1/2001
     return [NSDate timeIntervalSinceReferenceDate] + NSTimeIntervalSince1970;
 }
+
+void CLSupportSendEmail(CFStringRef subject, CFStringRef body)
+{
+    NSString *s;
+    
+    s = [NSString stringWithFormat:
+         @"mailto:support@cubelogic.org?subject=%@ Bug&body=%@", 
+         subject, body];
+    s = [s stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURL *url = [NSURL URLWithString:s];
+    
+    [[UIApplication sharedApplication] openURL:url];
+}
