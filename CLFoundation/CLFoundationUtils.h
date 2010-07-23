@@ -15,6 +15,8 @@ typedef void (* CLCollectLoginCallback)(NSString *uname, NSString *passwd);
 #define CLLocalized(key) \
     [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
 
+NSInteger data2int(CFDataRef data, unsigned size);
+
 Boolean isEmpty(NSString *s);
 
 // used for defaults archiving
@@ -35,6 +37,16 @@ id unarc(NSString* key);
  *      2 days, 23 hours, 58 minutes
  */
 NSString *formattedTimeLeft(NSInteger seconds);
+
+
+/**
+ * Returns a shortened version of a given name, taking the first words that 
+ * match the given length. E.g.
+ *      shortenedName(@"Ettore Pasquini", 10) --> "Ettore"
+ * If the first word is still too long, it will be returned truncated with a
+ * tolerance of + 2 additional chars.
+ */
+NSString *shortenedName(NSString *name, int max_len);
 
 void debugViewFrame(char *label, id a_view);
 

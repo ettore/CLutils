@@ -7,6 +7,19 @@
 #import "CLFoundationUtils.h"
 #import <Foundation/Foundation.h>
 #import "cl_debug.h"
+#import "CLMutableCharacterSetCateg.h"
+
+NSInteger data2int(CFDataRef data, unsigned size)
+{
+    NSString *s;
+    char buf[size];
+    memset(buf, 0, size);
+    CFDataGetBytes(data, CFRangeMake(0,size), (UInt8*)buf);
+    s = [NSString stringWithUTF8String:buf]; //(char*)[data bytes]];dont work
+    debug0cocoa(@"CFData as string=[%@]", s);
+    NSInteger val = [s integerValue];
+    return val;
+}
 
 Boolean isEmpty(NSString *s)
 {
@@ -50,6 +63,28 @@ NSString *formattedTimeLeft(NSInteger seconds)
         s = [NSString stringWithFormat:@"%d seconds", secs];
     
     return s;
+}
+
+NSString *shortenedName(NSString *name, int max_len)
+{
+    int len = [name length];
+    if (len <= max_len)
+        return name;
+    
+    NSCharacterSet *charset = [NSMutableCharacterSet punctSpaces];
+    NSString *trimmed = [name stringByTrimmingCharactersInSet:charset];
+    if ([trimmed length] == 0)
+        return [name substringToIndex:max_len];
+    
+    NSArray *pieces = [trimmed componentsSeparatedByCharactersInSet:charset];
+    trimmed = [pieces objectAtIndex:0];
+    
+    // concede tolerance of 2 extra chars, if still longer, truncate
+    len = [trimmed length];
+    if (len > max_len + 2)
+        return [trimmed substringToIndex:max_len];
+    
+    return trimmed;
 }
 
 // used for archiving defaults as NSData
