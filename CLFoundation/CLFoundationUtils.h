@@ -15,6 +15,8 @@ typedef void (* CLCollectLoginCallback)(NSString *uname, NSString *passwd);
 #define CLLocalized(key) \
     [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
 
+CFStringRef percEscStr(CFStringRef str);
+
 NSInteger data2int(CFDataRef data, unsigned size);
 
 Boolean isEmpty(NSString *s);
@@ -47,7 +49,5 @@ NSString *formattedTimeLeft(NSInteger seconds);
  * tolerance of + 2 additional chars.
  */
 NSString *shortenedName(NSString *name, int max_len);
-
-void debugViewFrame(char *label, id a_view);
 
 #endif

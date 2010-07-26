@@ -8,7 +8,4 @@ typedef double CLTimestamp;
 // returns seconds since Epoch
 CLTimestamp timestampSinceEpoch();
 
-// send an email to Cubelogic Support (support@cubelogic.org)
-void CLSupportSendEmail(CFStringRef subject, CFStringRef body);
-
 #endif

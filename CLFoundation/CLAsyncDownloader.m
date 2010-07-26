@@ -87,7 +87,7 @@
     req = [[[NSMutableURLRequest alloc] init] autorelease];
     
     // set things up for our POST request
-    post_data = [post_str dataUsingEncoding:NSASCIIStringEncoding];
+    post_data = [post_str dataUsingEncoding:NSUTF8StringEncoding];
     post_len = [NSString stringWithFormat:@"%d", [post_str length]];
     [req setURL:[NSURL URLWithString:url_str]];
     [req setHTTPMethod:@"POST"];

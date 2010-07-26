@@ -4,10 +4,24 @@
  *  Copyright 2009 Cubelogic. All rights reserved.
  */
 
-#import "CLFoundationUtils.h"
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+
 #import "cl_debug.h"
+
+#import "CLFoundationUtils.h"
 #import "CLMutableCharacterSetCateg.h"
+
+// percent-escape a URL string
+CFStringRef percEscStr(CFStringRef str)
+{
+    CFStringRef s;
+    CFStringRef escaped = CFSTR(":/?#[]@!$&’()*+,;'= ");
+    s = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, str, NULL, 
+                                                escaped, kCFStringEncodingUTF8);
+    [(NSString*)s autorelease];
+    return s;
+}
 
 NSInteger data2int(CFDataRef data, unsigned size)
 {
@@ -103,9 +117,3 @@ id unarc(NSString* key)
     return [NSKeyedUnarchiver unarchiveObjectWithData:temp];
 }
 
-void debugViewFrame(char *label, id a_view)
-{
-    CGRect f = [a_view frame];
-    debug0msg("%s, O (%.2f,%.2f) W=%.2f H=%.2f", label,
-              f.origin.x, f.origin.y, f.size.width, f.size.height);
-}

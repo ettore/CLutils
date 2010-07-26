@@ -23,6 +23,21 @@
 #else                           
 // all code under test is part of the Logic Tests
 
+- (void)testPercEscStr
+{
+    NSLog(@"---- testPercEscStr ----");
+    CFStringRef s1 = CFSTR("':/?#[]@!$&();=+*, ");
+    CFStringRef s2 = percEscStr(s1);
+    debug0cocoa(@"percent-escaped string:%@", s2);
+    STAssertTrue([(NSString *)s2 isEqualToString:
+                  @"%27%3A%2F%3F%23%5B%5D%40%21%24%26%28%29%3B%3D%2B%2A%2C%20"], @"");
+    
+    s2 = percEscStr(CFSTR("’"));
+    debug0cocoa(@"percent-escaped APOSTROPHE:%@", s2);
+    STAssertTrue([(NSString *)s2 isEqualToString:@"%E2%80%99"], 
+                 @"apostrophe escaped differently");
+}
+
 - (void)testFormattedTimeLeftTypicalCases
 {
     NSLog(@"---- testFormattedTimeLeftTypicalCases ----");
