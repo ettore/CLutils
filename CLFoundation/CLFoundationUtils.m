@@ -12,13 +12,86 @@
 #import "CLFoundationUtils.h"
 #import "CLMutableCharacterSetCateg.h"
 
+BOOL cl_isvalid_email(CFStringRef str)
+{
+    if (str == nil)
+        return NO;
+    
+    char *s = (char*)[(NSString*)str UTF8String];
+    int i = 0, at_cnt = 0, is_letter = 0;
+    int len = [(NSString*)str length];
+    char c = '\0', prevc;
+    NSString *illegal = [NSString stringWithUTF8String:",/:;<=>?[\\]^`"];
+    NSCharacterSet *illeg;
+    BOOL success = YES;
+    BOOL got_name = NO, got_tld = NO;
+    BOOL got_period = NO; // check period after @
+    const NSRange notfound = NSMakeRange(NSNotFound, 0);
+    
+    illeg = [NSCharacterSet characterSetWithCharactersInString:illegal];
+    NSRange r = [(NSString *)str rangeOfCharacterFromSet:illeg];
+    if (r.length != notfound.length || r.location != notfound.location)
+        return NO;
+    
+    debug0msg("len=%d s=[%s]", len,s);
+    while (success && i < len)
+    {
+        prevc = c;
+        c = s[i];
+        is_letter = isalpha(c);
+        
+        if (c == '@')
+            at_cnt++;
+        
+        if (at_cnt == 0 && is_letter)
+            got_name = YES;
+        
+        if (got_name && c == '.' && at_cnt >= 1) 
+            got_period = YES;
+        
+        if (got_name && got_period && at_cnt >= 1 && is_letter)
+            got_tld = YES;
+        
+        //debug0msg("c=%c gotname=%d gotperiod=%d gottld=%d ",
+        //          c, got_name, got_period, got_tld);
+        // 0x2B = '+'    0x7A = 'z'
+        if (c < 0x2B || c > 0x7A 
+            || at_cnt > 1 
+            || ((prevc == '.' || prevc == '@') && c == '@')
+            || ((prevc == '.' || prevc == '@') && c == '.'))
+            success = NO;
+        
+        i++;
+    } 
+    
+    return (success && got_name && got_period && got_tld);
+}
+
+BOOL cl_isascii_str(CFStringRef str)
+{
+    if (str == nil)
+        return NO;
+    
+    char *s = (char*)[(NSString*)str UTF8String];
+    int i = -1;
+    int len = CFStringGetLength(str);
+    if (len == 0)
+        return NO;
+    
+    while (++i < len)
+        if (!isascii(s[i]) || s[i] == 0x7F) //7F is DELETE char
+            return NO;
+    
+    return YES;
+}
+
 // percent-escape a URL string
 CFStringRef percEscStr(CFStringRef str)
 {
     CFStringRef s;
-    CFStringRef escaped = CFSTR(":/?#[]@!$&’()*+,;'= ");
+    CFStringRef escthis = CFSTR(":/?#[]@!$&’()*+,;'= ");
     s = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, str, NULL, 
-                                                escaped, kCFStringEncodingUTF8);
+                                                escthis, kCFStringEncodingUTF8);
     [(NSString*)s autorelease];
     return s;
 }

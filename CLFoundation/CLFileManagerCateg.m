@@ -66,7 +66,7 @@ extension. To remove the directory path, see extractFromAbsPath:removeExt:.
 
 /*" Returns an array of the files included in `dirName' complying with the 
 extensions specified by `fileTypes'. 
-[bullshit: The elements of `fileTypes' must be 
+[The elements of `fileTypes' must be 
 properly ordered, that is, for extensions "AIF", "AIFF", etc., the proper 
 order is "AIFF", "AIF"]
 "*/

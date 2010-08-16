@@ -2,10 +2,10 @@
 //  Created by Ettore Pasquini on 12/11/08.
 //  Copyright 2008 Cubelogic. All rights reserved.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 
-@interface CLXMLParser : NSObject 
+@interface CLXMLParser : NSObject <NSXMLParserDelegate>
 {
 @private
     id tmpParsed; // array of instances created by createElementWithName

@@ -210,6 +210,7 @@
 		AA747D9E0F9514B9006C5449 /* CLUtils_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLUtils_Prefix.pch; sourceTree = "<group>"; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libCLUtilsPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsPhone.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E52D3A9012188DE200062C94 /* CLiOSmacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLiOSmacros.h; path = CLIPhone/CLiOSmacros.h; sourceTree = "<group>"; };
 		E56527BF10E375290085608A /* cl_changeq_cunittest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_changeq_cunittest.c; path = CLcutils/tests/cl_changeq_cunittest.c; sourceTree = "<group>"; };
 		E56527C010E375290085608A /* cl_changeq_cunittest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq_cunittest.h; path = CLcutils/tests/cl_changeq_cunittest.h; sourceTree = "<group>"; };
 		E565282D10E6041C0085608A /* cl_changeq_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_changeq_internal.h; path = CLcutils/cl_changeq_internal.h; sourceTree = "<group>"; };
@@ -597,6 +598,7 @@
 		E5CBE4A410C4FB200057E62A /* CLIPhone */ = {
 			isa = PBXGroup;
 			children = (
+				E52D3A9012188DE200062C94 /* CLiOSmacros.h */,
 				E5CBE4AC10C4FB360057E62A /* CLUIImage.h */,
 				E5CBE4AD10C4FB360057E62A /* CLUIImage.m */,
 				E565B3EF11FD560200C7171E /* CLActionSheet.h */,
@@ -1080,11 +1082,12 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "./**";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-fnested-functions";
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator3.1.3;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
@@ -1101,11 +1104,12 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "./**";
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-fnested-functions";
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator3.1.3;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Release;
 		};

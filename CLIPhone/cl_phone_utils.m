@@ -10,6 +10,16 @@
 
 #include "cl_debug.h" 
 #import "cl_phone_utils.h"
+#import "CLiOSmacros.h"
+
+BOOL isIPad()
+{
+    if (RUNNING_IOS_3_2_OR_GREATER)
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+            return YES;
+    
+    return NO;
+}
 
 void CLSupportSendEmail(CFStringRef subject, CFStringRef body)
 {

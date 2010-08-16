@@ -11,6 +11,8 @@
 
 @class UIView;
 
+BOOL isIPad();
+
 // send an email to Cubelogic Support (support@cubelogic.org)
 void CLSupportSendEmail(CFStringRef subject, CFStringRef body);
 

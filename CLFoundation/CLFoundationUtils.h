@@ -2,6 +2,9 @@
  *  PostalChess
  *  Created by Ettore Pasquini on 7/19/09.
  *  Copyright 2009 Cubelogic. All rights reserved.
+ *  
+ *  These utils expose a dependency with CF in their interface.
+ *
  */
 
 #ifndef CL_FOUNDATION_UTILS_H_
@@ -15,8 +18,20 @@ typedef void (* CLCollectLoginCallback)(NSString *uname, NSString *passwd);
 #define CLLocalized(key) \
     [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
 
+BOOL cl_isvalid_email(CFStringRef s);
+
+/**
+ * @return YES if the string contains only ASCII characters (code < 0x7F)
+ *         NO otherwise
+ */
+BOOL cl_isascii_str(CFStringRef s);
+
+/**
+ * Percent-escapes i.e. url-encodes a string.
+ */
 CFStringRef percEscStr(CFStringRef str);
 
+/** Extracts a int from given CFData. */
 NSInteger data2int(CFDataRef data, unsigned size);
 
 Boolean isEmpty(NSString *s);
@@ -39,7 +54,6 @@ id unarc(NSString* key);
  *      2 days, 23 hours, 58 minutes
  */
 NSString *formattedTimeLeft(NSInteger seconds);
-
 
 /**
  * Returns a shortened version of a given name, taking the first words that 

@@ -1,0 +1,13 @@
+/*
+ *  CLUtilsIPhone.h
+ *  CLUtils
+ *
+ *  Created by Ettore Pasquini on 7/25/10.
+ *  Copyright 2010 Cubelogic. All rights reserved.
+ *
+ */
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#endif

@@ -23,6 +23,83 @@
 #else                           
 // all code under test is part of the Logic Tests
 
+- (void)test_cl_isvalid_email
+{
+    NSLog(@"---- test_cl_isvalid_email ----");
+
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"e@cubelogic.org"), @"");
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"a@b.it"), @"");
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"ettore_p@cubelogic.org"), @"");
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"ep123@cubelogic.org"), @"");
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"ep-123@cubelogic.org"), @"");
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"ep+123@cubelogic.org"), @"");
+    STAssertTrue(cl_isvalid_email((CFStringRef)@"e.p_1-2+3@cu-be.logic.org"), @"");
+    
+    STAssertFalse(cl_isvalid_email(nil), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@""), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"a"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"b@a."), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"@a.d"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"@a. "), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@" @a. "), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"  ettore_p@cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ettore_p@cubelogic.org  "), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep 123@cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123 @cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@cubelogic .com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123!@cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep$123@cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"e^p123@cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@cube%logic.com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123cube&logic.com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@cubelogi*c.com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@cubelogic().com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@c=ubelogic.com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123?@cubelogic.org"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@cubelogic?.com"), @"");
+    
+    // invalid email, but valid characters
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@cubelogiccom"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123@info@domecom"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123cubelogiccom"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep123cubelogic..com"), @"");
+    
+    // period and @ combos
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ep..123@cubelogiccom"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"mario..luigi@italia.it"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"ettore@cubelogic..com"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"mario.@italia.it"), @"");
+    STAssertFalse(cl_isvalid_email((CFStringRef)@"mario@.italia.it"), @"");
+}
+
+- (void)test_cl_isascii_str
+{
+    NSLog(@"---- test_cl_isascii_str ----");
+    CFStringRef s;
+    char cs[16];
+    
+    s = (CFStringRef)[NSString stringWithUTF8String:"~!@#$()_+{}|\\abc"];
+    STAssertTrue(cl_isascii_str(s), @"");
+    s = (CFStringRef)[NSString stringWithUTF8String:"\""];
+    STAssertTrue(cl_isascii_str(s), @"");
+
+    s = (CFStringRef)[NSString stringWithUTF8String:""];
+    STAssertFalse(cl_isascii_str(s), @"");
+    s = (CFStringRef)[NSString stringWithUTF8String:"€"];
+    STAssertFalse(cl_isascii_str(s), @"");
+    s = (CFStringRef)[NSString stringWithUTF8String:"as bc€"];
+    STAssertFalse(cl_isascii_str(s), @"");
+    s = (CFStringRef)[NSString stringWithUTF8String:"€a"];
+    STAssertFalse(cl_isascii_str(s), @"");
+    
+    memset(cs, 0, 16);
+    cs[0] = 0x7F;
+    s = (CFStringRef)[NSString stringWithUTF8String:cs];
+    STAssertFalse(cl_isascii_str(s), @"");
+    
+    
+}
+
 - (void)testPercEscStr
 {
     NSLog(@"---- testPercEscStr ----");
