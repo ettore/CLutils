@@ -267,9 +267,12 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 #if !defined(CL_DEBUG_DISABLE) && defined(USING_COREFOUNDATION)
 //        [DATA getBytes:buf length:4096];                                     
 #define debugNSData(ST, DATA)        do {                                      \
-    char buf[4096]; memset(buf, 0, 4096);                                      \
-    CFDataGetBytes((CFDataRef)DATA, CFRangeMake(0,4096), (UInt8*)buf);         \
-    debug0msg("%s\n%s\n", ST, buf);                                            \
+    CFIndex cldbglen = CFDataGetLength((CFDataRef)DATA);                       \
+    char *cldbgbuf = (char*)malloc(cldbglen);                                  \
+    memset(cldbgbuf, 0, cldbglen);                                            \
+    CFDataGetBytes((CFDataRef)DATA, CFRangeMake(0,cldbglen), (UInt8*)cldbgbuf);\
+    debug0msg("%s\n%s\n", ST, cldbgbuf);                                     \
+    free(cldbgbuf);                                                            \
 } while (0)
 #else
 #define debugNSData(ST, DATA)
