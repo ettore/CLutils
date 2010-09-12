@@ -99,8 +99,9 @@
     if (aps == nil)
         return 0;
     
-    if ([aps objectForKey:@"badge"])
-        return [[aps objectForKey:@"badge"] integerValue];
+    id badgeobj = [aps objectForKey:@"badge"];
+    if (badgeobj)
+        return [badgeobj integerValue];
     
     return 0;
 }

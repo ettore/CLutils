@@ -12,6 +12,37 @@
 #import "cl_phone_utils.h"
 #import "CLiOSmacros.h"
 
+void init_ios_logging(CFStringRef appname, CFStringRef logname)
+{
+    NSString *logpath;
+
+#if TARGET_IPHONE_SIMULATOR == 0
+    NSArray *p;
+    NSString *docdir;
+    
+    p = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    docdir = [p objectAtIndex:0];
+    logpath = [docdir stringByAppendingPathComponent:(NSString*)logname];
+    
+    // redirect stderr (used by NSLog etc) to our logfile
+    freopen([logpath cStringUsingEncoding:NSASCIIStringEncoding],"w+",stderr);
+#else
+    logpath = @"";
+#endif
+    
+    // init cl_debug with our logfile
+    cl_debug_init([(NSString*)appname UTF8String], [logpath UTF8String]);
+}
+
+void redirect_stderr(CFStringRef logname)
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *docdir = [paths objectAtIndex:0];
+    NSString *logpath = [docdir stringByAppendingPathComponent:(NSString*)logname];
+    freopen([logpath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+}
+
 BOOL isIPad()
 {
     if (RUNNING_IOS_3_2_OR_GREATER)
