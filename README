@@ -2,7 +2,6 @@ CLutils
 
 CLutils is a collection of functions mostly tailored for Mac OS X and iPhone development, with some cross-platform exceptions. Here's a quick breakdown.
 
-
 cl_debug (cross platform)
 Light-weight macro library for printf debugging (see http://cubelogic.org/cl_debug ) 
 
@@ -23,3 +22,7 @@ Objective-C routines, with dependencies on Foundation only.
 
 CLIPhone (iOS)
 Objective-C routines with UIKit dependencies.
+
+----
+
+BSD License
