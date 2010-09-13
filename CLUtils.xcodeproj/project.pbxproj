@@ -80,6 +80,11 @@
 		E565B4D311FD5B6B00C7171E /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E565B4D211FD5B6B00C7171E /* libz.1.2.3.dylib */; };
 		E565B4D711FD5B9400C7171E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E565B4D611FD5B9400C7171E /* SystemConfiguration.framework */; };
 		E565B4EC11FD5BD100C7171E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E565B4EB11FD5BD100C7171E /* CFNetwork.framework */; };
+		E56C2987123DA03000786377 /* cl_cocoa_cwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = E56C2985123DA03000786377 /* cl_cocoa_cwrap.h */; };
+		E56C2988123DA03000786377 /* cl_cocoa_cwrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E56C2986123DA03000786377 /* cl_cocoa_cwrap.m */; };
+		E56C29A0123DA73000786377 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56C299F123DA73000786377 /* Cocoa.framework */; };
+		E56C2A1E123DAD5600786377 /* bannerwindow_cwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = E56C2A1C123DAD5600786377 /* bannerwindow_cwrap.h */; };
+		E56C2A1F123DAD5600786377 /* bannerwindow_cwrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E56C2A1D123DAD5600786377 /* bannerwindow_cwrap.m */; };
 		E5745C6310C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
 		E5745C6410C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
 		E5745C6510C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
@@ -104,10 +109,6 @@
 		E5CBE43A10C4FA820057E62A /* CLTableViewRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42710C4FA820057E62A /* CLTableViewRecord.m */; };
 		E5CBE43B10C4FA820057E62A /* CLTableViewUserDefaultsController.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42810C4FA820057E62A /* CLTableViewUserDefaultsController.h */; };
 		E5CBE43C10C4FA820057E62A /* CLTableViewUserDefaultsController.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42910C4FA820057E62A /* CLTableViewUserDefaultsController.m */; };
-		E5CBE43D10C4FA820057E62A /* cocoa_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42A10C4FA820057E62A /* cocoa_utils.h */; };
-		E5CBE43E10C4FA820057E62A /* cocoa_utils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42B10C4FA820057E62A /* cocoa_utils.m */; };
-		E5CBE43F10C4FA820057E62A /* qt_cocoa_utils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE42C10C4FA820057E62A /* qt_cocoa_utils.h */; };
-		E5CBE44010C4FA820057E62A /* qt_cocoa_utils.mm in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE42D10C4FA820057E62A /* qt_cocoa_utils.mm */; };
 		E5CBE45310C4FAF70057E62A /* cl_genutils.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44D10C4FAF70057E62A /* cl_genutils.c */; };
 		E5CBE45410C4FAF70057E62A /* cl_genutils.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE44E10C4FAF70057E62A /* cl_genutils.h */; };
 		E5CBE45510C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */; };
@@ -251,6 +252,13 @@
 		E565B4D211FD5B6B00C7171E /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		E565B4D611FD5B9400C7171E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E565B4EB11FD5BD100C7171E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E56C2985123DA03000786377 /* cl_cocoa_cwrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_cocoa_cwrap.h; sourceTree = "<group>"; };
+		E56C2986123DA03000786377 /* cl_cocoa_cwrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cl_cocoa_cwrap.m; sourceTree = "<group>"; };
+		E56C299F123DA73000786377 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E56C29B0123DA7EE00786377 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		E56C2A1C123DAD5600786377 /* bannerwindow_cwrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bannerwindow_cwrap.h; sourceTree = "<group>"; };
+		E56C2A1D123DAD5600786377 /* bannerwindow_cwrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bannerwindow_cwrap.m; sourceTree = "<group>"; };
+		E56C2A25123DAEAB00786377 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5745C6110C4F96300DD9090 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
 		E5745C6210C4F96300DD9090 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
@@ -274,10 +282,6 @@
 		E5CBE42710C4FA820057E62A /* CLTableViewRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewRecord.m; sourceTree = "<group>"; };
 		E5CBE42810C4FA820057E62A /* CLTableViewUserDefaultsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLTableViewUserDefaultsController.h; sourceTree = "<group>"; };
 		E5CBE42910C4FA820057E62A /* CLTableViewUserDefaultsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLTableViewUserDefaultsController.m; sourceTree = "<group>"; };
-		E5CBE42A10C4FA820057E62A /* cocoa_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cocoa_utils.h; sourceTree = "<group>"; };
-		E5CBE42B10C4FA820057E62A /* cocoa_utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cocoa_utils.m; sourceTree = "<group>"; };
-		E5CBE42C10C4FA820057E62A /* qt_cocoa_utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qt_cocoa_utils.h; sourceTree = "<group>"; };
-		E5CBE42D10C4FA820057E62A /* qt_cocoa_utils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = qt_cocoa_utils.mm; sourceTree = "<group>"; };
 		E5CBE44D10C4FAF70057E62A /* cl_genutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cl_genutils.c; path = CLcutils/cl_genutils.c; sourceTree = "<group>"; };
 		E5CBE44E10C4FAF70057E62A /* cl_genutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cl_genutils.h; path = CLcutils/cl_genutils.h; sourceTree = "<group>"; };
 		E5CBE44F10C4FAF70057E62A /* CLSTLFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CLSTLFunctions.cpp; path = CLcutils/CLSTLFunctions.cpp; sourceTree = "<group>"; };
@@ -345,6 +349,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E56C29A0123DA73000786377 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,13 +420,16 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				E56C299F123DA73000786377 /* Cocoa.framework */,
 				E565B4D211FD5B6B00C7171E /* libz.1.2.3.dylib */,
+				E56C29B0123DA7EE00786377 /* CoreFoundation.framework */,
 				E565B4D611FD5B9400C7171E /* SystemConfiguration.framework */,
 				E565B4EB11FD5BD100C7171E /* CFNetwork.framework */,
 				E5F064E810DE4BEC004FA0CE /* libcunit.a */,
 				E5CBE55E10C502690057E62A /* CoreGraphics.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				E5CBE50610C501CF0057E62A /* UIKit.framework */,
+				E56C2A25123DAEAB00786377 /* CoreServices.framework */,
 			);
 			name = "Frameworks and Libraries";
 			sourceTree = "<group>";
@@ -508,10 +516,14 @@
 		E5CBE41A10C4FA820057E62A /* CLCocoa */ = {
 			isa = PBXGroup;
 			children = (
+				E56C2985123DA03000786377 /* cl_cocoa_cwrap.h */,
+				E56C2986123DA03000786377 /* cl_cocoa_cwrap.m */,
 				E5CBE41C10C4FA820057E62A /* BannerView.h */,
 				E5CBE41D10C4FA820057E62A /* BannerView.m */,
 				E5CBE41E10C4FA820057E62A /* BannerWindow.h */,
 				E5CBE41F10C4FA820057E62A /* BannerWindow.m */,
+				E56C2A1C123DAD5600786377 /* bannerwindow_cwrap.h */,
+				E56C2A1D123DAD5600786377 /* bannerwindow_cwrap.m */,
 				E5CBE42010C4FA820057E62A /* CLCocoa_Prefix.pch */,
 				E5CBE42110C4FA820057E62A /* CLCommonConst.h */,
 				E5CBE42210C4FA820057E62A /* CLCommonConst.m */,
@@ -522,10 +534,6 @@
 				E5CBE42710C4FA820057E62A /* CLTableViewRecord.m */,
 				E5CBE42810C4FA820057E62A /* CLTableViewUserDefaultsController.h */,
 				E5CBE42910C4FA820057E62A /* CLTableViewUserDefaultsController.m */,
-				E5CBE42A10C4FA820057E62A /* cocoa_utils.h */,
-				E5CBE42B10C4FA820057E62A /* cocoa_utils.m */,
-				E5CBE42C10C4FA820057E62A /* qt_cocoa_utils.h */,
-				E5CBE42D10C4FA820057E62A /* qt_cocoa_utils.mm */,
 			);
 			path = CLCocoa;
 			sourceTree = "<group>";
@@ -703,8 +711,6 @@
 				E5CBE43710C4FA820057E62A /* CLTableViewController.h in Headers */,
 				E5CBE43910C4FA820057E62A /* CLTableViewRecord.h in Headers */,
 				E5CBE43B10C4FA820057E62A /* CLTableViewUserDefaultsController.h in Headers */,
-				E5CBE43D10C4FA820057E62A /* cocoa_utils.h in Headers */,
-				E5CBE43F10C4FA820057E62A /* qt_cocoa_utils.h in Headers */,
 				E5CBE45410C4FAF70057E62A /* cl_genutils.h in Headers */,
 				E5CBE45610C4FAF70057E62A /* CLSTLFunctions.h in Headers */,
 				E5CBE45810C4FAF70057E62A /* cutils_bsd.h in Headers */,
@@ -720,6 +726,8 @@
 				E5F064BC10DE2F86004FA0CE /* cl_changeq.h in Headers */,
 				E565B3DD11FD557300C7171E /* CLBugReport.h in Headers */,
 				E565B3E811FD55A300C7171E /* CLMutableCharacterSetCateg.h in Headers */,
+				E56C2987123DA03000786377 /* cl_cocoa_cwrap.h in Headers */,
+				E56C2A1E123DAD5600786377 /* bannerwindow_cwrap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,8 +929,6 @@
 				E5CBE43810C4FA820057E62A /* CLTableViewController.m in Sources */,
 				E5CBE43A10C4FA820057E62A /* CLTableViewRecord.m in Sources */,
 				E5CBE43C10C4FA820057E62A /* CLTableViewUserDefaultsController.m in Sources */,
-				E5CBE43E10C4FA820057E62A /* cocoa_utils.m in Sources */,
-				E5CBE44010C4FA820057E62A /* qt_cocoa_utils.mm in Sources */,
 				E5CBE45310C4FAF70057E62A /* cl_genutils.c in Sources */,
 				E5CBE45510C4FAF70057E62A /* CLSTLFunctions.cpp in Sources */,
 				E5CBE45710C4FAF70057E62A /* cutils_bsd.c in Sources */,
@@ -938,6 +944,8 @@
 				E5F064BD10DE2F86004FA0CE /* cl_changeq.c in Sources */,
 				E565B3DE11FD557300C7171E /* CLBugReport.m in Sources */,
 				E565B3E911FD55A300C7171E /* CLMutableCharacterSetCateg.m in Sources */,
+				E56C2988123DA03000786377 /* cl_cocoa_cwrap.m in Sources */,
+				E56C2A1F123DAD5600786377 /* bannerwindow_cwrap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1072,6 +1080,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = ".git *.nib *.lproj *.framework *.gch *.xcode* (*) CVS .svn";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -1087,7 +1096,7 @@
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -1095,6 +1104,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = ".git *.nib *.lproj *.framework *.gch *.xcode* (*) CVS .svn";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1109,7 +1119,7 @@
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
@@ -1118,13 +1128,19 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Library/Frameworks/**",
+					"/System/Library/Frameworks/**",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = CLUtils_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1133,6 +1149,8 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CLUtilsCocoa;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "./**";
 			};
 			name = Debug;
 		};
@@ -1142,11 +1160,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"/Library/Frameworks/**",
+					"/System/Library/Frameworks/**",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PREFIX_HEADER = CLUtils_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "/usr/local/lib/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -1155,6 +1179,8 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CLUtilsCocoa;
+				SDKROOT = macosx10.6;
+				USER_HEADER_SEARCH_PATHS = "./**";
 				ZERO_LINK = NO;
 			};
 			name = Release;
