@@ -45,5 +45,4 @@ typedef enum {
     CL_TWITPIC_LOGIN_ERR    = -444003
 } CLTwitPicError;
 
-
 #endif
