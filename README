@@ -1,0 +1,25 @@
+CLutils
+
+CLutils is a collection of functions mostly tailored for Mac OS X and iPhone development, with some cross-platform exceptions. Here's a quick breakdown.
+
+
+cl_debug (cross platform)
+Light-weight macro library for printf debugging (see http://cubelogic.org/cl_debug ) 
+
+CLCarbon (Mac OS X)
+C utilities with Carbon dependencies
+
+CLChessUtils (cross platform)
+C utilities for chess applications
+
+CLCocoa (Mac OS X)
+Objective-C utilities, with some C wrappers
+
+CLcutils (cross platform)
+C and C++ utilities typically requiring clib or STL.
+
+CLFoundation (Mac OS X and iOS)
+Objective-C routines, with dependencies on Foundation only. 
+
+CLIPhone (iOS)
+Objective-C routines with UIKit dependencies.
