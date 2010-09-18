@@ -46,46 +46,49 @@
 #include "cutils_bsd.h"
 
 /* -----------------------------------------------------------------------------
- *  Sprints in outBuf the IP address (xxx.xxx.xxx.xxx) given the computer name.
+ *  Sprints in outbuf the IP address (xxx.xxx.xxx.xxx) given the computer name.
  *  This code was cannibalized from BSD's PING src code, available here: 
  *  ftp://ftp.uu.net/systems/unix/bsd-sources/sbin/ping                       
+ *  Note: a given name could be associated with multiple IP addresses: this 
+ *  function simply returns the first (AFAIK 80% of the times that's what 
+ *  one needs anyway)
  *                                                                            */
-int cutils_get_ip(const char *inHostName, size_t inBufSize, char *outBuf)
+int cutils_get_ip(const char *hostname, size_t bufsz, char *outbuf)
 {
     struct sockaddr whereto;    /* who to ping */
     struct hostent *hp;
     struct sockaddr_in *to;
     //char hnamebuf[MAXHOSTNAMELEN];
     
-    // precondition: minimal length for the outBuf is like "x.x.x.x"
-    if (inBufSize < 8 || inHostName == NULL || strlen(inHostName) == 0)
+    // precondition: minimal length for outbuf is 8 i.e. a string like "x.x.x.x"
+    if (bufsz < 8 || hostname == NULL || strlen(hostname) == 0)
         return -1;
     
     // preparatory work
     bzero((char *)&whereto, sizeof(struct sockaddr));
     to = (struct sockaddr_in *)&whereto;
     to->sin_family = AF_INET;
-    to->sin_addr.s_addr = inet_addr(inHostName);
+    to->sin_addr.s_addr = inet_addr(hostname);
     if (to->sin_addr.s_addr != (u_int)-1)
     {
-        // inHostName is already an IP address!
-        strncpy(outBuf, inHostName, inBufSize - 1);
+        // hostname is already an IP address!
+        strncpy(outbuf, hostname, bufsz - 1);
     }
     else 
     {
         // we have to convert the address
-        hp = gethostbyname(inHostName);
+        hp = gethostbyname(hostname);
         if (!hp) 
         {
-            debug1msg("cutils_get_ip: unknown host %s", inHostName);
+            LOG("cutils_get_ip: unknown host %s", hostname);
             return CL_UNKNOWN_HOST;
         }
         to->sin_family = hp->h_addrtype;
-        bcopy(hp->h_addr, (caddr_t)&to->sin_addr, hp->h_length);
-        //strncpy(hnamebuf, hp->h_name, sizeof(hnamebuf) - 1);
 
-        strncpy(outBuf, inet_ntoa(*(struct in_addr *)&to->sin_addr.s_addr), 
-                inBufSize);
+        //bcopy(hp->h_addr_list[0], (caddr_t)&to->sin_addr, hp->h_length);
+        //strncpy(outbuf, inet_ntoa(*(struct in_addr *)&to->sin_addr), bufsz);
+        // avoid the 2 copy instructions above and just do it in one step
+        strncpy(outbuf, inet_ntoa(*(struct in_addr*)hp->h_addr_list[0]), bufsz);
     }
     
     return 0;
