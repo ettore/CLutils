@@ -82,15 +82,20 @@
 		E565B4EC11FD5BD100C7171E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E565B4EB11FD5BD100C7171E /* CFNetwork.framework */; };
 		E56C2987123DA03000786377 /* cl_cocoa_cwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = E56C2985123DA03000786377 /* cl_cocoa_cwrap.h */; };
 		E56C2988123DA03000786377 /* cl_cocoa_cwrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E56C2986123DA03000786377 /* cl_cocoa_cwrap.m */; };
-		E56C29A0123DA73000786377 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56C299F123DA73000786377 /* Cocoa.framework */; };
 		E56C2A1E123DAD5600786377 /* bannerwindow_cwrap.h in Headers */ = {isa = PBXBuildFile; fileRef = E56C2A1C123DAD5600786377 /* bannerwindow_cwrap.h */; };
 		E56C2A1F123DAD5600786377 /* bannerwindow_cwrap.m in Sources */ = {isa = PBXBuildFile; fileRef = E56C2A1D123DAD5600786377 /* bannerwindow_cwrap.m */; };
+		E56D544C12874E8C005B3FDC /* Xcode324iOS41TestSuiteWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D544B12874E8C005B3FDC /* Xcode324iOS41TestSuiteWorkaround.m */; };
 		E5745C6310C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
 		E5745C6410C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
 		E5745C6510C4F96300DD9090 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
 		E5745C6610C4F96300DD9090 /* cl_debug.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6210C4F96300DD9090 /* cl_debug.h */; };
 		E5745C6810C4F96900DD9090 /* cl_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6710C4F96900DD9090 /* cl_errors.h */; };
 		E5745C6910C4F96900DD9090 /* cl_errors.h in Headers */ = {isa = PBXBuildFile; fileRef = E5745C6710C4F96900DD9090 /* cl_errors.h */; };
+		E5A2BC3D128766CE00C26FC1 /* CLFoundationUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E5DC2F39118E8B3600F3EA2A /* CLFoundationUtilsTests.m */; };
+		E5A2BC3E128766CE00C26FC1 /* Xcode324iOS41TestSuiteWorkaround.m in Sources */ = {isa = PBXBuildFile; fileRef = E56D544B12874E8C005B3FDC /* Xcode324iOS41TestSuiteWorkaround.m */; };
+		E5A2BC3F128766E900C26FC1 /* CLFoundationUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE46E10C4FB070057E62A /* CLFoundationUtils.m */; };
+		E5A2BC42128766F500C26FC1 /* cl_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = E5745C6110C4F96300DD9090 /* cl_debug.c */; };
+		E5A2BC691287698C00C26FC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		E5A4E84210DEDB5E00B6676C /* cl_changeq.c in Sources */ = {isa = PBXBuildFile; fileRef = E5F064B810DE2F86004FA0CE /* cl_changeq.c */; };
 		E5CBE40410C4F9CE0057E62A /* cutils_carbon.c in Sources */ = {isa = PBXBuildFile; fileRef = E5CBE3FF10C4F9CE0057E62A /* cutils_carbon.c */; };
 		E5CBE40510C4F9CE0057E62A /* cutils_carbon.h in Headers */ = {isa = PBXBuildFile; fileRef = E5CBE40010C4F9CE0057E62A /* cutils_carbon.h */; };
@@ -254,15 +259,17 @@
 		E565B4EB11FD5BD100C7171E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E56C2985123DA03000786377 /* cl_cocoa_cwrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_cocoa_cwrap.h; sourceTree = "<group>"; };
 		E56C2986123DA03000786377 /* cl_cocoa_cwrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cl_cocoa_cwrap.m; sourceTree = "<group>"; };
-		E56C299F123DA73000786377 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E56C29B0123DA7EE00786377 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		E56C2A1C123DAD5600786377 /* bannerwindow_cwrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bannerwindow_cwrap.h; sourceTree = "<group>"; };
 		E56C2A1D123DAD5600786377 /* bannerwindow_cwrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bannerwindow_cwrap.m; sourceTree = "<group>"; };
 		E56C2A25123DAEAB00786377 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		E56D544B12874E8C005B3FDC /* Xcode324iOS41TestSuiteWorkaround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Xcode324iOS41TestSuiteWorkaround.m; sourceTree = SOURCE_ROOT; };
 		E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCocoa.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5745C6110C4F96300DD9090 /* cl_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cl_debug.c; sourceTree = "<group>"; };
 		E5745C6210C4F96300DD9090 /* cl_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_debug.h; sourceTree = "<group>"; };
 		E5745C6710C4F96900DD9090 /* cl_errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cl_errors.h; sourceTree = "<group>"; };
+		E5A2BC361287668F00C26FC1 /* CLFoundationUtilsTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CLFoundationUtilsTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5A2BC371287668F00C26FC1 /* iOSLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iOSLogicTests-Info.plist"; sourceTree = "<group>"; };
 		E5CBE3FB10C4F9C10057E62A /* libCLUtilsCarbon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCLUtilsCarbon.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CBE3FF10C4F9CE0057E62A /* cutils_carbon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cutils_carbon.c; sourceTree = "<group>"; };
 		E5CBE40010C4F9CE0057E62A /* cutils_carbon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cutils_carbon.h; sourceTree = "<group>"; };
@@ -349,7 +356,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E56C29A0123DA73000786377 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5A2BC331287668F00C26FC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5A2BC691287698C00C26FC1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,6 +405,7 @@
 				E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */,
 				E5CBE3FB10C4F9C10057E62A /* libCLUtilsCarbon.a */,
 				E5CBE4D110C4FFCE0057E62A /* CLUtilsPhoneLogicTests.octest */,
+				E5A2BC361287668F00C26FC1 /* CLFoundationUtilsTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -413,6 +428,7 @@
 				0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
 				E5CBE4D210C4FFCE0057E62A /* CLUtilsPhoneLogicTests-Info.plist */,
+				E5A2BC371287668F00C26FC1 /* iOSLogicTests-Info.plist */,
 			);
 			name = CLUtils;
 			sourceTree = "<group>";
@@ -420,7 +436,6 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				E56C299F123DA73000786377 /* Cocoa.framework */,
 				E565B4D211FD5B6B00C7171E /* libz.1.2.3.dylib */,
 				E56C29B0123DA7EE00786377 /* CoreFoundation.framework */,
 				E565B4D611FD5B9400C7171E /* SystemConfiguration.framework */,
@@ -462,8 +477,8 @@
 				E565B4A311FD59C900C7171E /* Reachability.m */,
 			);
 			name = "asi-http-request";
-			path = "libs/asi-http-request";
-			sourceTree = "<group>";
+			path = "../../svn/pchess/iphone/libs/asi-http-request";
+			sourceTree = SOURCE_ROOT;
 		};
 		E5745C6010C4F96300DD9090 /* cl_debug */ = {
 			isa = PBXGroup;
@@ -599,6 +614,7 @@
 				E5F41C7D10C5035B00763164 /* CLMutableArrayCategTests.m */,
 				E5DC2F38118E8B3600F3EA2A /* CLFoundationUtilsTests.h */,
 				E5DC2F39118E8B3600F3EA2A /* CLFoundationUtilsTests.m */,
+				E56D544B12874E8C005B3FDC /* Xcode324iOS41TestSuiteWorkaround.m */,
 			);
 			path = unitTests;
 			sourceTree = "<group>";
@@ -781,6 +797,24 @@
 			productReference = E5745C0E10C4F88400DD9090 /* libCLUtilsCocoa.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		E5A2BC351287668F00C26FC1 /* CLFoundationUtilsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E5A2BC3A1287668F00C26FC1 /* Build configuration list for PBXNativeTarget "CLFoundationUtilsTests" */;
+			buildPhases = (
+				E5A2BC311287668F00C26FC1 /* Resources */,
+				E5A2BC321287668F00C26FC1 /* Sources */,
+				E5A2BC331287668F00C26FC1 /* Frameworks */,
+				E5A2BC341287668F00C26FC1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CLFoundationUtilsTests;
+			productName = CLFoundationUtilsTests;
+			productReference = E5A2BC361287668F00C26FC1 /* CLFoundationUtilsTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		E5CBE3FA10C4F9C10057E62A /* CLUtilsCarbon */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5CBE40810C4F9CE0057E62A /* Build configuration list for PBXNativeTarget "CLUtilsCarbon" */;
@@ -838,13 +872,21 @@
 			isa = PBXProject;
 			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "CLUtils" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* CLUtils */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* CLUtilsPhone */,
+				E5A2BC351287668F00C26FC1 /* CLFoundationUtilsTests */,
 				E5CBE4D010C4FFCE0057E62A /* CLUtilsPhoneLogicTests */,
 				E5745C0D10C4F88400DD9090 /* CLUtilsCocoa */,
 				E5CBE3FA10C4F9C10057E62A /* CLUtilsCarbon */,
@@ -854,6 +896,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E5A2BC311287668F00C26FC1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5CBE4CC10C4FFCE0057E62A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -864,6 +913,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E5A2BC341287668F00C26FC1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"####\"\necho \"SDKROOT = $SDKROOT\"\necho \"SRCROOT = $SRCROOT\"\necho \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\necho \"SYSTEM_DEVELOPER_DIR = $SYSTEM_DEVELOPER_DIR\"\n\n# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 		E5CBE4CF10C4FFCE0057E62A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -875,7 +937,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+			shellScript = "# Run the unit tests in this test bundle.\n\necho \"####\"\necho \"SDKROOT = $SDKROOT\"\necho \"SRCROOT = $SRCROOT\"\necho \"BUILT_PRODUCTS_DIR = $BUILT_PRODUCTS_DIR\"\necho \"SYSTEM_DEVELOPER_DIR = $SYSTEM_DEVELOPER_DIR\"\n\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -949,6 +1011,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E5A2BC321287668F00C26FC1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5A2BC3D128766CE00C26FC1 /* CLFoundationUtilsTests.m in Sources */,
+				E5A2BC3E128766CE00C26FC1 /* Xcode324iOS41TestSuiteWorkaround.m in Sources */,
+				E5A2BC3F128766E900C26FC1 /* CLFoundationUtils.m in Sources */,
+				E5A2BC42128766F500C26FC1 /* cl_debug.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5CBE3F810C4F9C10057E62A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1001,6 +1074,7 @@
 				E565B4BE11FD59C900C7171E /* ASINetworkQueue.m in Sources */,
 				E565B4BF11FD59C900C7171E /* ASINSStringAdditions.m in Sources */,
 				E565B4C011FD59C900C7171E /* Reachability.m in Sources */,
+				E56D544C12874E8C005B3FDC /* Xcode324iOS41TestSuiteWorkaround.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1096,7 +1170,7 @@
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Debug;
 		};
@@ -1119,7 +1193,7 @@
 				OTHER_CPLUSPLUSFLAGS = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = iphonesimulator4.0;
 			};
 			name = Release;
 		};
@@ -1181,6 +1255,67 @@
 				PRODUCT_NAME = CLUtilsCocoa;
 				SDKROOT = macosx10.6;
 				USER_HEADER_SEARCH_PATHS = "./**";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		E5A2BC381287668F00C26FC1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ettore Pasquini (8YLC4597R2)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/System/Library/Frameworks\"",
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = /Users/ep/git/CLutils;
+				INFOPLIST_FILE = "iOSLogicTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLFoundationUtilsTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E5A2BC391287668F00C26FC1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "iOSLogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = CLFoundationUtilsTests;
+				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -1253,9 +1388,9 @@
 					"-framework",
 					Foundation,
 					"-framework",
-					SenTestingKit,
-					"-framework",
 					UIKit,
+					"-framework",
+					SenTestingKit,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = CLUtilsPhoneLogicTests;
@@ -1368,6 +1503,15 @@
 			buildConfigurations = (
 				E5745C0F10C4F88500DD9090 /* Debug */,
 				E5745C1010C4F88500DD9090 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E5A2BC3A1287668F00C26FC1 /* Build configuration list for PBXNativeTarget "CLFoundationUtilsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E5A2BC381287668F00C26FC1 /* Debug */,
+				E5A2BC391287668F00C26FC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

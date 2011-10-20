@@ -8,7 +8,6 @@
 //  unit test code is designed to be linked into an independent test executable.
 
 #import <SenTestingKit/SenTestingKit.h>
-#import <Foundation/Foundation.h>
 //#import "application_headers" as required
 
 
@@ -19,8 +18,9 @@
 #if USE_APPLICATION_UNIT_TEST
 - (void) testAppDelegate;       // simple test on application
 #else
-- (void) testFormattedTimeLeft;
-- (void)testFormattedTimeLeftTypicalCases;
+- (void)test_data2int;
+//- (void)testFormattedTimeLeft;
+//- (void)testFormattedTimeLeftTypicalCases;
 #endif
 
 @end

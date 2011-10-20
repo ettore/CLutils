@@ -5,7 +5,7 @@
 
 #import "CLFoundationUtilsTests.h"
 #import "CLFoundationUtils.h"
-#import "cl_gen_utils.h"
+//#import "cl_gen_utils.h"
 #import "cl_debug.h"
 
 @implementation CLFoundationUtilsTests
@@ -22,6 +22,61 @@
 
 #else                           
 // all code under test is part of the Logic Tests
+
+- (void)test_data2int
+{
+    NSLog(@"---- test_data2int ----");
+    NSData *data;
+#define BUFLEN 16
+    char srcbuf[BUFLEN];
+    NSInteger i;
+
+    // data stores 0
+    memset(srcbuf, 0, BUFLEN);
+    srcbuf[0] = '0';
+    data = [[NSData alloc] initWithBytes:srcbuf length:BUFLEN];
+    i = data2int((CFDataRef)data);
+    STAssertEquals(i, 0, @"");
+    [data release];
+        
+    // data stores 11
+    memset(srcbuf, 0, BUFLEN);
+    srcbuf[0] = '1';
+    srcbuf[1] = '1';
+    data = [[NSData alloc] initWithBytes:srcbuf length:BUFLEN];
+    i = data2int((CFDataRef)data);
+    STAssertEquals(i, 11, @"");
+    [data release];
+
+    // data stores -845
+    memset(srcbuf, 0, BUFLEN);
+    srcbuf[0] = '-';
+    srcbuf[1] = '8';
+    srcbuf[2] = '4';
+    srcbuf[3] = '5';
+    data = [[NSData alloc] initWithBytes:srcbuf length:BUFLEN];
+    i = data2int((CFDataRef)data);
+    STAssertEquals(i, -845, @"");
+    [data release];
+        
+    // data stores a non numeric string
+    memset(srcbuf, 0, BUFLEN);
+    srcbuf[0] = 1;
+    srcbuf[1] = 255;
+    data = [[NSData alloc] initWithBytes:srcbuf length:BUFLEN];
+    i = data2int((CFDataRef)data);
+    STAssertEquals(i, (NSInteger)NSIntegerMin, @"data2int should have errored out");
+    [data release];
+
+    // data stores a non numeric string
+    memset(srcbuf, 0, BUFLEN);
+    srcbuf[0] = 's';
+    srcbuf[1] = '1';
+    data = [[NSData alloc] initWithBytes:srcbuf length:BUFLEN];
+    i = data2int((CFDataRef)data);
+    STAssertEquals(i, (NSInteger)NSIntegerMin, @"data2int should have errored out");
+    [data release];
+}
 
 - (void)test_cl_isvalid_email
 {
@@ -228,8 +283,6 @@
     STAssertEquals([s compare:@"40 seconds" options:NSCaseInsensitiveSearch], 
                    NSOrderedSame, @"wrongly formatted time left");
 }
-
-
 
 #endif
 

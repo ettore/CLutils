@@ -66,8 +66,7 @@
 
 - (void)setString: (NSString *)s {
     NSMutableString *muts = [[NSMutableString alloc] init];
-    [muts setString:s]; // effettua retain su `s'
-    //[muts retain]; //non serve perchè faccio io l'alloc
+    [muts setString:s];
     [string release];
     string = muts;
 }

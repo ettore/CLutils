@@ -113,11 +113,11 @@ capable to manage the case of a tableview handling user defaults.
 // *********************************************************
 //                  DATA SOURCE METHODS
 //
-// (CLTableViewController  è il data source della TableView)
-// (Questi metodi sono chiamati automaticamente)
+// (CLTableViewController is the data source of the TableView)
+// (These methods are called automatically)
 // *********************************************************
 
-/*" ritorna il numero di righe della TableView "*/
+/*" Returns the number of rows of the TableView "*/
 - (int) numberOfRowsInTableView:(NSTableView *)aTableView
 {
     return [model count];
@@ -125,8 +125,7 @@ capable to manage the case of a tableview handling user defaults.
 
 
 /*"
- ritorna il valore dell'oggetto individuato dalla colonna `aTableColumn' alla
- riga `rowIndex'
+ Returns the value of the object at column `aTableColumn' and row `rowIndex'.
 "*/
 - (id) tableView: (NSTableView *)aTableView
 objectValueForTableColumn: (NSTableColumn *)aTableColumn
@@ -142,11 +141,9 @@ objectValueForTableColumn: (NSTableColumn *)aTableColumn
 
 
 /*"
-setta a `anObject' la cella individuata dalla riga `rowIndex' di `aTableColumn'; 
-`obj' contiene l'editing fatto dall'utente sulla GUI.
-Ogni volta che finisce l'editing su una cella sulla GUI questo metodo viene 
-chiamato: al suo interno aggiorno le mie strutture dati (the "Model" (MVC)) in 
-modo opportuno.
+ Sets `anObject' to the cell at row `rowIndex' inside column `aTableColumn'; 
+ `obj' contains the editing done by the user in the UI. Every time that editing
+ finishes on one cell, this method is called. Model data is updated accordingly.
  "*/
 - (void)tableView:(NSTableView *)aTableView
         setObjectValue: (id)obj
@@ -167,9 +164,8 @@ modo opportuno.
 // (CLTableViewController  è il delegate della TableView)
 // ******************************************************
 
-/*" Stabilisce se l'utente può selezionare una generica riga o se ci sono
-    limitazioni. Questo metodo è chiamato automaticamente.
-    Returns YES to permit aTableView to select the row at rowIndex,
+/*" Determines if the user can select a given row or not.
+    @return YES to permit aTableView to select the row at rowIndex,
     NO to deny permission. The delegate can implement this method to disallow
     selection of particular rows.
 "*/
@@ -181,7 +177,6 @@ modo opportuno.
 
 /*" Informs the delegate that the NSTableView's selection has changed.
     Calls updateBtnStatus.
-    Questo metodo è chiamato automaticamente. 
 "*/
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
@@ -232,11 +227,10 @@ modo opportuno.
 }
 
 /*" 
-Updates the status of the button controlling the tableview 
-Controlla che il # di rec. non sia arrivato a 0
-(ad es. in seguito a cancellazioni): se è 0, disabilita il deleteButton.
-Subclass controllers who have more button need to redefine this method
-only, leaving `updateUI' and `tableViewSelectionDidChange:' unaltered).
+ Updates the status of the button controlling the tableview.
+ Controls that the # of rec is not 0; if it's 0, disable deleteButton.
+ Subclass controllers who have more buttons just need to redefine this method, 
+ leaving `updateUI' and `tableViewSelectionDidChange:' unaltered.
 "*/ 
 - (void)updateBtnStatus
 {
@@ -247,7 +241,6 @@ only, leaving `updateUI' and `tableViewSelectionDidChange:' unaltered).
 /*" 
 Called after every modification on the table view. Redefine this method 
 to execute further actions consequent to a modification. 
-This version does nothing. 
 "*/
 - (void)updatePerChanges
 {}
@@ -255,8 +248,7 @@ This version does nothing.
 
 /*" 
 Creates an empty (or default initialized) record that wil be added to the 
-NSTableView. 
-This is factory method (see `Factory Pattern' on the D.P. book): this 
+NSTableView. This is factory method: this 
 version creates `CLSingleStringRecord' objects, initialized as per the 
 title of the first column of the table view. As you can see by the  
 `CLSingleStringRecord' specification and documentation, this method is 
@@ -271,14 +263,12 @@ use addRecord: instead.
                                                value:@"New Entry"
                                                table:@"CLCommonLocalizable"];
     CLSingleStringRecord *r = [[CLSingleStringRecord alloc] initWithString:s];
-    [model addObject:r]; //ora l'oggetto puntato da s ha retain count=2 ...
-    [r release]; //... quindi lo rilascio
+    [model addObject:r];
+    [r release];
 }
 
 
-/*" Adds a record to the model represented by table view. Unless one wants 
-to change the model and the way records (i.e. rows) are managed, this method 
-should not be redefined. "*/
+/*" Adds a record to the model displayed by table view. "*/
 - (void)addRecord:(CLTableViewRecord *)rec
 {
     debug_enter("addRecord");
