@@ -28,20 +28,34 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "clcg_gfx.h"
+
 #import "CLUITwitPicUploader.h"
+
 
 @implementation CLUITwitPicUploader
 
+-(int)postSnapshot:(UIView*)v title:(NSString*)t message:(NSString*)msg
+{
+  if (v == nil)
+    return -1;
+  
+  UIImage *snapshot = clcg_do_snapshot(v, t);
+  return [self postImage:snapshot message:msg];
+}
+
+
 -(int)postSnapshot:(UIView*)snapped message:(NSString*)msg
 {
-    // snapshot the view
-    UIGraphicsBeginImageContext(snapped.frame.size);
-    [snapped.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return [self postImage:screenshot message:msg];
+  // snapshot the view
+  UIGraphicsBeginImageContext(snapped.frame.size);
+  [snapped.layer renderInContext:UIGraphicsGetCurrentContext()];
+  UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return [self postImage:screenshot message:msg];
 }
+
 
 //-(int)sendScreenshot
 //{

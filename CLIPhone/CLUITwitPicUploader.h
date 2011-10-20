@@ -37,6 +37,7 @@
 }
 
 -(int)postSnapshot:(UIView*)view message:(NSString*)msg;
+-(int)postSnapshot:(UIView*)v title:(NSString*)t message:(NSString*)msg;
 -(int)postImage:(UIImage*)img message:(NSString*)msg;
 
 @end
