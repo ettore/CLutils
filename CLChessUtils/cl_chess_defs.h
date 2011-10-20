@@ -56,7 +56,7 @@ typedef enum  {
 typedef enum {
 	CV_NO,
 	CV_YES,
-    CV_CHANGE
+  CV_CHANGE
 } CHESSVIEW_RESULT;
 
 typedef enum { 
