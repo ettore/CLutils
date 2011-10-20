@@ -31,11 +31,15 @@
 #import <Foundation/Foundation.h>
 
 typedef void(*CLTwitPicUploaderCallback)(NSString *response);
+@class CLTwitPicUploader;
 
 @protocol CLTwitPicDelegate
 
-- (void)twitPicDidSucceed:(NSString*)response;
-- (void)twitPicDidFail:(NSString*)errmsg code:(NSInteger)errcode;
+- (void)twitPicDidSucceed:(CLTwitPicUploader*)upl response:(NSString*)response;
+
+- (void)twitPicDidFail:(CLTwitPicUploader*)upl 
+                   msg:(NSString*)errmsg 
+                  code:(NSInteger)errcode;
 
 @end
 

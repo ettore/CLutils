@@ -136,16 +136,16 @@ Created by Ettore Pasquini on 3/9/10.
     }
     
     if (code)
-        [delegate twitPicDidFail:info code:code];
+        [delegate twitPicDidFail:self msg:info code:code];
     else 
-        [delegate twitPicDidSucceed:response_xml];
+        [delegate twitPicDidSucceed:self response:response_xml];
 }
 
 - (void)requestFail:(ASIHTTPRequest *)req
 {
     NSError *error = [req error];
     LOG_NS(@"ASIHTTPRequest error: %@", error);
-    [delegate twitPicDidFail:[error description] code:CL_TWITPIC_API_ERR];
+    [delegate twitPicDidFail:self msg:[error description] code:CL_TWITPIC_API_ERR];
 }
 
 @end
