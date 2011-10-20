@@ -70,25 +70,28 @@
 // should also be able to return a NSArray in case there are multiple objects
 - (id)parseData:(NSData *)data
 {
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
 
     [self parseWithParser:parser];
-	
+    
     [parser release];
     return tmpParsed;
 }    
     
-// syncronous XML download and parsing
+// synchronous XML download and parsing
 // clients will need to retain the returned object if they care about it.
 - (id)parseElementAtURL:(NSString *)url_str
 {
-	NSURL *url = [[NSURL alloc] initWithString:url_str];
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
+    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
+    [[NSURLCache sharedURLCache] setDiskCapacity:0];
+    NSURL *url = [[NSURL alloc] initWithString:url_str];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithContentsOfURL:url];
     
     [self parseWithParser:parser];
     
-	[url release];
-	[parser release];
+    [parser setDelegate:nil];
+    [url release];
+    [parser release];
     return tmpParsed;
 }
 
@@ -110,7 +113,7 @@
 - (void)parseWithParser:(NSXMLParser *)parser
 {
     BOOL parse_successful;
-	
+    
     // tmpParsed should always be nil at this point, but if for some reason 
     // it is not nil, release whatever it's holding up to avoid leaks
     if (tmpParsed)
@@ -127,7 +130,7 @@
     }
     
     // prepare for parsing
-	[parser setDelegate:self];
+    [parser setDelegate:self];
     [parser setShouldProcessNamespaces:NO];
     [parser setShouldReportNamespacePrefixes:NO];
     [parser setShouldResolveExternalEntities:NO];
@@ -149,7 +152,7 @@
             [tmpParsed release];
             tmpParsed = nil;
         }
-	}
+    }
 }
 
 /** Subclasses should redefine this method and return an instance of the
@@ -200,7 +203,7 @@ didStartElement:(NSString *)elemName
     
     if (qName)
         elemName = qName;
-	
+    
     if ([elemName isEqualToString:_wantedTag]) 
     {
         if (tmpParsed == nil)
