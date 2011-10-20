@@ -39,19 +39,33 @@
 
 -(id)init
 {
-    if ((self = [super init]))
-    {
-        isPushRegistered = NO;
-        hasSyncedDeviceToken = NO;
-    }
-    
-    return self;
+  return [self initWithOptions:nil];
 }
 
--(void)registerWithOptions:(NSDictionary*)opt
+
+// designated initializer.
+// @param opt the dictionary received by application:didFinishLaunchWithOptions:
+-(id)initWithOptions:(NSDictionary*)opt
+{
+  if (!(self = [super init]))
+    return nil;
+  
+  isPushRegistered = NO;
+  hasSyncedDeviceToken = NO;
+  if (opt) {
+    NSDictionary *payld;
+    
+    payld = [opt objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    [self setOptions:payld];
+  }
+  
+  return self;
+}
+
+
+-(void)registerWithAPNS
 {
     UIApplication *app = [UIApplication sharedApplication];
-    self.options = opt;
     [app registerForRemoteNotificationTypes: 
      (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
 }

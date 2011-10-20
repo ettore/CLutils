@@ -56,8 +56,11 @@
 @property(nonatomic,retain,readonly) NSData *deviceToken;
 @property(nonatomic,retain) NSDictionary *options;
 
-// register with APNS
--(void)registerWithOptions:(NSDictionary *)opt;
+// `opt' the dictionary received by application:didFinishLaunchWithOptions:
+-(id)initWithOptions:(NSDictionary*)app_opt;
+
+// register with Apple Push Notification Servers
+-(void)registerWithAPNS;
 
 // Called by application:didRegisterForRemoteNotificationsWithDeviceToken:
 // from the app delegate. We get the deviceToken here.
