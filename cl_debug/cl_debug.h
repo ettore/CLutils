@@ -41,8 +41,8 @@
     This library is composed by the following files: 
         cl_debug.h, cl_debug.c.
 
-    The output is directed on stderr by default, but it can be hijacked to
-    a separate file if a non-NULL string is passed as log_file_path:
+    The output is directed on CL_DEBUG_DEFAULT_LOGFILE by default, but it can be 
+    hijacked to a separate file if a non-NULL string is passed as log_file_path:
 
         void cl_debug_init(const char *product_name, const char *log_file_path);
 
@@ -88,7 +88,7 @@
             If this preprocessor variable is defined, the TRACE macro 
             defined by the InDesign SDK will be used by cl_debug *on Windows* 
             for the debugging macros instead of OutputDebugString. On UN*X 
-            machines debugging output will remain on stderr.
+            machines debugging output will remain on CL_DEBUG_DEFAULT_LOGFILE.
             
     Control switches:
 
@@ -103,6 +103,8 @@
 */
 
 /* ========================================================================== */
+
+#define CL_DEBUG_DEFAULT_LOGFILE  stdout
 
 #if !defined(CL_DEBUG_DISABLE)
 
@@ -128,6 +130,11 @@
 /* ============================================================================= 
  * Implementation
  */
+
+#if !defined(__SRC_LOC__)
+  #define __SRC_LOC__   __PRETTY_FUNCTION__
+/*  #define __SRC_LOC__   __FILE__ */
+#endif
 
 #if !TARGET_OS_MAC
     #undef CL_DEBUG_INCLUDES_CF
@@ -165,7 +172,7 @@
 #endif
 
 /* =============================================================================
- * stderr is used as default log file, but you can hijack it if you wish.    
+ * CL_DEBUG_DEFAULT_LOGFILE is used as default log file.
  */
 
 typedef struct {
@@ -189,18 +196,19 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
     if (gCLDebugStat.logfile_path && gCLDebugStat.logfile_path[0]) {           \
         gCLDebugStat.logfile = fopen(gCLDebugStat.logfile_path, "a");          \
         if (gCLDebugStat.logfile == NULL)                                      \
-            gCLDebugStat.logfile = stderr;                                     \
+            gCLDebugStat.logfile = CL_DEBUG_DEFAULT_LOGFILE;                   \
     } else {                                                                   \
-        gCLDebugStat.logfile = stderr;                                         \
+        gCLDebugStat.logfile = CL_DEBUG_DEFAULT_LOGFILE;                       \
     }
 #define CL_LOG                                                                 \
     if (gCLDebugStat.logfile)                                                  \
         fprintf(gCLDebugStat.logfile, 
 #define CL_LOG_CLOSE()                                                         \
-    if (gCLDebugStat.logfile && gCLDebugStat.logfile != stderr &&              \
-        gCLDebugStat.logfile != stdout) {                                      \
-        fclose(gCLDebugStat.logfile);                                          \
-    }
+  if (gCLDebugStat.logfile &&                                                  \
+      gCLDebugStat.logfile != CL_DEBUG_DEFAULT_LOGFILE &&                      \
+      gCLDebugStat.logfile != stdout) {                                        \
+    fclose(gCLDebugStat.logfile);                                              \
+  }
 
 #ifdef WIN32
     #ifdef CL_DEBUG_USE_INDESIGN_SDK
@@ -213,7 +221,7 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
     #define CL_DEBUG_END()          cl_debug_trace(buf)
 #else
     #define CL_DEBUG_BEGIN()    
-    #define CL_DEBUG_PRINT          fprintf(stderr, 
+    #define CL_DEBUG_PRINT          fprintf(CL_DEBUG_DEFAULT_LOGFILE, 
     #define CL_DEBUG_END()
 #endif
 
@@ -236,8 +244,8 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define LOG_NS(STF, ...)   do {                                                \
-    NSLog([@"[%d] " stringByAppendingString: STF],                         \
-          __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"[%d] " stringByAppendingString: STF],                             \
+          __LINE__, ## __VA_ARGS__);                                           \
 } while (0)
 #else
 #define LOG_NS(STF, ...)
@@ -269,9 +277,9 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 #define debugNSData(ST, DATA)        do {                                      \
     CFIndex cldbglen = CFDataGetLength((CFDataRef)DATA);                       \
     char *cldbgbuf = (char*)malloc(cldbglen);                                  \
-    memset(cldbgbuf, 0, cldbglen);                                            \
+    memset(cldbgbuf, 0, cldbglen);                                             \
     CFDataGetBytes((CFDataRef)DATA, CFRangeMake(0,cldbglen), (UInt8*)cldbgbuf);\
-    debug0msg("%s\n%s\n", ST, cldbgbuf);                                     \
+    debug0msg("%s\n%s\n", ST, cldbgbuf);                                       \
     free(cldbgbuf);                                                            \
 } while (0)
 #else
@@ -282,22 +290,20 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #define debug0msg(STF, ...)      do {                                          \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d] " STF "\n",                                   \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ## __VA_ARGS__);    \
+    CL_DEBUG_PRINT "%s[%d] " STF "\n", __SRC_LOC__, __LINE__, ## __VA_ARGS__); \
     CL_DEBUG_END();                                                            \
 } while (0)
 
 #define debug0msg0(ST)           do {                                          \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d] %s\n",                                        \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ST);                \
+    CL_DEBUG_PRINT "%s[%d] %s\n", __SRC_LOC__, __LINE__, ST);                  \
     CL_DEBUG_END();                                                            \
 } while (0)
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define debug0cocoa(STF, ...)    do {                                          \
-    NSLog([@"%s[%d] " stringByAppendingString: STF],                         \
-          __FILE__, __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"%s[%d] " stringByAppendingString: STF],                           \
+          __SRC_LOC__, __LINE__, ## __VA_ARGS__);                              \
 } while (0)
 #else
 #define debug0cocoa(STF, ...)
@@ -305,15 +311,13 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #define debug_enter(ST)      do {                                              \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d]::%s ENTER\n",                                 \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ST);                \
+    CL_DEBUG_PRINT "%s[%d]::%s ENTER\n", __SRC_LOC__, __LINE__, ST);           \
     CL_DEBUG_END();                                                            \
 } while (0)
 
 #define debug_exit(ST)      do {                                               \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d]::%s EXIT\n",                                  \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ST);                \
+    CL_DEBUG_PRINT  "%s[%d]::%s EXIT\n", __SRC_LOC__, __LINE__, ST);           \
     CL_DEBUG_END();                                                            \
 } while (0)
 
@@ -330,23 +334,21 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 #ifdef CL_DEBUG_1
 
 #define debug1msg(STF, ...)      do {                                          \
-    CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d] " STF "\n",                                   \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ## __VA_ARGS__);    \
-    CL_DEBUG_END();                                                            \
+  CL_DEBUG_BEGIN();                                                            \
+  CL_DEBUG_PRINT "%s[%d] " STF "\n", __SRC_LOC__, __LINE__, ## __VA_ARGS__);   \
+  CL_DEBUG_END();                                                              \
 } while (0)
 
 #define debug1msg0(ST)           do {                                          \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d] %s\n",                                        \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ST);                \
+    CL_DEBUG_PRINT  "%s[%d] %s\n", __SRC_LOC__, __LINE__, ST);                 \
     CL_DEBUG_END();                                                            \
 } while (0)
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define debug1cocoa(STF, ...)    do {                                          \
-    NSLog([@"%s[%d] " stringByAppendingString: STF],                         \
-          __FILE__, __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"%s[%d] " stringByAppendingString: STF],                           \
+          __SRC_LOC__, __LINE__, ## __VA_ARGS__);                              \
 } while (0)
 #else
 #define debug1cocoa(STF, ...)
@@ -364,22 +366,20 @@ void cl_debug_init(const char *product_name, const char *log_file_path);
 
 #define debug2msg(STF, ...)      do {                                          \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d] " STF "\n",                                   \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ## __VA_ARGS__);    \
+    CL_DEBUG_PRINT "%s[%d] " STF "\n", __SRC_LOC__, __LINE__, ## __VA_ARGS__); \
     CL_DEBUG_END();                                                            \
 } while (0)
 
 #define debug2msg0(ST)           do {                                          \
     CL_DEBUG_BEGIN();                                                          \
-    CL_DEBUG_PRINT  "#%s# %s[%d] %s\n",                                        \
-            gCLDebugStat.product_name, __FILE__, __LINE__, ST);                \
+    CL_DEBUG_PRINT "%s[%d] %s\n", __SRC_LOC__, __LINE__, ST);                  \
     CL_DEBUG_END();                                                            \
 } while (0)
 
 #if TARGET_OS_MAC && defined(FOUNDATION_EXPORT)
 #define debug2cocoa(STF, ...)    do {                                          \
-    NSLog([@"%s[%d] " stringByAppendingString: STF],                         \
-          __FILE__, __LINE__, ## __VA_ARGS__);                \
+    NSLog([@"%s[%d] " stringByAppendingString: STF],                           \
+          __SRC_LOC__, __LINE__, ## __VA_ARGS__);                              \
 } while (0)
 #else
 #define debug2cocoa(STF, ...)

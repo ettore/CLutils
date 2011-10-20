@@ -61,5 +61,5 @@ void cl_debug_init(const char *product_name, const char *log_file_path)
        the log file initialization will be done at the actual time of logging.
        This will enable clients to change the log file if for some strange 
        reason they need to.  (Yes, sometimes they do.)  */
-    gCLDebugStat.logfile = stderr;
+    gCLDebugStat.logfile = CL_DEBUG_DEFAULT_LOGFILE;
 }
