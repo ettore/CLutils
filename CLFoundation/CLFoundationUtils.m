@@ -36,6 +36,16 @@
 #import "CLFoundationUtils.h"
 #import "CLMutableCharacterSetCateg.h"
 
+void cl_set(id *obj, id val)
+{
+    if (obj && *obj != val)
+    {
+        [val retain];
+        [*obj release];
+        *obj = val;
+    }
+}
+
 BOOL cl_isvalid_email(CFStringRef str)
 {
     if (str == nil)
@@ -120,21 +130,46 @@ CFStringRef percEscStr(CFStringRef str)
     return s;
 }
 
-NSInteger data2int(CFDataRef data, unsigned size)
+//XXX buggy!
+NSInteger data2int(CFDataRef data)
 {
+    if (data == nil)
+        return NSIntegerMin;
+    
     NSString *s;
-    char buf[size];
+    char *buf;
+    NSInteger val = NSIntegerMin;
+    const CFIndex size = CFDataGetLength(data);
+    
+    buf = (char *)malloc(size + 1);
     memset(buf, 0, size);
     CFDataGetBytes(data, CFRangeMake(0,size), (UInt8*)buf);
+    buf[size] = '\0';
+    
     s = [NSString stringWithUTF8String:buf]; //(char*)[data bytes]];dont work
     debug0cocoa(@"CFData as string=[%@]", s);
-    NSInteger val = [s integerValue];
+    if (s)
+    {
+        unichar c = [s characterAtIndex:0];
+        if ((c >= 48 && c <= 57) || c == '-' || c == '+')
+            val = [s longLongValue];
+    }
+    
+    free(buf);
     return val;
 }
 
 Boolean isEmpty(NSString *s)
 {
     return (s == nil || [s compare:@""] == NSOrderedSame);
+}
+
+CLTimestamp
+timestampSinceEpoch()
+{
+    // timeIntervalSinceReferenceDate returns seconds since 1/1/2001
+    // NSTimeIntervalSince1970 = seconds from Epoch and 1/1/2001
+    return [NSDate timeIntervalSinceReferenceDate] + NSTimeIntervalSince1970;
 }
 
 NSString *formattedTimeLeft(NSInteger seconds)
@@ -172,6 +207,8 @@ NSString *formattedTimeLeft(NSInteger seconds)
         s = [NSString stringWithFormat:@"%d minutes", m];
     else if (d == 0 && h == 0 && m == 0)
         s = [NSString stringWithFormat:@"%d seconds", secs];
+    else
+        s = [NSString stringWithFormat:@"%d seconds", seconds];
     
     return s;
 }

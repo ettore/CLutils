@@ -35,11 +35,28 @@
 
 #import <Foundation/Foundation.h>
 
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Type Definitions
+
 typedef void (* CLFoundationCallback)(id info);
 typedef void (* CLCollectLoginCallback)(NSString *uname, NSString *passwd);
+typedef double CLTimestamp;
+
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Macros
 
 #define CLLocalized(key) \
     [[NSBundle mainBundle] localizedStringForKey:(key) value:(key) table:nil]
+
+#define CL_RELEASE(__PTR) { id __T = __PTR; __PTR = nil; [__T release]; }
+
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark -
+#pragma mark Functions
+
+void cl_set(id *obj, id val);
 
 BOOL cl_isvalid_email(CFStringRef s);
 
@@ -54,8 +71,11 @@ BOOL cl_isascii_str(CFStringRef s);
  */
 CFStringRef percEscStr(CFStringRef str);
 
-/** Extracts a int from given CFData. */
-NSInteger data2int(CFDataRef data, unsigned size);
+/** 
+ * Extracts a int from given CFData. The content is converted to string and then
+ * parsed. If a parse error occurs, NSIntegerMin is returned.
+ */
+NSInteger data2int(CFDataRef data);
 
 Boolean isEmpty(NSString *s);
 
@@ -64,6 +84,9 @@ NSData* arc(id foo);
 
 // de-archive object with 'key' from defaults
 id unarc(NSString* key);
+
+// returns seconds since Epoch
+CLTimestamp timestampSinceEpoch();
 
 /**
  * Returns a string with the input time formatted in number of 
