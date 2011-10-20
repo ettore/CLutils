@@ -34,24 +34,29 @@
 
 void init_ios_logging(CFStringRef appname, CFStringRef logname)
 {
-    NSString *logpath;
+  NSString *logpath;
 
 #if TARGET_IPHONE_SIMULATOR == 0
-    NSArray *p;
-    NSString *docdir;
+  NSArray *p;
+  NSString *docdir;
     
+  if (logname) {
     p = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     docdir = [p objectAtIndex:0];
     logpath = [docdir stringByAppendingPathComponent:(NSString*)logname];
-    
+
     // redirect stderr (used by NSLog etc) to our logfile
+    freopen([logpath cStringUsingEncoding:NSASCIIStringEncoding],"w+",stdout);
     freopen([logpath cStringUsingEncoding:NSASCIIStringEncoding],"w+",stderr);
-#else
+  } else {
     logpath = @"";
+  }
+#else
+  logpath = @"";
 #endif
     
-    // init cl_debug with our logfile
-    cl_debug_init([(NSString*)appname UTF8String], [logpath UTF8String]);
+  // init cl_debug with our logfile
+  cl_debug_init([(NSString*)appname UTF8String], [logpath UTF8String]);
 }
 
 void redirect_stderr(CFStringRef logname)
@@ -89,7 +94,9 @@ void CLSupportSendEmail(CFStringRef subject, CFStringRef body)
 
 void debugViewFrame(char *label, UIView *a_view)
 {
-    CGRect f = [a_view frame];
-    debug0msg("%s, O (%.2f,%.2f) W=%.2f H=%.2f", label,
-              f.origin.x, f.origin.y, f.size.width, f.size.height);
+#ifdef CL_DEBUG_0
+  CGRect f = [a_view frame];
+#endif
+  debug0msg("%s, O (%.2f,%.2f) W=%.2f H=%.2f", label,
+            f.origin.x, f.origin.y, f.size.width, f.size.height);
 }
