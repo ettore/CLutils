@@ -42,10 +42,9 @@
                                                CGRectMake(0, 0, 
                                                           new_size.width,
                                                           new_size.height));
-    // clients should take care of releasing
-    //[orig_img release];
-
-    return [UIImage imageWithCGImage:resized_img];
+    UIImage *tmp = [UIImage imageWithCGImage:resized_img];
+    CFRelease(resized_img);
+    return tmp;
 }
 
 //+(UIImage *)imageWithSize:(CGSize)new_size
