@@ -26,7 +26,7 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
- #import "CLMutableArrayCateg.h"
+#import "CLMutableArrayCateg.h"
 
 @implementation NSMutableArray (CLMutableArrayCateg)
 
