@@ -71,7 +71,7 @@
  */ 
 - (CL_ERROR)GET:(NSString*)url_str
 {
-  NSConnection *conn = nil;
+  NSURLConnection *conn = nil;
   NSMutableURLRequest *req;
 
   assert(_delegate); // temporary sanity check
