@@ -31,6 +31,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
 
+#import "clcg_bundle_utils.h"
 #import "cl_debug.h"
 
 #import "CLFoundationUtils.h"
@@ -172,45 +173,50 @@ timestampSinceEpoch()
     return [NSDate timeIntervalSinceReferenceDate] + NSTimeIntervalSince1970;
 }
 
+NSString *localizedDays(int num_days)
+{
+  return (num_days == 1 ? CLCG_LOC(@"day") : CLCG_LOC(@"days"));
+}
+
 NSString *formattedTimeLeft(NSInteger seconds)
 {
-    const int onemin  = 60;
-    const int onehour = 3600;
-    const int oneday  = 86400;
-    NSString *s;
+  const int onemin  = 60;
+  const int onehour = 3600;
+  const int oneday  = 86400;
+  NSString *s, *days;
+  
+  int d = abs(seconds / oneday);
+  days = localizedDays(d);
+  int secs_after_days = abs(seconds % oneday);
     
-    int d = abs(seconds / oneday);
-    int secs_after_days = abs(seconds % oneday);
-    char *ds = (d == 1 ? "" : "s");
-        
-    int h = abs(secs_after_days / onehour);
-    int secs_after_hours = abs(secs_after_days % onehour);
-    
-    int m = abs(secs_after_hours / onemin);
-    int secs = abs(secs_after_hours % onemin);
+  int h = abs(secs_after_days / onehour);
+  int secs_after_hours = abs(secs_after_days % onehour);
 
-    if (d > 0 && h > 0 && m > 0)
-        s = [NSString stringWithFormat:@"%d day%s, %d h, %d m", d,ds,h,m];
-    else if (d > 0 && h > 0 && m == 0)
-        s = [NSString stringWithFormat:@"%d day%s, %d h", d,ds,h];
-    else if (d > 0 && h == 0 && m > 0)
-        s = [NSString stringWithFormat:@"%d day%s, %d m", d,ds,m];
-    else if (d > 0 && h == 0 && m == 0)
-        s = [NSString stringWithFormat:@"%d day%s", d,ds];
-    else if (d == 0 && h > 0 && m > 0)
-        s = [NSString stringWithFormat:@"%d h, %d m", h,m];
-    else if (d == 0 && h > 0 && m == 0)
-        s = [NSString stringWithFormat:@"%d hours", h];
-    else if (d == 0 && h == 0 && m > 0 && secs > 0)
-        s = [NSString stringWithFormat:@"%d m, %d s", m, secs];
-    else if (d == 0 && h == 0 && m > 0 && secs == 0)
-        s = [NSString stringWithFormat:@"%d minutes", m];
-    else if (d == 0 && h == 0 && m == 0)
-        s = [NSString stringWithFormat:@"%d seconds", secs];
-    else
-        s = [NSString stringWithFormat:@"%d seconds", seconds];
-    
-    return s;
+  int m = abs(secs_after_hours / onemin);
+  int secs = abs(secs_after_hours % onemin);
+
+  if (d > 0 && h > 0 && m > 0)
+    s = [NSString stringWithFormat:@"%d %@, %d h, %d m", d, days, h, m];
+  else if (d > 0 && h > 0 && m == 0)
+    s = [NSString stringWithFormat:@"%d %@, %d h", d, days, h];
+  else if (d > 0 && h == 0 && m > 0)
+    s = [NSString stringWithFormat:@"%d %@, %d m", d, days, m];
+  else if (d > 0 && h == 0 && m == 0)
+    s = [NSString stringWithFormat:@"%d %@", d, days];
+  else if (d == 0 && h > 0 && m > 0)
+    s = [NSString stringWithFormat:@"%d h, %d m", h, m];
+  else if (d == 0 && h > 0 && m == 0)
+    s = [NSString stringWithFormat:@"%d %@", h, CLCG_LOC(@"hours")];
+  else if (d == 0 && h == 0 && m > 0 && secs > 0)
+    s = [NSString stringWithFormat:@"%d m, %d s", m, secs];
+  else if (d == 0 && h == 0 && m > 0 && secs == 0)
+    s = [NSString stringWithFormat:@"%d %@", m, CLCG_LOC(@"minutes")];
+  else if (d == 0 && h == 0 && m == 0)
+    s = [NSString stringWithFormat:@"%d %@", secs, CLCG_LOC(@"seconds")];
+  else
+    s = [NSString stringWithFormat:@"%d %@", seconds, CLCG_LOC(@"seconds")];
+
+  return s;
 }
 
 NSString *shortenedName(NSString *name, int max_len)
