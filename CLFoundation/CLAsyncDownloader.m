@@ -136,7 +136,12 @@
   [req setValue:cont_type forHTTPHeaderField:@"Content-Type"];
   [req setHTTPBody:post_data];
   [req setHTTPShouldHandleCookies:YES];
-    
+  
+  // NB: can't set a timeout shorter than 240 sec on POST requests (!) : code 
+  // inside CFNetwork will ignore any timeout shorter than 240 sec.
+  // http://stackoverflow.com/questions/1466389
+  //[req setTimeoutInterval:10];
+  
   // if we had one download from a previous job, discard it
   if (_downloadedData)
     [_downloadedData release];
