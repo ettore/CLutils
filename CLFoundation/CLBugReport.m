@@ -70,17 +70,24 @@
 
 - (NSString *)body
 {
-    NSString *s;
-    s = [NSString stringWithFormat:
-         @"Competency =\n%@\n\nErrorCode =\n%d\n\nUserMsg =\n%@\n\nInfo =\n%@\n",
-         competency, errorCode, userMsg, info];
-    return s;
+  NSString *s;
+  s = [NSString stringWithFormat:@"ErrorCode = %d\n\nInfo =\n%@\n",
+       errorCode, info];
+
+  if (competency)
+    s = [NSString stringWithFormat:@"Competency = %@\n\n%@", competency, s];
+
+  if (userMsg)
+    s = [NSString stringWithFormat:@"UserMsg =\n%@\n\n%@", userMsg, s];
+
+  return s;
 }
 
 - (NSString *)description
 {
     NSString *s;
-    s = [NSString stringWithFormat:@"Subject =\n%@\n\n%@",[self subject], [self body]];
+    s = [NSString stringWithFormat:@"Subject=%@\n\n%@",
+         [self subject], [self body]];
     return s;
 }
 
