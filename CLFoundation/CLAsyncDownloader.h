@@ -32,6 +32,10 @@
 
 @class CLAsyncDownloader;
 
+
+//------------------------------------------------------------------------------
+#pragma mark -
+
 @protocol CLDownloaderDelegate
 
 @required
@@ -42,8 +46,12 @@
 
 @optional 
 -(NSString*)loadingMessage;
-
 @end
+
+
+//------------------------------------------------------------------------------
+#pragma mark -
+
 
 /*"
  Use an instance of this class to download one item at a time using HTTP GET.
@@ -99,6 +107,10 @@
 
 // returns the downloaded data as string
 - (NSString *)downloadedDataAsString;
+
+// subclasses can override this method to prevent the receiver from removing
+// the loading message when downloading ends. Returns YES by default.
+- (BOOL)shouldRemoveLoadingMsg;
 
 // -----------------------------------------------------------------------------
 #pragma mark * Utils * 

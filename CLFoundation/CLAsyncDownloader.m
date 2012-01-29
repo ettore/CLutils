@@ -29,6 +29,14 @@
 
 #import "CLAsyncDownloader.h"
 
+//------------------------------------------------------------------------------
+#pragma mark -
+
+
+@interface CLAsyncDownloader ()
+-(CL_ERROR)doHTTP:(NSString*)method resource:(NSString*)url params:(NSString*)params;
+@end
+
 @implementation CLAsyncDownloader
 
 @synthesize requestType = mRequestType;
@@ -47,8 +55,7 @@
                  owner:(id)owner
       enableLoadingMsg:(BOOL)enableLoadingMsg
 {
-  if ((self = [super init]))
-  {
+  if ((self = [super init])) {
 		_downloadedData = nil;
 		_expectedDownloadLength = 0;
 		_busy = NO;
@@ -87,6 +94,7 @@
   NSString * const content_type = @"application/x-www-form-urlencoded";
   [req setValue:content_type forHTTPHeaderField:@"Content-Type"];
   [req setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+  [req setHTTPShouldHandleCookies:YES];
   [req setHTTPMethod:@"GET"];
   
   if (_downloadedData)
@@ -106,19 +114,31 @@
   return CL_OK;
 }
 
+-(CL_ERROR)PUT:(NSString*)url withParams:(NSString*)params
+{
+  url = [NSString stringWithFormat:@"%@?%@",url,params];
+  return [self doHTTP:@"PUT" resource:url params:params];
+}
+
+-(CL_ERROR)POST:(NSString*)url withParams:(NSString*)params
+{
+  return [self doHTTP:@"POST" resource:url params:params];
+}
+
 //------------------------------------------------------------------------------
 // @param url_str A string in the form "http://example.com"
 // @param post_str A string in the form "par1=val1&par2=val2" 
-// We assume post_str is properly HTTP encoded and ready to go.
+// We assume params is properly HTTP encoded and ready to go.
 // 
-- (CL_ERROR)POST:(NSString*)url_str withParams:(NSString*)post_str
+// currently tested only for PUT and POST
+//
+-(CL_ERROR)doHTTP:(NSString*)method resource:(NSString*)url params:(NSString*)params
 {
   NSURLConnection *conn = nil;
-  NSData *post_data;
-  NSString *post_len, *cont_type = @"application/x-www-form-urlencoded";
-    
-  assert(_delegate); // temporary sanity check
-
+  NSMutableURLRequest *req;
+  NSData *data;
+  NSString *len, *cont_type = @"application/x-www-form-urlencoded";
+  
   if (_busy)
     return CL_BUSY;
   _busy = YES;
@@ -126,69 +146,20 @@
   if (mEnableLoadingMsg)
     [_delegate showSpinny];
   
-  // set things up for our POST request
-  NSMutableURLRequest *req = [[[NSMutableURLRequest alloc] init] autorelease];
-  post_data = [post_str dataUsingEncoding:NSUTF8StringEncoding];
-  post_len = [NSString stringWithFormat:@"%d", [post_str length]];
-  [req setURL:[NSURL URLWithString:url_str]];
-  [req setHTTPMethod:@"POST"];
-  [req setValue:post_len forHTTPHeaderField:@"Content-Length"];
+  req = [[[NSMutableURLRequest alloc] init] autorelease];
+  data = [params dataUsingEncoding:NSUTF8StringEncoding];
+  len = [NSString stringWithFormat:@"%d", [params length]];
+  [req setURL:[NSURL URLWithString:url]];
+  [req setHTTPMethod:method];
+  [req setValue:len forHTTPHeaderField:@"Content-Length"];
   [req setValue:cont_type forHTTPHeaderField:@"Content-Type"];
-  [req setHTTPBody:post_data];
+  [req setHTTPBody:data];
   [req setHTTPShouldHandleCookies:YES];
   
   // NB: can't set a timeout shorter than 240 sec on POST requests (!) : code 
   // inside CFNetwork will ignore any timeout shorter than 240 sec.
   // http://stackoverflow.com/questions/1466389
   //[req setTimeoutInterval:10];
-  
-  // if we had one download from a previous job, discard it
-  if (_downloadedData)
-    [_downloadedData release];
-  
-  _downloadedData = [[NSMutableData data] retain];
-
-  // download starts immediately after this call
-  // conn will be released by connectionDidFinishLoading connection:didFail
-  conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-  if (conn == nil) {
-    [_downloadedData release];
-    _downloadedData = nil;
-    fprintf(stderr, "URL unreachable: unable to connect to server");
-    return CL_CNX_UNAVAILABLE;
-  }
-
-  return CL_OK;
-}
-
-- (CL_ERROR)PUT:(NSString*)url_str withParams:(NSString*)params
-{
-  NSURLConnection *conn = nil;
-  NSMutableURLRequest *req;
-  NSData *put_data;
-  NSString *put_len, *cont_type = @"application/x-www-form-urlencoded";
-  
-  if (_busy)
-    return CL_BUSY;
-  
-  if (mEnableLoadingMsg)
-    [_delegate showSpinny];
-  
-  assert(_delegate); // temporary sanity check
-  
-  _busy = YES;
-  req = [[[NSMutableURLRequest alloc] init] autorelease];
-  
-  // set things up for our PUT request
-  url_str = [NSString stringWithFormat:@"%@?%@",url_str,params];
-  put_data = [params dataUsingEncoding:NSUTF8StringEncoding];
-  put_len = [NSString stringWithFormat:@"%d", [params length]];
-  [req setURL:[NSURL URLWithString:url_str]];
-  [req setHTTPMethod:@"PUT"];
-  [req setValue:put_len forHTTPHeaderField:@"Content-Length"];
-  [req setValue:cont_type forHTTPHeaderField:@"Content-Type"];
-  [req setHTTPBody:put_data];
-  [req setHTTPShouldHandleCookies:YES];
   
   // if we had one download from a previous job, discard it
   if (_downloadedData)
@@ -243,22 +214,32 @@
   [_delegate downloadDidFail:self error:err];
 }
 
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)cnx
 {
   debug0cocoa(@"@@@@ connection=%@", cnx);
   debug0msg("@@@@ NSDATA size=%d", [_downloadedData length]);
   
-  [_delegate removeSpinny];
+  if ([self shouldRemoveLoadingMsg])
+    [_delegate removeSpinny];
   
   [cnx release];
   [_delegate downloadDidComplete:self];
   _busy = NO;
 }
 
+
 - (NSData *)downloadedData
 {
   return _downloadedData;
 }
+
+
+-(BOOL)shouldRemoveLoadingMsg
+{
+  return YES;
+}
+
 
 - (NSString *)downloadedDataAsString
 {
@@ -267,6 +248,7 @@
   [s autorelease];
   return s;
 }
+
 
 - (id)owner
 {
