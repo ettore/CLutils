@@ -59,6 +59,10 @@
 // `opt' the dictionary received by application:didFinishLaunchWithOptions:
 -(id)initWithOptions:(NSDictionary*)app_opt;
 
+// returns YES if the user has push notifications enabled for this app. If the
+// user disables all push notifications in Settings, then this will return NO.
++(BOOL)hasPushNotificationsEnabled;
+
 // register with Apple Push Notification Servers
 -(void)registerWithAPNS;
 

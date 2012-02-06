@@ -63,12 +63,24 @@
 }
 
 
++(BOOL)hasPushNotificationsEnabled
+{
+  UIApplication *app = [UIApplication sharedApplication];
+  
+  debug0cocoa(@"enabled push notification types: %d", 
+              [app enabledRemoteNotificationTypes]);
+  
+  return ([app enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone);
+}
+
+
 -(void)registerWithAPNS
 {
-    UIApplication *app = [UIApplication sharedApplication];
-    [app registerForRemoteNotificationTypes: 
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
+  UIApplication *app = [UIApplication sharedApplication];
+  [app registerForRemoteNotificationTypes: 
+   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
 }
+
 
 -(void)receivedDeviceToken:(NSData *)data
 {
