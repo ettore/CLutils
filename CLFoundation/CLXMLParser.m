@@ -157,7 +157,7 @@
 
 /** Subclasses should redefine this method and return an instance of the
  *  appropriate class. */
-- (id)createElementWithAttributes:(NSDictionary *)attrDict
+- (id)newElementWithAttributes:(NSDictionary *)attrDict
 {
 #if UNIT_TESTS
     return [[NSString alloc] init]; //empty string just to indicate tests passed
@@ -170,7 +170,7 @@
  * Factory method that creates an error object when a back end error occurs.
  * Subclass can override this to provide better error handling.
  */
-- (id)createErrorElement:(NSDictionary *)attrDict
+- (id)newErrorElement:(NSDictionary *)attrDict
 {
     CLXMLParseError *err = [[CLXMLParseError alloc] init];
     err.code = [[attrDict valueForKey:@"code"] integerValue];
@@ -209,14 +209,14 @@ didStartElement:(NSString *)elemName
         if (tmpParsed == nil)
             tmpParsed = [[NSMutableArray alloc] initWithCapacity:1];
         
-        id item = [self createElementWithAttributes:attrDict];
+        id item = [self newElementWithAttributes:attrDict];
         [(NSMutableArray*)tmpParsed addObject:item];
         [item release];
     }
     else if ([elemName isEqualToString:_errorTag])
     {
         [tmpParsed release]; // release whatever we had
-        tmpParsed = [self createErrorElement:attrDict];
+        tmpParsed = [self newErrorElement:attrDict];
     }
 }
 

@@ -63,18 +63,18 @@
  * method is used by the parser and its result ultimately is available 
  * via the parsedElement method. Returned object follows ownership rule.
  */
-- (id)createElementWithAttributes:(NSDictionary *)attrDict;
+- (id)newElementWithAttributes:(NSDictionary *)attrDict;
 
 /**
  * Factory method that creates an instance of a CLXMLParseError.
  * This is invoked when the backend returns a <error/> message.
  * Returned object follows ownership rule.
  */
-- (id)createErrorElement:(NSDictionary *)attrDict;
+- (id)newErrorElement:(NSDictionary *)attrDict;
 
 /** Returns the parsed elements from the last parseElementAtURL: invocation. 
  *  This can be an array of instances of a user class 
- *  (see createElementWithAttributes: method) or an instance of the 
+ *  (see newElementWithAttributes: method) or an instance of the 
  *  CLXMLParseError hierarchy. If a new parsing cycle is started
  *  (with parseElementAtURL:) this object gets released, so clients should
  *  retain this if they care about it.
@@ -92,7 +92,7 @@
 
 // subclasses should redefine this method providing additional parsing as
 // necessary. This class only intantiate the initial object corresponding 
-// to the wantedTag tag using the createElementWithAttributes: factory method.
+// to the wantedTag tag using the newElementWithAttributes: factory method.
 - (void) parser:(NSXMLParser *)parser 
 didStartElement:(NSString *)elemName 
    namespaceURI:(NSString *)nsURI 

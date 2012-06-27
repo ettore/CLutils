@@ -44,7 +44,7 @@
 
 /** Subclasses should redefine this method and return an instance of the
  *  appropriate class. */
-- (id)createElementWithAttributes:(NSDictionary *)attrDict
+- (id)newElementWithAttributes:(NSDictionary *)attrDict
 {
     CLTwitPicResponse *rsp = [[CLTwitPicResponse alloc] init];
     NSObject *status = [attrDict valueForKey:@"status"];

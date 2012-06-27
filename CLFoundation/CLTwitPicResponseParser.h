@@ -36,6 +36,6 @@
 }
 
 /** factory method that should return an instance of the appropriate class. */
-- (id)createElementWithAttributes:(NSDictionary *)attrDict;
+- (id)newElementWithAttributes:(NSDictionary *)attrDict;
 
 @end
