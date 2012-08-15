@@ -88,7 +88,7 @@
   _busy = YES;
   
   if (mEnableLoadingMsg)
-    [_delegate showSpinny];
+    [_delegate showLoadingView:YES];
   
   req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_str]];
   NSString * const content_type = @"application/x-www-form-urlencoded";
@@ -144,7 +144,7 @@
   _busy = YES;
   
   if (mEnableLoadingMsg)
-    [_delegate showSpinny];
+    [_delegate showLoadingView:YES];
   
   req = [[[NSMutableURLRequest alloc] init] autorelease];
   data = [params dataUsingEncoding:NSUTF8StringEncoding];
@@ -209,7 +209,7 @@
         [err description],
         [[err userInfo] objectForKey:NSErrorFailingURLStringKey]);
   
-  [_delegate removeSpinny];
+  [_delegate showLoadingView:NO];
 
   [_delegate downloadDidFail:self error:err];
 }
@@ -221,7 +221,7 @@
   debug0msg("@@@@ NSDATA size=%d", [_downloadedData length]);
   
   if ([self shouldRemoveLoadingMsg])
-    [_delegate removeSpinny];
+    [_delegate showLoadingView:NO];
   
   [cnx release];
   [_delegate downloadDidComplete:self];

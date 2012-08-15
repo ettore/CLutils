@@ -41,11 +41,7 @@
 @required
 -(void)downloadDidComplete:(CLAsyncDownloader *)d;
 -(void)downloadDidFail:(CLAsyncDownloader *)d error:(NSError *)err;
--(void)showSpinny;
--(void)removeSpinny;
-
-@optional 
--(NSString*)loadingMessage;
+-(void)showLoadingView:(BOOL)show;
 @end
 
 
