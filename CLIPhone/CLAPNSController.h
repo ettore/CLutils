@@ -40,27 +40,34 @@
 @property(nonatomic) BOOL isPushRegistered;
 @property(nonatomic) BOOL hasSyncedDeviceToken;
 @property(nonatomic,retain,readonly) NSData *deviceToken;
+
+// Curent options dictionary. This dictionary contains the notifications
+// payload. We get one when a new notification is received while the app is in
+// the foreground, or when you "View" the notification to bring the app in the
+// foreground.
+// TODO: might want to parse the dictionary and just save the individual info,
+// instead of parsing it each time.
 @property(nonatomic,retain) NSDictionary *options;
 
-// `opt' is the dictionary received by application:didFinishLaunchWithOptions:
--(id)initWithOptions:(NSDictionary*)app_opt;
+// Pass the dictionary received by application:didFinishLaunchWithOptions:.
+-(id)initWithOptions:(NSDictionary*)opt;
 
-// returns YES if the user has push notifications enabled for this app. If the
-// user disables all push notifications in Settings, then this will return NO.
+// @returns YES if the user has push notifications enabled for this app.
+//           NO if the user disables all push notifications in Settings.
 +(BOOL)hasPushNotificationsEnabled;
 
-// register with APNS for sound, badge, alert notifications
+// registers for sounds, badges, alerts.
 -(void)registerForAllNotifications;
 
-// Called by application:didRegisterForRemoteNotificationsWithDeviceToken:
-// from the app delegate. We get the deviceToken here.
--(void)receivedDeviceToken:(NSData *)data;
+// Typically you want to call this from
+// application:didRegisterForRemoteNotificationsWithDeviceToken:
+// to save the device token.
+-(void)receivedDeviceToken:(NSData*)device_token;
 
 // adjust state in case registration with APNS failed.
--(void)registrationFailed:(NSError *)err;
+-(void)registrationFailed:(NSError*)err;
 
-//TODO-XXX This appears to be wrong.
-// returns badge count from current options dictionary
+// returns current badge count.
 -(NSInteger)badgeCount;
 
 // convert NSData to string
