@@ -28,27 +28,13 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
 
-/*
- 
- Notes on deviceToken and association with a user
- 
- user installs app
- user launches app: deviceToken is saved in prefs
- user registers: deviceToken is saved in Player table row
- user changes email: THIS IS NO LOGOUT, same userID, same deviceToken
- 
- if you add the concept of login-logout, then deviceToken can't be really
- associated to a user, as multiple users can login on same device.
- 
- */
-
-@interface CLAPNSController : NSObject {
-    BOOL isPushRegistered; //is it registered for push notifications or not
-    BOOL hasSyncedDeviceToken; //has the device token been synced upon startup
-    NSData *deviceToken;   //comes from APNS once you register
-    NSDictionary *options; //from application:didFinishLaunchingWithOptions:
+@interface CLAPNSController : NSObject 
+{
+  BOOL isPushRegistered;
+  BOOL hasSyncedDeviceToken;
+  NSData *deviceToken;   //comes from APNS once you register
+  NSDictionary *options; //comes from application:didFinishLaunchingWithOptions:
 }
 
 @property(nonatomic) BOOL isPushRegistered;
@@ -56,20 +42,21 @@
 @property(nonatomic,retain,readonly) NSData *deviceToken;
 @property(nonatomic,retain) NSDictionary *options;
 
-// `opt' the dictionary received by application:didFinishLaunchWithOptions:
+// `opt' is the dictionary received by application:didFinishLaunchWithOptions:
 -(id)initWithOptions:(NSDictionary*)app_opt;
 
-// register with Apple Push Notification Servers
--(void)registerWithAPNS;
+// register with APNS for sound, badge, alert notifications
+-(void)registerForAllNotifications;
 
 // Called by application:didRegisterForRemoteNotificationsWithDeviceToken:
 // from the app delegate. We get the deviceToken here.
 -(void)receivedDeviceToken:(NSData *)data;
 
-// registration with APNS failed :(
+// adjust state in case registration with APNS failed.
 -(void)registrationFailed:(NSError *)err;
 
-// returns badge count with current options dictionary
+//TODO-XXX This appears to be wrong.
+// returns badge count from current options dictionary
 -(NSInteger)badgeCount;
 
 // convert NSData to string

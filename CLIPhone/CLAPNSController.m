@@ -27,8 +27,11 @@
  */
 
 #import "CLAPNSController.h"
-#import <UIKit/UIKit.h>
-#import "cl_debug.h"
+#import "clcg_debug.h"
+
+@interface CLAPNSController ()
+@property(nonatomic,retain,readwrite) NSData *deviceToken;
+@end
 
 @implementation CLAPNSController
 
@@ -36,6 +39,7 @@
 @synthesize hasSyncedDeviceToken;
 @synthesize deviceToken;
 @synthesize options;
+
 
 -(id)init
 {
@@ -63,28 +67,24 @@
 }
 
 
--(void)registerWithAPNS
+-(void)registerForAllNotifications
 {
-    UIApplication *app = [UIApplication sharedApplication];
-    [app registerForRemoteNotificationTypes: 
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
+  CLCG_P(@"Registering for Push Notifications...");
+  UIApplication *app = [UIApplication sharedApplication];
+  [app registerForRemoteNotificationTypes: 
+   (UIRemoteNotificationTypeBadge 
+    | UIRemoteNotificationTypeAlert
+    | UIRemoteNotificationTypeSound)];
 }
+
 
 -(void)receivedDeviceToken:(NSData *)data
 {
-    debug0cocoa(@"registered for push notifications, deviceToken=\n%@", 
-                [data description]);
-
-    [data retain];
-    if (deviceToken)
-    {
-        [deviceToken release];
-        deviceToken = nil;
-    }
-    
-    deviceToken = data;
-    isPushRegistered = YES;
+  CLCG_P(@"registered for push notifications, deviceToken=\n%@", [data description]);
+  self.deviceToken = data;
+  isPushRegistered = YES;
 }
+
 
 -(NSString*)deviceTokenString
 {
@@ -104,71 +104,35 @@
                 stringByReplacingOccurrencesOfString:@"<" withString:@""] 
                stringByReplacingOccurrencesOfString:@">" withString:@""] 
               stringByReplacingOccurrencesOfString:@" " withString:@""];
-	
-    debug0cocoa(@"deviceTokenString: DEVTOK_NSDATA=%@  NEWTOK=%@", 
-                deviceToken, tokstr);
     
     return tokstr;
 }
 
+
 -(void)registrationFailed:(NSError *)err
 {
-    debug0cocoa(@"registration for push notifications failed: %@", 
-                [err description]);
-    if (deviceToken)
-    {
-        [deviceToken release];
-        deviceToken = nil;
-    }
-    
-    isPushRegistered = NO;
+  CLCG_P(@"registration for push notifications failed: %@", [err description]);
+
+  self.deviceToken = nil;
+  isPushRegistered = NO;
 }
+
 
 -(NSInteger)badgeCount
 {
-    if (options == nil)
-        return 0;
-    
-    NSDictionary *aps = [options objectForKey:@"aps"];
-    if (aps == nil)
-        return 0;
-    
-    id badgeobj = [aps objectForKey:@"badge"];
-    if (badgeobj)
-        return [badgeobj integerValue];
-    
+  if (options == nil)
     return 0;
+
+  NSDictionary *aps = [options objectForKey:@"aps"];
+  if (aps == nil)
+    return 0;
+
+  id badgeobj = [aps objectForKey:@"badge"];
+  if (badgeobj)
+    return [badgeobj integerValue];
+
+  return 0;
 }
-
-/*
- -(void)processReceivedNotifications
- {
- id notif = [opt objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
- if (notif)
- {
- //The payload itself is an NSDictionary object that contains the elements
- //of the notification—alert message, badge number, sound, and so on. 
- //NSString *item_name = [notif.userInfo objectForKey:MOVE_ITEM_KEY];
- 
- app.applicationIconBadgeNumber = notif.applicationIconBadgeNumber-1;
- }
- }
- */
-
-//- (void)application:(UIApplication *)app
-//didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)token
-//{
-//    const void *token_bytes = [token bytes];
-//    
-//    self.isPushRegistered = YES;
-//    
-//    [self sendProviderDeviceToken:token_bytes]; // custom method
-//}
-//
-//- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err 
-//{
-//    LOG_NS(@"Error registring for push notifications: %@", err);
-//}
 
 
 @end
