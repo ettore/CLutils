@@ -30,15 +30,25 @@
 #import "clcg_debug.h"
 
 @interface CLAPNSController ()
-@property(nonatomic,retain,readwrite) NSData *deviceToken;
+@property(nonatomic,retain,readwrite) NSString *deviceToken;
 @end
 
 @implementation CLAPNSController
 
-@synthesize isPushRegistered;
-@synthesize hasSyncedDeviceToken;
-@synthesize deviceToken;
-@synthesize options;
+@synthesize isPushRegistered = mIsPushRegistered;
+@synthesize hasSyncedDeviceToken = mHasSyncedDeviceToken;
+@synthesize deviceToken = mDeviceToken;
+@synthesize options = mOptions;
+
+
+#if !__has_feature(objc_arc)
+-(void)dealloc
+{
+  [mDeviceToken release];
+  [mOptions release];
+  [super dealloc];
+}
+#endif
 
 
 -(id)init
@@ -54,8 +64,8 @@
   if (!(self = [super init]))
     return nil;
   
-  isPushRegistered = NO;
-  hasSyncedDeviceToken = NO;
+  mIsPushRegistered = NO;
+  mHasSyncedDeviceToken = NO;
   if (opt) {
     NSDictionary *payld;
     
@@ -71,8 +81,7 @@
 {
   UIApplication *app = [UIApplication sharedApplication];
   
-  debug0cocoa(@"enabled push notification types: %d", 
-              [app enabledRemoteNotificationTypes]);
+  CLCG_P(@"Enabled push notification types: %d", [app enabledRemoteNotificationTypes]);
   
   return ([app enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone);
 }
@@ -89,34 +98,30 @@
 }
 
 
--(void)receivedDeviceToken:(NSData *)data
+-(void)receivedDeviceToken:(NSData*)devtoken_data
 {
-  CLCG_P(@"registered for push notifications, deviceToken=\n%@", [data description]);
-  self.deviceToken = data;
-  isPushRegistered = YES;
-}
-
-
--(NSString*)deviceTokenString
-{
-    if (deviceToken == nil)
-        return nil;
-    
-    NSString *tokstr;
-    
-//    const unsigned *tokdata = (const unsigned *)deviceToken;
-//	tokstr = [NSString stringWithFormat:
-//            @"%08x%08x%08x%08x%08x%08x%08x%08x", 
-//            ntohl(tokdata[0]), ntohl(tokdata[1]), ntohl(tokdata[2]), 
-//            ntohl(tokdata[3]), ntohl(tokdata[4]), ntohl(tokdata[5]),
-//            ntohl(tokdata[6]), ntohl(tokdata[7])];
-
-    tokstr = [[[[deviceToken description] 
-                stringByReplacingOccurrencesOfString:@"<" withString:@""] 
-               stringByReplacingOccurrencesOfString:@">" withString:@""] 
-              stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    return tokstr;
+  CLCG_P(@"registered for push notifications: deviceToken=\n%@", 
+         [devtoken_data description]);
+  
+  if (devtoken_data == nil)
+    return;
+  
+  NSString *tokstr;
+  
+  //  const unsigned *tokdata = (const unsigned *)devtoken_data;
+  //	tokstr = [NSString stringWithFormat:
+  //            @"%08x%08x%08x%08x%08x%08x%08x%08x", 
+  //            ntohl(tokdata[0]), ntohl(tokdata[1]), ntohl(tokdata[2]), 
+  //            ntohl(tokdata[3]), ntohl(tokdata[4]), ntohl(tokdata[5]),
+  //            ntohl(tokdata[6]), ntohl(tokdata[7])];
+  
+  tokstr = [[[[devtoken_data description] 
+              stringByReplacingOccurrencesOfString:@"<" withString:@""] 
+             stringByReplacingOccurrencesOfString:@">" withString:@""] 
+            stringByReplacingOccurrencesOfString:@" " withString:@""];
+  
+  [self setDeviceToken:tokstr];
+  mIsPushRegistered = YES;
 }
 
 
@@ -124,17 +129,17 @@
 {
   CLCG_P(@"registration for push notifications failed: %@", [err description]);
 
-  self.deviceToken = nil;
-  isPushRegistered = NO;
+  [self setDeviceToken:nil];
+  mIsPushRegistered = NO;
 }
 
 
 -(NSInteger)badgeCount
 {
-  if (options == nil)
+  if (mOptions == nil)
     return 0;
 
-  NSDictionary *aps = [options objectForKey:@"aps"];
+  NSDictionary *aps = [mOptions objectForKey:@"aps"];
   if (aps == nil)
     return 0;
 
