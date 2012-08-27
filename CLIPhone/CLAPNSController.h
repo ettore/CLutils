@@ -35,6 +35,7 @@
   BOOL mHasSyncedDeviceToken;
   NSString *mDeviceToken; //comes from APNS once you register
   NSDictionary *mOptions; //comes from application:didFinishLaunchingWithOptions:
+  NSInteger mBadgeCount;  //negative values means unassigned
 }
 
 @property(nonatomic) BOOL isPushRegistered;
@@ -68,6 +69,9 @@
 -(void)registrationFailed:(NSError*)err;
 
 // returns current badge count.
--(NSInteger)badgeCount;
+-(NSUInteger)badgeCount;
+
+// reset badge count explicitly
+-(void)setBadgeCount:(NSInteger)count;
 
 @end

@@ -66,9 +66,11 @@
   
   mIsPushRegistered = NO;
   mHasSyncedDeviceToken = NO;
+  mBadgeCount = -1;
   if (opt) {
     NSDictionary *payld;
     
+    CLCG_P(@"Initializing with options: %@", opt);
     payld = [opt objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     [self setOptions:payld];
   }
@@ -80,9 +82,7 @@
 +(BOOL)hasPushNotificationsEnabled
 {
   UIApplication *app = [UIApplication sharedApplication];
-  
-  CLCG_P(@"Enabled push notification types: %d", [app enabledRemoteNotificationTypes]);
-  
+  CLCG_P(@"Currently enabled APN types: %d", [app enabledRemoteNotificationTypes]);
   return ([app enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone);
 }
 
@@ -100,8 +100,7 @@
 
 -(void)receivedDeviceToken:(NSData*)devtoken_data
 {
-  CLCG_P(@"registered for push notifications: deviceToken=\n%@", 
-         [devtoken_data description]);
+  CLCG_P(@"Registered for APN: deviceToken=\n%@", [devtoken_data description]);
   
   if (devtoken_data == nil)
     return;
@@ -127,27 +126,38 @@
 
 -(void)registrationFailed:(NSError *)err
 {
-  CLCG_P(@"registration for push notifications failed: %@", [err description]);
+  CLCG_P(@"Registration for APN failed: %@", [err description]);
 
   [self setDeviceToken:nil];
   mIsPushRegistered = NO;
 }
 
 
--(NSInteger)badgeCount
+-(void)setBadgeCount:(NSInteger)count
 {
+  mBadgeCount = count;
+}
+
+
+-(NSUInteger)badgeCount
+{
+  // if we have a valid value (>0) return that
+  if (mBadgeCount >= 0)
+    return mBadgeCount;
+  
+  //... otherwise parse options
   if (mOptions == nil)
-    return 0;
+    mBadgeCount = 0;
 
   NSDictionary *aps = [mOptions objectForKey:@"aps"];
   if (aps == nil)
-    return 0;
+    mBadgeCount = 0;
 
   id badgeobj = [aps objectForKey:@"badge"];
   if (badgeobj)
-    return [badgeobj integerValue];
+    mBadgeCount = [badgeobj integerValue];
 
-  return 0;
+  return (NSUInteger)mBadgeCount;
 }
 
 
