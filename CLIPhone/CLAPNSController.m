@@ -38,7 +38,6 @@
 @synthesize isPushRegistered = mIsPushRegistered;
 @synthesize hasSyncedDeviceToken = mHasSyncedDeviceToken;
 @synthesize deviceToken = mDeviceToken;
-@synthesize options = mOptions;
 
 
 #if !__has_feature(objc_arc)
@@ -133,6 +132,37 @@
 }
 
 
+-(NSDictionary*)options
+{
+  return mOptions;
+}
+
+
+-(void)setOptions:(NSDictionary*)opt
+{
+  [opt retain];
+  [mOptions release];
+  mOptions = opt;
+  [self parseBadgeCount];
+}
+
+
+-(void)parseBadgeCount
+{
+  //... otherwise parse options
+  if (mOptions == nil)
+    mBadgeCount = 0;
+  
+  NSDictionary *aps = [mOptions objectForKey:@"aps"];
+  if (aps == nil)
+    mBadgeCount = 0;
+  
+  id badgeobj = [aps objectForKey:@"badge"];
+  if (badgeobj)
+    mBadgeCount = [badgeobj integerValue];
+}
+
+
 -(void)setBadgeCount:(NSInteger)count
 {
   mBadgeCount = count;
@@ -145,18 +175,8 @@
   if (mBadgeCount >= 0)
     return mBadgeCount;
   
-  //... otherwise parse options
-  if (mOptions == nil)
-    mBadgeCount = 0;
-
-  NSDictionary *aps = [mOptions objectForKey:@"aps"];
-  if (aps == nil)
-    mBadgeCount = 0;
-
-  id badgeobj = [aps objectForKey:@"badge"];
-  if (badgeobj)
-    mBadgeCount = [badgeobj integerValue];
-
+  [self parseBadgeCount];
+  
   return (NSUInteger)mBadgeCount;
 }
 
