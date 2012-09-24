@@ -31,15 +31,16 @@
 
 @interface CLAPNSController : NSObject 
 {
-  BOOL isPushRegistered;
-  BOOL hasSyncedDeviceToken;
-  NSData *deviceToken;   //comes from APNS once you register
-  NSDictionary *options; //comes from application:didFinishLaunchingWithOptions:
+  BOOL mIsPushRegistered;
+  BOOL mHasSyncedDeviceToken;
+  NSString *mDeviceToken; //comes from APNS once you register
+  NSDictionary *mOptions; //comes from application:didFinishLaunchingWithOptions:
+  NSInteger mBadgeCount;  //negative values means unassigned
 }
 
 @property(nonatomic) BOOL isPushRegistered;
 @property(nonatomic) BOOL hasSyncedDeviceToken;
-@property(nonatomic,retain,readonly) NSData *deviceToken;
+@property(nonatomic,retain,readonly) NSString *deviceToken;
 
 // Curent options dictionary. This dictionary contains the notifications
 // payload. We get one when a new notification is received while the app is in
@@ -68,9 +69,9 @@
 -(void)registrationFailed:(NSError*)err;
 
 // returns current badge count.
--(NSInteger)badgeCount;
+-(NSUInteger)badgeCount;
 
-// convert NSData to string
--(NSString*)deviceTokenString;
+// reset badge count explicitly
+-(void)setBadgeCount:(NSInteger)count;
 
 @end
