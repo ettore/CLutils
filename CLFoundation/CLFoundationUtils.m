@@ -149,11 +149,10 @@ NSInteger data2int(CFDataRef data)
     
     s = [NSString stringWithUTF8String:buf]; //(char*)[data bytes]];dont work
     debug0cocoa(@"CFData as string=[%@]", s);
-    if (s)
-    {
+    if (s) {
         unichar c = [s characterAtIndex:0];
         if ((c >= 48 && c <= 57) || c == '-' || c == '+')
-            val = [s longLongValue];
+            val = [s integerValue];
     }
     
     free(buf);
