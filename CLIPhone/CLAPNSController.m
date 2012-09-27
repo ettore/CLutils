@@ -140,8 +140,10 @@
 
 -(void)setOptions:(NSDictionary*)opt
 {
+#if !__has_feature(objc_arc)
   [opt retain];
   [mOptions release];
+#endif
   mOptions = opt;
   [self parseBadgeCount];
 }
