@@ -207,7 +207,7 @@
   // (to do) inform the user
   NSLog(@"Connection failed! Error - %@ %@",
         [err description],
-        [[err userInfo] objectForKey:NSErrorFailingURLStringKey]);
+        [[err userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
   
   [_delegate showLoadingView:NO];
 
