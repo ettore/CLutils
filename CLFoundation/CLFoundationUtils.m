@@ -120,16 +120,6 @@ BOOL cl_isascii_str(CFStringRef str)
     return YES;
 }
 
-// percent-escape a URL string
-CFStringRef percEscStr(CFStringRef str)
-{
-    CFStringRef s;
-    CFStringRef escthis = CFSTR(":/?#[]@!$&’()*+,;'= ");
-    s = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, str, NULL, 
-                                                escthis, kCFStringEncodingUTF8);
-    [(NSString*)s autorelease];
-    return s;
-}
 
 //XXX buggy!
 NSInteger data2int(CFDataRef data)
