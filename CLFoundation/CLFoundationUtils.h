@@ -66,10 +66,6 @@ BOOL cl_isvalid_email(CFStringRef s);
  */
 BOOL cl_isascii_str(CFStringRef s);
 
-/**
- * Percent-escapes i.e. url-encodes a string.
- */
-CFStringRef percEscStr(CFStringRef str);
 
 /** 
  * Extracts a int from given CFData. The content is converted to string and then
@@ -101,13 +97,5 @@ CLTimestamp timestampSinceEpoch();
  */
 NSString *formattedTimeLeft(NSInteger seconds);
 
-/**
- * Returns a shortened version of a given name, taking the first words that 
- * match the given length. E.g.
- *      shortenedName(@"Ettore Pasquini", 10) --> "Ettore"
- * If the first word is still too long, it will be returned truncated with a
- * tolerance of + 2 additional chars.
- */
-NSString *shortenedName(NSString *name, int max_len);
 
 #endif
