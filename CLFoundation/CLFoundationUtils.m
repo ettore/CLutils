@@ -35,89 +35,87 @@
 #import "cl_debug.h"
 
 #import "CLFoundationUtils.h"
-#import "CLMutableCharacterSetCateg.h"
 
 void cl_set(id *obj, id val)
 {
-    if (obj && *obj != val)
-    {
-        [val retain];
-        [*obj release];
-        *obj = val;
-    }
+  if (obj && *obj != val)
+  {
+    [val retain];
+    [*obj release];
+    *obj = val;
+  }
 }
 
 BOOL cl_isvalid_email(CFStringRef str)
 {
-    if (str == nil)
-        return NO;
+  if (str == nil)
+    return NO;
+  
+  char *s = (char*)[(NSString*)str UTF8String];
+  int i = 0, at_cnt = 0, is_letter = 0;
+  int len = [(NSString*)str length];
+  char c = '\0', prevc;
+  NSString *illegal = [NSString stringWithUTF8String:",/:;<=>?[\\]^`"];
+  NSCharacterSet *illeg;
+  BOOL success = YES;
+  BOOL got_name = NO, got_tld = NO;
+  BOOL got_period = NO; // check period after @
+  const NSRange notfound = NSMakeRange(NSNotFound, 0);
+  
+  illeg = [NSCharacterSet characterSetWithCharactersInString:illegal];
+  NSRange r = [(NSString *)str rangeOfCharacterFromSet:illeg];
+  if (r.length != notfound.length || r.location != notfound.location)
+    return NO;
+  
+  debug0msg("len=%d s=[%s]", len,s);
+  while (success && i < len) {
+    prevc = c;
+    c = s[i];
+    is_letter = isalpha(c);
     
-    char *s = (char*)[(NSString*)str UTF8String];
-    int i = 0, at_cnt = 0, is_letter = 0;
-    int len = [(NSString*)str length];
-    char c = '\0', prevc;
-    NSString *illegal = [NSString stringWithUTF8String:",/:;<=>?[\\]^`"];
-    NSCharacterSet *illeg;
-    BOOL success = YES;
-    BOOL got_name = NO, got_tld = NO;
-    BOOL got_period = NO; // check period after @
-    const NSRange notfound = NSMakeRange(NSNotFound, 0);
+    if (c == '@')
+        at_cnt++;
     
-    illeg = [NSCharacterSet characterSetWithCharactersInString:illegal];
-    NSRange r = [(NSString *)str rangeOfCharacterFromSet:illeg];
-    if (r.length != notfound.length || r.location != notfound.location)
-        return NO;
+    if (at_cnt == 0 && is_letter)
+        got_name = YES;
     
-    debug0msg("len=%d s=[%s]", len,s);
-    while (success && i < len)
-    {
-        prevc = c;
-        c = s[i];
-        is_letter = isalpha(c);
-        
-        if (c == '@')
-            at_cnt++;
-        
-        if (at_cnt == 0 && is_letter)
-            got_name = YES;
-        
-        if (got_name && c == '.' && at_cnt >= 1) 
-            got_period = YES;
-        
-        if (got_name && got_period && at_cnt >= 1 && is_letter)
-            got_tld = YES;
-        
-        //debug0msg("c=%c gotname=%d gotperiod=%d gottld=%d ",
-        //          c, got_name, got_period, got_tld);
-        // 0x2B = '+'    0x7A = 'z'
-        if (c < 0x2B || c > 0x7A 
-            || at_cnt > 1 
-            || ((prevc == '.' || prevc == '@') && c == '@')
-            || ((prevc == '.' || prevc == '@') && c == '.'))
-            success = NO;
-        
-        i++;
-    } 
+    if (got_name && c == '.' && at_cnt >= 1) 
+        got_period = YES;
     
-    return (success && got_name && got_period && got_tld);
+    if (got_name && got_period && at_cnt >= 1 && is_letter)
+        got_tld = YES;
+    
+    //debug0msg("c=%c gotname=%d gotperiod=%d gottld=%d ",
+    //          c, got_name, got_period, got_tld);
+    // 0x2B = '+'    0x7A = 'z'
+    if (c < 0x2B || c > 0x7A 
+        || at_cnt > 1 
+        || ((prevc == '.' || prevc == '@') && c == '@')
+        || ((prevc == '.' || prevc == '@') && c == '.'))
+        success = NO;
+    
+    i++;
+  } 
+  
+  return (success && got_name && got_period && got_tld);
 }
 
 BOOL cl_isascii_str(CFStringRef str)
 {
-    if (str == nil)
-        return NO;
-    
-    char *s = (char*)[(NSString*)str UTF8String];
-    int i = -1;
-    int len = CFStringGetLength(str);
-    if (len == 0)
-        return NO;
-    
-    while (++i < len)
-        if (!isascii(s[i]) || s[i] == 0x7F) //7F is DELETE char
-            return NO;
-    
-    return YES;
+  if (str == nil)
+    return NO;
+  
+  char *s = (char*)[(NSString*)str UTF8String];
+  int i = -1;
+  int len = CFStringGetLength(str);
+  if (len == 0)
+    return NO;
+  
+  while (++i < len)
+    if (!isascii(s[i]) || s[i] == 0x7F) //7F is DELETE char
+      return NO;
+  
+  return YES;
 }
 
 
@@ -151,15 +149,15 @@ NSInteger data2int(CFDataRef data)
 
 Boolean isEmpty(NSString *s)
 {
-    return (s == nil || [s compare:@""] == NSOrderedSame);
+  return (s == nil || [s compare:@""] == NSOrderedSame);
 }
 
 CLTimestamp
 timestampSinceEpoch()
 {
-    // timeIntervalSinceReferenceDate returns seconds since 1/1/2001
-    // NSTimeIntervalSince1970 = seconds from Epoch and 1/1/2001
-    return [NSDate timeIntervalSinceReferenceDate] + NSTimeIntervalSince1970;
+  // timeIntervalSinceReferenceDate returns seconds since 1/1/2001
+  // NSTimeIntervalSince1970 = seconds from Epoch and 1/1/2001
+  return [NSDate timeIntervalSinceReferenceDate] + NSTimeIntervalSince1970;
 }
 
 NSString *localizedDays(int num_days)
@@ -208,41 +206,20 @@ NSString *formattedTimeLeft(NSInteger seconds)
   return s;
 }
 
-NSString *shortenedName(NSString *name, int max_len)
-{
-    int len = [name length];
-    if (len <= max_len)
-        return name;
-    
-    NSCharacterSet *charset = [NSMutableCharacterSet punctSpaces];
-    NSString *trimmed = [name stringByTrimmingCharactersInSet:charset];
-    if ([trimmed length] == 0)
-        return [name substringToIndex:max_len];
-    
-    NSArray *pieces = [trimmed componentsSeparatedByCharactersInSet:charset];
-    trimmed = [pieces objectAtIndex:0];
-    
-    // concede tolerance of 2 extra chars, if still longer, truncate
-    len = [trimmed length];
-    if (len > max_len + 2)
-        return [trimmed substringToIndex:max_len];
-    
-    return trimmed;
-}
 
 // used for archiving defaults as NSData
 NSData* arc(id foo) 
 {
-	return [NSKeyedArchiver archivedDataWithRootObject:foo];
+  return [NSKeyedArchiver archivedDataWithRootObject:foo];
 }
 
 // unarchive NSData from defaults
 id unarc(NSString* key)
 {
-	NSData* temp = [[NSUserDefaults standardUserDefaults] dataForKey:key];
-	if (temp == nil)
-        return nil;
-    
-    return [NSKeyedUnarchiver unarchiveObjectWithData:temp];
+  NSData* temp = [[NSUserDefaults standardUserDefaults] dataForKey:key];
+  if (temp == nil)
+    return nil;
+
+  return [NSKeyedUnarchiver unarchiveObjectWithData:temp];
 }
 
