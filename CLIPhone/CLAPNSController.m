@@ -29,9 +29,11 @@
 #import "CLAPNSController.h"
 #import "clcg_debug.h"
 
+
 @interface CLAPNSController ()
 @property(nonatomic,retain,readwrite) NSString *deviceToken;
 @end
+
 
 @implementation CLAPNSController
 
@@ -48,12 +50,6 @@
   [super dealloc];
 }
 #endif
-
-
--(id)init
-{
-  return [self initWithOptions:nil];
-}
 
 
 // designated initializer.
@@ -75,6 +71,13 @@
   }
   
   return self;
+}
+
+
+// overriding superclass' designated initializer
+-(id)init
+{
+  return [self initWithOptions:nil];
 }
 
 
@@ -151,7 +154,6 @@
 
 -(void)parseBadgeCount
 {
-  //... otherwise parse options
   if (mOptions == nil)
     mBadgeCount = 0;
   
@@ -165,21 +167,22 @@
 }
 
 
--(void)setBadgeCount:(NSInteger)count
-{
-  mBadgeCount = count;
-}
-
-
 -(NSUInteger)badgeCount
 {
   // if we have a valid value (>0) return that
   if (mBadgeCount >= 0)
     return mBadgeCount;
   
+  // ... otherwise parse options
   [self parseBadgeCount];
   
   return (NSUInteger)mBadgeCount;
+}
+
+
+-(void)setBadgeCount:(NSInteger)count
+{
+  mBadgeCount = count;
 }
 
 
