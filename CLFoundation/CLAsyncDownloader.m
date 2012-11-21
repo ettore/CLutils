@@ -26,7 +26,7 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
-
+#import "cl_debug.h"
 #import "CLAsyncDownloader.h"
 
 //------------------------------------------------------------------------------
@@ -192,8 +192,8 @@
 
 - (void)connection:(NSURLConnection *)cnx didReceiveData:(NSData *)data
 {
-    // append the new data to the buffer
-    [_downloadedData appendData:data];
+  // append the new data to the buffer
+  [_downloadedData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)cnx didFailWithError:(NSError *)err
@@ -217,7 +217,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)cnx
 {
-  debug0cocoa(@"@@@@ connection=%@", cnx);
   debug0msg("@@@@ NSDATA size=%d", [_downloadedData length]);
   
   if ([self shouldRemoveLoadingMsg])
