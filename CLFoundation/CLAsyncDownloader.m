@@ -29,7 +29,8 @@
 #import "cl_debug.h"
 #import "CLAsyncDownloader.h"
 
-//------------------------------------------------------------------------------
+
+////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 
 
@@ -41,54 +42,64 @@
 
 @synthesize requestType = mRequestType;
 
+
+- (void)dealloc
+{
+  mDelegate = nil;
+  [mConn cancel];
+  CLCG_REL(mConn);
+  CLCG_REL(mDownloadedData);
+  [super dealloc];
+}
+
+
 - (id)init
 {
-    return [self initWithDelegate:nil owner:nil];
+  return [self initWithDelegate:nil owner:nil enableLoadingMsg:YES];
 }
+
 
 - (id)initWithDelegate:(id<CLDownloaderDelegate>)d owner:(id)o
 {
   return [self initWithDelegate:d owner:o enableLoadingMsg:YES];
 }
 
+
 - (id)initWithDelegate:(id<CLDownloaderDelegate>)deleg
                  owner:(id)owner
       enableLoadingMsg:(BOOL)enableLoadingMsg
 {
   if ((self = [super init])) {
-		_downloadedData = nil;
-		_expectedDownloadLength = 0;
-		_busy = NO;
-		_delegate = deleg;
-    _owner = owner;
+		mDownloadedData = nil;
+		mExpectedDownloadLength = 0;
+		mBusy = NO;
+		mDelegate = deleg;
+    mOwner = owner;
     mEnableLoadingMsg = enableLoadingMsg;
   }
   return self;
 }
 
-- (void)dealloc
-{
-  [_downloadedData release];
-  [super dealloc];
-}
 
-//------------------------------------------------------------------------------
-/* 
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark - HTTP API
+
+
+/*!
  @param url_str A string in the form http://example.com?par1=val1&par2=val2
  */ 
 - (CL_ERROR)GET:(NSString*)url_str
 {
-  NSURLConnection *conn = nil;
   NSMutableURLRequest *req;
 
-  assert(_delegate); // temporary sanity check
+  assert(mDelegate); // temporary sanity check
   
-  if (_busy)
+  if (mBusy)
 		return CL_BUSY;
-  _busy = YES;
+  mBusy = YES;
   
   if (mEnableLoadingMsg)
-    [_delegate showLoadingView:YES];
+    [mDelegate showLoadingView:YES];
   
   req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_str]];
   NSString * const content_type = @"application/x-www-form-urlencoded";
@@ -97,16 +108,16 @@
   [req setHTTPShouldHandleCookies:YES];
   [req setHTTPMethod:@"GET"];
   
-  if (_downloadedData)
-		[_downloadedData release];
-  
-  _downloadedData = [[NSMutableData data] retain];
+  [mDownloadedData release];
+  mDownloadedData = [[NSMutableData data] retain];
   
   // download starts immediately after this call
-  conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-  if (conn == nil) {
-		[_downloadedData release];
-		_downloadedData = nil;
+  [mConn cancel];
+  [mConn release];
+  mConn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+  if (mConn == nil) {
+		[mDownloadedData release];
+		mDownloadedData = nil;
 		fprintf(stderr, "URL unreachable: unable to connect to server");
 		return CL_CNX_UNAVAILABLE;
   }
@@ -114,16 +125,19 @@
   return CL_OK;
 }
 
+
 -(CL_ERROR)PUT:(NSString*)url withParams:(NSString*)params
 {
   url = [NSString stringWithFormat:@"%@?%@",url,params];
   return [self doHTTP:@"PUT" resource:url params:params];
 }
 
+
 -(CL_ERROR)POST:(NSString*)url withParams:(NSString*)params
 {
   return [self doHTTP:@"POST" resource:url params:params];
 }
+
 
 //------------------------------------------------------------------------------
 // @param url_str A string in the form "http://example.com"
@@ -134,17 +148,16 @@
 //
 -(CL_ERROR)doHTTP:(NSString*)method resource:(NSString*)url params:(NSString*)params
 {
-  NSURLConnection *conn = nil;
   NSMutableURLRequest *req;
   NSData *data;
   NSString *len, *cont_type = @"application/x-www-form-urlencoded";
   
-  if (_busy)
+  if (mBusy)
     return CL_BUSY;
-  _busy = YES;
+  mBusy = YES;
   
   if (mEnableLoadingMsg)
-    [_delegate showLoadingView:YES];
+    [mDelegate showLoadingView:YES];
   
   req = [[[NSMutableURLRequest alloc] init] autorelease];
   data = [params dataUsingEncoding:NSUTF8StringEncoding];
@@ -162,17 +175,16 @@
   //[req setTimeoutInterval:10];
   
   // if we had one download from a previous job, discard it
-  if (_downloadedData)
-    [_downloadedData release];
-  
-  _downloadedData = [[NSMutableData data] retain];
+  [mDownloadedData release];
+  mDownloadedData = [[NSMutableData data] retain];
   
   // download starts immediately after this call
-  // conn will be released by connectionDidFinishLoading connection:didFail
-  conn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
-  if (conn == nil) {
-    [_downloadedData release];
-    _downloadedData = nil;
+  // mConn will be released by connectionDidFinishLoading connection:didFail
+  [mConn cancel];
+  [mConn release];
+  mConn = [[NSURLConnection alloc] initWithRequest:req delegate:self];
+  if (mConn == nil) {
+    CLCG_REL(mDownloadedData);
     fprintf(stderr, "URL unreachable: unable to connect to server");
     return CL_CNX_UNAVAILABLE;
   }
@@ -181,56 +193,76 @@
 }
 
 
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark - NSURLConnectionDelegate methods
+
+
 - (void)connection:(NSURLConnection *)cnx didReceiveResponse:(NSURLResponse *)re
 {
   // this method is possibly called multiple times, like in the case of a
   // redirect, so reset received data when that happens
-  _expectedDownloadLength = [re expectedContentLength];
+  mExpectedDownloadLength = [re expectedContentLength];
     
-  [_downloadedData setLength:0];
+  [mDownloadedData setLength:0];
 }
+
 
 - (void)connection:(NSURLConnection *)cnx didReceiveData:(NSData *)data
 {
   // append the new data to the buffer
-  [_downloadedData appendData:data];
+  [mDownloadedData appendData:data];
 }
+
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)cnx
+{
+  CLCG_ASSERT(cnx == mConn);
+  
+  if ([self shouldRemoveLoadingMsg])
+    [mDelegate showLoadingView:NO];
+  
+  CLCG_REL(mConn);
+  [mDelegate downloadDidComplete:self];
+  mBusy = NO;
+}
+
 
 - (void)connection:(NSURLConnection *)cnx didFailWithError:(NSError *)err
 {
+  CLCG_ASSERT(cnx == mConn);
+  
   // release the connection and the data object
-  [cnx release];
-  [_downloadedData release];
-  _downloadedData = nil;
-  _busy = NO;
+  CLCG_REL(mConn);
+  CLCG_REL(mDownloadedData);
+  mBusy = NO;
   
   // (to do) inform the user
   NSLog(@"Connection failed! Error - %@ %@",
         [err description],
         [[err userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
   
-  [_delegate showLoadingView:NO];
+  [mDelegate showLoadingView:NO];
 
-  [_delegate downloadDidFail:self error:err];
+  [mDelegate downloadDidFail:self error:err];
 }
 
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)cnx
-{
-  debug0msg("@@@@ NSDATA size=%d", [_downloadedData length]);
-  
-  if ([self shouldRemoveLoadingMsg])
-    [_delegate showLoadingView:NO];
-  
-  [cnx release];
-  [_delegate downloadDidComplete:self];
-  _busy = NO;
-}
+////////////////////////////////////////////////////////////////////////////////
+#pragma mark - Getters
 
 
 - (NSData *)downloadedData
 {
-  return _downloadedData;
+  return mDownloadedData;
+}
+
+
+- (NSString *)downloadedDataAsString
+{
+  NSString *s = [[NSString alloc] initWithData:mDownloadedData
+                                      encoding:NSUTF8StringEncoding];
+  [s autorelease];
+  return s;
 }
 
 
@@ -240,18 +272,11 @@
 }
 
 
-- (NSString *)downloadedDataAsString
-{
-  NSString *s = [[NSString alloc] initWithData:_downloadedData
-                                      encoding:NSUTF8StringEncoding];
-  [s autorelease];
-  return s;
-}
-
-
 - (id)owner
 {
-  return _owner;
+  return mOwner;
 }
 
+
 @end
+

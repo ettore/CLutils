@@ -32,22 +32,22 @@
 
 typedef void(*CLTwitPicUploaderCallback)(NSString *response);
 @class CLTwitPicUploader;
+@class ASIFormDataRequest;
 
 @protocol CLTwitPicDelegate
-
 - (void)twitPicDidSucceed:(CLTwitPicUploader*)upl response:(NSString*)response;
-
 - (void)twitPicDidFail:(CLTwitPicUploader*)upl 
                    msg:(NSString*)errmsg 
                   code:(NSInteger)errcode;
-
 @end
+
 
 @interface CLTwitPicUploader : NSObject 
 {
-    NSString *twitterUsername;
-    NSString *twitterPassword;
-    id<CLTwitPicDelegate> delegate;
+  NSString *twitterUsername;
+  NSString *twitterPassword;
+  id<CLTwitPicDelegate> delegate;
+  ASIFormDataRequest *mReq;
 }
 
 @property(retain,nonatomic) NSString *twitterUsername;
@@ -56,11 +56,6 @@ typedef void(*CLTwitPicUploaderCallback)(NSString *response);
 -(id)initWithUsername:(NSString*)uname 
              password:(NSString*)passwd
              delegate:(id<CLTwitPicDelegate>)delg;
-
-//-(id)initWithUsername:(NSString*)uname 
-//             password:(NSString*)passwd
-//      successCallback:(CLTwitPicUploaderCallback)fun
-//      failureCallback:(CLTwitPicUploaderCallback)fail;
 
 -(int)postImageData:(NSData*)imagedata message:(NSString*)msg;
 

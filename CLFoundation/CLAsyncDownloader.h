@@ -49,28 +49,25 @@
 #pragma mark -
 
 
-/*"
- Use an instance of this class to download one item at a time using HTTP GET.
- "*/
+/*!
+  Simple donwloader class.
+ */
 @interface CLAsyncDownloader : NSObject
 {
 @private
-  NSMutableData   *_downloadedData;
-  long long        _expectedDownloadLength;
-  BOOL             _busy;
-  id<CLDownloaderDelegate> _delegate;
-  id               _owner;
-  int              mRequestType;
-  BOOL             mEnableLoadingMsg;
+  NSMutableData     *mDownloadedData;
+  long long         mExpectedDownloadLength;
+  BOOL              mBusy;
+  id<CLDownloaderDelegate> mDelegate;
+  id                mOwner;
+  int               mRequestType;
+  BOOL              mEnableLoadingMsg;
+  NSURLConnection   *mConn;
 }
-
-// -----------------------------------------------------------------------------
-#pragma mark * Main API * 
 
 @property(nonatomic) int requestType;
 
-/**
- * possible patterns: factory, flyweight, builder
+/*!
  * Creates the downloader without starting any download.  The "owner" is the
  * object that conceptually will own the downloaded data. 
  */
@@ -80,7 +77,11 @@
                  owner:(id)o 
       enableLoadingMsg:(BOOL)flag;
 
-/* 
+
+// -----------------------------------------------------------------------------
+#pragma mark * HTTP API *
+
+/*!
  Sends a request for a URL.  When the content is downloaded and available, 
  a callback on the delegte will be invoked.
  @param url_str A string in the form http://example.com?par1=val1&par2=val2
@@ -88,7 +89,7 @@
  */ 
 - (CL_ERROR)GET:(NSString*)urlStr;
 
-/* 
+/*!
  @param url_str A string in the form "http://example.com"
  @param post_str A string in the form "par1=val1&par2=val2"
  We assume post_str is properly HTTP encoded and ready to go.
@@ -97,6 +98,9 @@
 
 - (CL_ERROR)PUT:(NSString*)url_str withParams:(NSString*)post_str;
 
+
+// -----------------------------------------------------------------------------
+#pragma mark * Utils *
 
 // returns the downloaded data 
 - (NSData *)downloadedData;
@@ -108,16 +112,8 @@
 // the loading message when downloading ends. Returns YES by default.
 - (BOOL)shouldRemoveLoadingMsg;
 
-// -----------------------------------------------------------------------------
-#pragma mark * Utils * 
-
 // returns the owner of the downloaded data
 - (id)owner;
 
-// delegate methods
-- (void)connection:(NSURLConnection *)cnx didReceiveResponse:(NSURLResponse *)re;
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
-- (void)connection:(NSURLConnection *)cnx didFailWithError:(NSError *)err;
-- (void)connectionDidFinishLoading:(NSURLConnection *)cnx;
 
 @end

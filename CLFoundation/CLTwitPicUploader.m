@@ -28,9 +28,12 @@ Created by Ettore Pasquini on 3/9/10.
  POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import "CLTwitPicUploader.h"
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
+
+#import "clcg_macros.h"
+
+#import "CLTwitPicUploader.h"
 #import "cl_debug.h"
 #import "CLTwitPicResponseParser.h"
 #import "CLTwitPicResponse.h"
@@ -41,111 +44,103 @@ Created by Ettore Pasquini on 3/9/10.
 
 @synthesize twitterUsername;
 @synthesize twitterPassword;
-//@synthesize successCallback;
-//@synthesize failCallback;
-//
-//-(id)initWithUsername:(NSString*)uname 
-//             password:(NSString*)passwd
-//      successCallback:(CLTwitPicUploaderCallback)func
-//      failureCallback:(CLTwitPicUploaderCallback)fail
-//{
-//    if ((self = [super init]))
-//    {
-//        twitterUsername = uname;
-//        twitterPassword = passwd;
-//        successCallback = func;
-//        failCallback = fail;
-//    }
-//    
-//    return self;
-//}
+
+
+-(void)dealloc
+{
+  delegate = nil;
+  [mReq clearDelegatesAndCancel];
+  CLCG_REL(mReq);
+  CLCG_REL(twitterUsername);
+  CLCG_REL(twitterPassword);
+  [super dealloc];
+}
+
 
 -(id)initWithUsername:(NSString*)uname 
              password:(NSString*)passwd
              delegate:(id<CLTwitPicDelegate> )delg
 {
-    if ((self = [super init]))
-    {
-        twitterUsername = uname;
-        twitterPassword = passwd;
-        delegate = delg;
-    }
-    
-    return self;
+  if ((self = [super init])) {
+    twitterUsername = [uname copy];
+    twitterPassword = [passwd copy];
+    delegate = delg;
+  }
+  
+  return self;
 }
+
 
 -(int)postImageData:(NSData*)imagedata message:(NSString*)msg
 {
-    NSURL *twitpicURL = [NSURL URLWithString:@"http://twitpic.com/api/uploadAndPost"];
-    ASIFormDataRequest *req;
-    
-    req = [[[ASIFormDataRequest alloc] initWithURL:twitpicURL] autorelease];
-    [req setData:imagedata forKey:@"media"];
-    [req setPostValue:twitterUsername forKey:@"username"];
-    [req setPostValue:twitterPassword forKey:@"password"];
-    [req setPostValue:msg forKey:@"message"];
-    [req setDelegate:self];
-    [req setDidFinishSelector:@selector(requestSuccess:)];
-    [req setDidFailSelector:@selector(requestFail:)];
-    [req start];
-    
-    return 0;
+  NSURL *twitpicURL = [NSURL URLWithString:@"http://twitpic.com/api/uploadAndPost"];
+  
+  [mReq clearDelegatesAndCancel];
+  [mReq release];
+  mReq = [[ASIFormDataRequest alloc] initWithURL:twitpicURL];
+  [mReq setData:imagedata forKey:@"media"];
+  [mReq setPostValue:twitterUsername forKey:@"username"];
+  [mReq setPostValue:twitterPassword forKey:@"password"];
+  [mReq setPostValue:msg forKey:@"message"];
+  [mReq setDelegate:self];
+  [mReq setDidFinishSelector:@selector(requestSuccess:)];
+  [mReq setDidFailSelector:@selector(requestFail:)];
+  [mReq start];
+  
+  return 0;
 }
+
 
 - (void)requestSuccess:(ASIHTTPRequest *)req
 {
-    NSString *response_xml = [req responseString];
-    debug0cocoa(@"HTTPSTATUS=%@\nRESPONSE=%@\n", 
-                [req responseStatusMessage], response_xml);
+  NSString *response_xml = [req responseString];
+  NSInteger code = 0;
+  NSString *info = nil;
+  
+  if ([req responseStatusCode] != 200) {
+    info = [req responseStatusMessage];
+    code = CL_TWITPIC_HTTP_ERR;
+  } else {
+    CLTwitPicResponseParser *parser = [[CLTwitPicResponseParser alloc] init];
+    parser.wantedTag = @"rsp";
+    id  parsed = [parser parseData:[req responseData]];
     
-    NSInteger code = 0;
-    NSString *info = nil;
-    
-    if ([req responseStatusCode] != 200)
-    {
-        info = [req responseStatusMessage];
-        code = CL_TWITPIC_HTTP_ERR;
-    }
-    else 
-    {
-        CLTwitPicResponseParser *parser = [[CLTwitPicResponseParser alloc] init];
-        parser.wantedTag = @"rsp";
-        id  parsed = [parser parseData:[req responseData]];
-        debug0cocoa(@"parsed=%@", parsed);
-        
-        if ([parsed isKindOfClass:[NSArray class]] && [(NSArray*)parsed count] == 1)
+    if ([parsed isKindOfClass:[NSArray class]] && [(NSArray*)parsed count] == 1) {
+        // insert the new game the client views
+        CLTwitPicResponse *rsp = [(NSArray *)parsed objectAtIndex:0];
+        if ([rsp.status compare:@"ok" 
+                        options:NSCaseInsensitiveSearch] != NSOrderedSame)
         {
-            // insert the new game the client views
-            CLTwitPicResponse *rsp = [(NSArray *)parsed objectAtIndex:0];
-            if ([rsp.status compare:@"ok" 
-                            options:NSCaseInsensitiveSearch] != NSOrderedSame)
-            {
-                code = CL_TWITPIC_LOGIN_ERR;
-            }
+            code = CL_TWITPIC_LOGIN_ERR;
         }
-        else
-        {
-            code = CL_TWITPIC_PARSE_ERR;
-            if ([parsed isKindOfClass:[CLXMLParseError class]])
-                info = [parsed info];
-            else
-                info = [[parser parserError] localizedDescription];
-        }
-        
-        [parser release];
+    } else {
+      code = CL_TWITPIC_PARSE_ERR;
+      if ([parsed isKindOfClass:[CLXMLParseError class]])
+        info = [parsed info];
+      else
+        info = [[parser parserError] localizedDescription];
     }
     
-    if (code)
-        [delegate twitPicDidFail:self msg:info code:code];
-    else 
-        [delegate twitPicDidSucceed:self response:response_xml];
+    [parser release];
+  }
+  
+  if (code)
+    [delegate twitPicDidFail:self msg:info code:code];
+  else 
+    [delegate twitPicDidSucceed:self response:response_xml];
+  
+  CLCG_REL(req);
 }
+
 
 - (void)requestFail:(ASIHTTPRequest *)req
 {
-    NSError *error = [req error];
-    LOG_NS(@"ASIHTTPRequest error: %@", error);
-    [delegate twitPicDidFail:self msg:[error description] code:CL_TWITPIC_API_ERR];
+  NSError *error = [req error];
+  LOG_NS(@"ASIHTTPRequest error: %@", error);
+  [delegate twitPicDidFail:self msg:[error description] code:CL_TWITPIC_API_ERR];
+  CLCG_REL(req);
 }
 
+
 @end
+
