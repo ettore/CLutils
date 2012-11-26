@@ -63,6 +63,7 @@
   int               mRequestType;
   BOOL              mEnableLoadingMsg;
   NSURLConnection   *mConn;
+  NSString          *mURLString;
 }
 
 @property(nonatomic) int requestType;
@@ -101,6 +102,8 @@
 
 // -----------------------------------------------------------------------------
 #pragma mark * Utils *
+
+-(NSString*)currentURL;
 
 // returns the downloaded data 
 - (NSData *)downloadedData;

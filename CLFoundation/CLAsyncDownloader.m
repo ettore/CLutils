@@ -81,6 +81,12 @@
 }
 
 
+-(NSString*)currentURL
+{
+  return mURLString;
+}
+
+
 ////////////////////////////////////////////////////////////////////////////////
 #pragma mark - HTTP API
 
@@ -101,6 +107,8 @@
   if (mEnableLoadingMsg)
     [mDelegate showLoadingView:YES];
   
+  CLCG_REL(mURLString);
+  mURLString = [url_str retain];
   req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url_str]];
   NSString * const content_type = @"application/x-www-form-urlencoded";
   [req setValue:content_type forHTTPHeaderField:@"Content-Type"];
@@ -155,7 +163,10 @@
   if (mBusy)
     return CL_BUSY;
   mBusy = YES;
-  
+
+  CLCG_REL(mURLString);
+  mURLString = [url retain];
+
   if (mEnableLoadingMsg)
     [mDelegate showLoadingView:YES];
   
