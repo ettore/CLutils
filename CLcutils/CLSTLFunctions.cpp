@@ -33,7 +33,7 @@
 using namespace std;
 #include "CLSTLFunctions.h"
 
-const char *ALL_DELIMITERS = " \"\\|!/()=?^'{[]}+*°��#�.-;:_<>�� ·`«¥~÷´`�ı»��¿±�¨¬#¶��¯¸� ·\t\n";
+const char *ALL_DELIMITERS = " \"\\|!/()=?^'{[]}+*¬∞¬‚#¬.-;:_<>¶¢ ¬∑`¬´¬•~√∑¬¥`†ƒ±¬ª∞∫¬ø¬±‚û¬®¬¨#¬∂¶¢¬Ø¬∏° ¬∑\t\n";
 
 int checkOpenedIfstream(ifstream *myfile)
 {
