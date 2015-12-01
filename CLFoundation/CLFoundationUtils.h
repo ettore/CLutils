@@ -30,6 +30,17 @@
  POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+/*******************************************************************************
+
+ THIS FILE IS DEPRECATED
+
+ THESE UTILITIES WILL BE EITHER REMOVED (FOR THEY ARE OBSOLETE)
+ OR MOVED INTO MORE APPROPRIATE PLACES
+
+ ******************************************************************************/
+
+
 #ifndef CL_FOUNDATION_UTILS_H_
 #define CL_FOUNDATION_UTILS_H_
 
