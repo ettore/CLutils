@@ -84,7 +84,8 @@
 +(BOOL)hasPushNotificationsEnabled
 {
   UIApplication *app = [UIApplication sharedApplication];
-  CLCG_P(@"Currently enabled APN types: %d", [app enabledRemoteNotificationTypes]);
+  CLCG_P(@"Currently enabled APN types: %lu",
+         (unsigned long)[app enabledRemoteNotificationTypes]);
   return ([app enabledRemoteNotificationTypes] != UIRemoteNotificationTypeNone);
 }
 
