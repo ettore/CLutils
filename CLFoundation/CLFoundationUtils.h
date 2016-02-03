@@ -84,16 +84,11 @@ BOOL cl_isascii_str(CFStringRef s);
  */
 NSInteger data2int(CFDataRef data);
 
-Boolean isEmpty(NSString *s);
-
 // used for defaults archiving
 NSData* arc(id foo);
 
 // de-archive object with 'key' from defaults
 id unarc(NSString* key);
-
-// returns seconds since Epoch
-CLTimestamp timestampSinceEpoch();
 
 /**
  * Returns a string with the input time formatted in number of 

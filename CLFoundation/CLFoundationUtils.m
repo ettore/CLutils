@@ -169,20 +169,6 @@ NSInteger data2int(CFDataRef data)
 }
 
 
-Boolean isEmpty(NSString *s)
-{
-  return (s == nil || [s compare:@""] == NSOrderedSame);
-}
-
-
-CLTimestamp timestampSinceEpoch()
-{
-  // timeIntervalSinceReferenceDate returns seconds since 1/1/2001
-  // NSTimeIntervalSince1970 = seconds from Epoch and 1/1/2001
-  return [NSDate timeIntervalSinceReferenceDate] + NSTimeIntervalSince1970;
-}
-
-
 NSString *localizedDays(long num_days)
 {
   return (num_days == 1 ? CLCG_LOC(@"day") : CLCG_LOC(@"days"));
