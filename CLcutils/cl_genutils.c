@@ -98,7 +98,7 @@ char *strarrcat(char *dst, const char *strarr[], int arrlen)
     len = strlen(strarr[0]);
     if (len > 0) {
       // we suppose the caller has malloced dst to at least 1 byte
-      realloc(dst, len * sizeof(char));
+      dst = realloc(dst, len * sizeof(char));
       strncpy(dst, strarr[0], len);
     }
     dst[len] = '\0';
@@ -108,7 +108,7 @@ char *strarrcat(char *dst, const char *strarr[], int arrlen)
       if (len > 0) {
         // we realloc to just len (and not len+1) cos we don't wanna
         // copy the '\0' of every string
-        realloc(dst, len * sizeof(char));
+        dst = realloc(dst, len * sizeof(char));
 
         // the new string IS NOT longer than available space so no check
         //if (len > sizeof(dst) - strlen(dst) - 1)
