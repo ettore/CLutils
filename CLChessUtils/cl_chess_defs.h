@@ -4,7 +4,7 @@
  *
  
  Copyright (c) 2004 Richard D. Bischoff 
- Copyright (c) 2010 Ettore Pasquini (mofifications)
+ Copyright (c) 2010 Ettore Pasquini (modifications)
  
  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  associated documentation files (the "Software"), to deal in the Software without restriction, including 
@@ -61,7 +61,6 @@ typedef enum {
 
 typedef enum { 
 	GAME_NONE,
-	GAME_NEW,
 	GAME_INACTIVE,
 	GAME_USERWHITE,
 	GAME_USERBLACK,
@@ -121,7 +120,6 @@ extern int WOB_rects[64];
 
 char CVPieceToChar(CHESSVIEW_PIECES p);
 CHESSVIEW_PIECES charToChessPiece(char x);
-double min(double x, double y);
 // signed char means boolean here
 signed char isPieceWhite(CHESSVIEW_PIECES p);
 signed char isPieceBlack(CHESSVIEW_PIECES p);
