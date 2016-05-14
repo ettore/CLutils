@@ -40,9 +40,5 @@ void init_ios_logging(CFStringRef appname, CFStringRef logname);
 // to debugger, so you later read the console log
 void redirect_stderr(CFStringRef logname);
 
-BOOL isIPad();
-
 // send an email to Cubelogic Support (support@cubelogic.org)
 void CLSupportSendEmail(CFStringRef subject, CFStringRef body);
-
-void debugViewFrame(char *label, UIView *a_view);

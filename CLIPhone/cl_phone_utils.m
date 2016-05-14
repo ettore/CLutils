@@ -30,7 +30,7 @@
 
 #include "cl_debug.h" 
 #import "cl_phone_utils.h"
-#import "CLiOSmacros.h"
+//#import "CLiOSmacros.h"
 
 void init_ios_logging(CFStringRef appname, CFStringRef logname)
 {
@@ -68,15 +68,6 @@ void redirect_stderr(CFStringRef logname)
     freopen([logpath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
 }
 
-BOOL isIPad()
-{
-    if (RUNNING_IOS_3_2_OR_GREATER)
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-            return YES;
-    
-    return NO;
-}
-
 void CLSupportSendEmail(CFStringRef subject, CFStringRef body)
 {
     NSString *s;
@@ -91,12 +82,3 @@ void CLSupportSendEmail(CFStringRef subject, CFStringRef body)
     [[UIApplication sharedApplication] openURL:url];
 }
 
-
-void debugViewFrame(char *label, UIView *a_view)
-{
-#ifdef CL_DEBUG_0
-  CGRect f = [a_view frame];
-#endif
-  debug0msg("%s, O (%.2f,%.2f) W=%.2f H=%.2f", label,
-            f.origin.x, f.origin.y, f.size.width, f.size.height);
-}
